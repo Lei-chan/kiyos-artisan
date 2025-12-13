@@ -488,6 +488,7 @@ function Footer() {
             山梨県甲府市南口町1-50-1008
           </p>
         }
+        snsHref="https://www.instagram.com/kiyoscellar?igsh=MTN0Z3FkMTdkMGtyMw%3D%3D&utm_source=qr"
       />
       <GroupInfo
         groupName="Artisan Mariage Vineyards"
@@ -510,6 +511,7 @@ function Footer() {
             </div>
           </>
         }
+        snsHref="https://www.instagram.com/artisanmariagevineyards?igsh=MXViNHF6eWN3YjN1MQ%3D%3D&utm_source=qr"
       />
       <NavFooter />
       <CopyrightAttribution />
@@ -520,9 +522,11 @@ function Footer() {
 function GroupInfo({
   groupName,
   groupInfo,
+  snsHref,
 }: {
   groupName: string;
   groupInfo: JSX.Element;
+  snsHref: string;
 }) {
   return (
     <div className="w-full flex flex-row gap-[5%] justify-center">
@@ -531,7 +535,11 @@ function GroupInfo({
         {groupInfo}
       </div>
       <div className="w-[25%] flex flex-row justify-start items-center">
-        <LinkIcon href="" src="/icons/instagram.svg" alt="Instagram icon" />
+        <LinkIcon
+          href={snsHref}
+          src="/icons/instagram.svg"
+          alt="Instagram icon"
+        />
       </div>
     </div>
   );
