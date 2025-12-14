@@ -1,11 +1,16 @@
 "use client";
-import { JSX, useEffect, useState } from "react";
+//react
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+//next.js
 import Image from "next/image";
 import Link from "next/link";
+//models
 import slideInfo from "./models/slide";
-import { useInView } from "react-intersection-observer";
-import news from "./models/news";
-import { TYPE_NEWS } from "./type";
+//components
+import NewsUl from "./components/NewsUl";
+import TopBar from "./components/TopBar";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -19,89 +24,9 @@ export default function Home() {
 function Top() {
   return (
     <div className="w-full h-dvh">
-      <Belt />
+      <TopBar />
       <Slide />
     </div>
-  );
-}
-
-function Belt() {
-  return (
-    <div className="grid w-full h-[24vh] bg-blue-900 grid-rows-2 relative">
-      {/* I'm gonna replace the p by a logo image later */}
-      <h1 className="text-center text-[#ffe77c] pt-[2%] text-base">
-        Kiyos Celler
-        <br />
-        Artisan Mariage Vineyards
-      </h1>
-      <LanguageSearch />
-      <Navi />
-    </div>
-  );
-}
-
-function LanguageSearch() {
-  return (
-    <div className="absolute w-fit h-fit flex flex-row right-[1%] top-[3%] gap-[5%]">
-      <select
-        className={`w-[35%] h-full mr-[3%] bg-transparent bg-[url('/icons/globe.svg')] bg-contain bg-center bg-no-repeat appearance-none text-sm  text-blue-900 text-transparent  focus:text-black`}
-      >
-        <option value="ja">日本語</option>
-        <option value="en">English</option>
-      </select>
-      <button
-        type="button"
-        className="w-[43%] aspect-square bg-[url('/icons/magnifying-glass.svg')] bg-[length:88%] bg-no-repeat bg-center"
-      ></button>
-    </div>
-  );
-}
-
-function Navi() {
-  const divClassName =
-    "relative flex flex-col text-center items-center justify-center border-r border-blue-900 last:border-r-0";
-  const linkClassName = "pb-[1%] px-[1%] text-orange-300 w-full";
-  const hoverBgClassName =
-    "opacity-0 transition-all duration-500 hover:opacity-50";
-
-  return (
-    <nav className="w-full flex flex-row  text-sm bg-blue-800">
-      <div className={`${divClassName} w-[27%]`}>
-        <Link href="" className={`${linkClassName}`}>
-          Kiyos
-          <br />
-          Celler
-        </Link>
-      </div>
-      <div className={`${divClassName} w-[27%]`}>
-        <Image
-          src="/main-image.webp"
-          alt=""
-          fill
-          className={hoverBgClassName}
-        ></Image>
-        <Link href="" className={`${linkClassName} leading-tight`}>
-          Artisan Mariage Vineyards
-        </Link>
-      </div>
-      <div className={`${divClassName} w-[27%]`}>
-        <div
-          className={`${hoverBgClassName} absolute bg-blue-600 w-full h-full`}
-        ></div>
-        <Link href="" className={`${linkClassName} `}>
-          History
-        </Link>
-      </div>
-      <div className={`${divClassName} w-[19%] gap-1`}>
-        <div
-          className={`${hoverBgClassName} absolute bg-blue-600 w-full h-full`}
-        ></div>
-        <Image src="/icons/shop.svg" alt="" width={20} height={20}></Image>
-        <Link href="" className={`${linkClassName} leading-tight`}>
-          Shop
-        </Link>
-      </div>
-    </nav>
   );
 }
 
@@ -346,10 +271,6 @@ function GroupImages({
 
 //news
 function News() {
-  const labelClassName = "w-fit h-fit text-white p-[1px] rounded";
-  const kiyosClassName = `${labelClassName} bg-yellow-500`;
-  const amavinClassName = `${labelClassName}  bg-pink-600`;
-
   const [type, setType] = useState<"all" | "kiyos" | "amavin">("all");
 
   function handleClickType(e: React.MouseEvent<HTMLButtonElement>) {
@@ -364,46 +285,29 @@ function News() {
       <h1 className="text-center text-xl font-bold tracking-wider text-blue-900">
         News
       </h1>
-      <ul className="w-[85%] h-[60vh] border-2 mt-5 overflow-y-auto overflow-x-hidden bg-white rounded">
-        {news
-          .filter((news) => (type === "all" ? news : type === news.type))
-          .map((news, i) => (
-            <List
-              key={i}
-              news={news as TYPE_NEWS}
-              kiyosClassName={kiyosClassName}
-              amavinClassName={amavinClassName}
-            />
-          ))}
-      </ul>
-      <NewsButtons
-        kiyosClassName={kiyosClassName}
-        amavinClassName={amavinClassName}
-        onClickType={handleClickType}
-      />
+      <NewsUl type={type} />
+      <NewsButtons onClickType={handleClickType} />
     </div>
   );
 }
 
 function NewsButtons({
-  kiyosClassName,
-  amavinClassName,
   onClickType,
 }: {
-  kiyosClassName: string;
-  amavinClassName: string;
   onClickType: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
+  const labelClassName = "w-fit h-fit text-white p-[1px] rounded";
+
   return (
     <div className="w-full flex flex- row text-sm right-[2%] gap-1 mt-3 justify-center">
       <NewsButton
         type="kiyos"
-        className={kiyosClassName}
+        className={`${labelClassName} bg-yellow-500`}
         onClickType={onClickType}
       />
       <NewsButton
         type="amavin"
-        className={amavinClassName}
+        className={`${labelClassName}  bg-pink-600`}
         onClickType={onClickType}
       />
     </div>
@@ -430,161 +334,6 @@ function NewsButton({
         {type.at(0)?.toUpperCase() + type.slice(1)}
       </button>
       <p>: {type === "kiyos" ? "Kiyos Celler" : "Artisan Mariage Vineyards"}</p>
-    </div>
-  );
-}
-
-function List({
-  news,
-  kiyosClassName,
-  amavinClassName,
-}: {
-  news: TYPE_NEWS;
-  kiyosClassName: string;
-  amavinClassName: string;
-}) {
-  const [clicked, setClicked] = useState(false);
-
-  function handleClickList() {
-    setClicked(!clicked);
-  }
-
-  return (
-    <li
-      className="relative w-full min-h-[20%] max-h-fit border-b-2 p-[1%] cursor-pointer"
-      onClick={handleClickList}
-    >
-      <div className="w-fit h-1/3 text-sm">
-        {news.new && <span className="mr-[3%] text-purple-700">New</span>}
-        <span>{news.date}</span>
-      </div>
-      <div className="w-full h-2/3 flex flex-row justify-evenly">
-        <span
-          className={`${
-            news.type === "kiyos" ? kiyosClassName : amavinClassName
-          } text-xs mt-[1%]`}
-        >
-          {news.type}
-        </span>
-        <p className="w-[75%] h-full text-[15px] overflow-hidden leading-tight">
-          {news.title}
-        </p>
-      </div>
-      {clicked && <p className="w-full h-fit text-sm p-[2%]">{news.content}</p>}
-    </li>
-  );
-}
-
-//footer
-function Footer() {
-  return (
-    <footer className="bg-blue-900 w-full h-fit p-[4%] flex flex-col gap-2">
-      <GroupInfo
-        groupName="Kiyos Celler"
-        groupInfo={
-          <p>
-            〒400-0863
-            <br />
-            山梨県甲府市南口町1-50-1008
-          </p>
-        }
-        snsHref="https://www.instagram.com/kiyoscellar?igsh=MTN0Z3FkMTdkMGtyMw%3D%3D&utm_source=qr"
-      />
-      <GroupInfo
-        groupName="Artisan Mariage Vineyards"
-        groupInfo={
-          <>
-            <p>
-              〒
-              <br />
-              山梨県北杜市明野町
-            </p>
-            <div className="w-fit h-fit flex flex-row gap-[2%] items-start leading-tight">
-              <Image
-                src="/icons/email.svg"
-                alt="email icon"
-                width={15}
-                height={15}
-                className="mt-[2%]"
-              ></Image>
-              <p className="break-all">artisanmariagevineyards@gmail.com</p>
-            </div>
-          </>
-        }
-        snsHref="https://www.instagram.com/artisanmariagevineyards?igsh=MXViNHF6eWN3YjN1MQ%3D%3D&utm_source=qr"
-      />
-      <NavFooter />
-      <CopyrightAttribution />
-    </footer>
-  );
-}
-
-function GroupInfo({
-  groupName,
-  groupInfo,
-  snsHref,
-}: {
-  groupName: string;
-  groupInfo: JSX.Element;
-  snsHref: string;
-}) {
-  return (
-    <div className="w-full flex flex-row gap-[5%] justify-center">
-      <div className="w-[65%] text-orange-300 text-sm">
-        <p className="text-yellow-200">{groupName}</p>
-        {groupInfo}
-      </div>
-      <div className="w-[25%] flex flex-row justify-start items-center">
-        <LinkIcon
-          href={snsHref}
-          src="/icons/instagram.svg"
-          alt="Instagram icon"
-        />
-      </div>
-    </div>
-  );
-}
-
-function LinkIcon({
-  href,
-  src,
-  alt,
-}: {
-  href: string;
-  src: string;
-  alt: string;
-}) {
-  return (
-    <div className="relative w-[35%] h-auto aspect-square">
-      <Image src={src} alt={alt} fill></Image>
-      <Link href={href} className="w-full h-full absolute"></Link>
-    </div>
-  );
-}
-
-function NavFooter() {
-  const navLinkClassName = "w-1/3 hover:text-purple-200";
-
-  return (
-    <nav className="w-full h-fit text-purple-300 text-xs underline flex flex-row text-center justify-between">
-      <Link href="" className={navLinkClassName}>
-        Kiyos Celler
-      </Link>
-      <Link href="" className={navLinkClassName}>
-        Artisan Mariage Vineyards
-      </Link>
-      <Link href="" className={navLinkClassName}>
-        Online Shop
-      </Link>
-    </nav>
-  );
-}
-
-function CopyrightAttribution() {
-  return (
-    <div className="text-xs text-center text-purple-400">
-      <p>© 2025 Kiyos Celler Artisan Mariage Vineyards</p>
-      <p>Designed by Freepik</p>
     </div>
   );
 }
