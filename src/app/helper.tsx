@@ -1,3 +1,5 @@
+import { TYPE_GROUP } from "./type";
+
 export const wait = async (seconds: number) =>
   new Promise((resolve) => setTimeout(() => resolve, seconds * 1000));
 
@@ -8,3 +10,6 @@ export const dateIsNew = (date: string) => {
 
   return daysPast <= 7 ? true : false;
 };
+
+export const getGroupNameFromType = (type: TYPE_GROUP) =>
+  type === "kiyos" ? "Kiyos Celler" : "Artisan Mariage Vineyards";

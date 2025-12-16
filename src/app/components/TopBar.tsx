@@ -115,43 +115,102 @@ function SearchOverlay({
 function Navi() {
   const divClassName =
     "relative flex flex-col text-center items-center justify-center border-r border-blue-900 last:border-r-0";
-  const linkClassName = "pb-[1%] px-[1%] text-orange-300 w-full";
-  const hoverBgClassName =
-    "opacity-0 transition-all duration-500 hover:opacity-50";
+  const linkClassName = "pb-[1%] px-[1%] text-orange-300 w-full z-10";
+  const hoverBgClassName = `transition-all duration-500 z-0`;
+
+  const [kiyosHovered, setKiyosHovered] = useState(false);
+  const [amavinHovered, setAmavinHovered] = useState(false);
+  const [historyHovered, setHistoryHovered] = useState(false);
+  const [shopHovered, setShopHovered] = useState(false);
+
+  function handleKiyosHover() {
+    setKiyosHovered(!kiyosHovered);
+  }
+
+  function handleAmavinHover() {
+    setAmavinHovered(!amavinHovered);
+  }
+
+  function handleHistoryHover() {
+    setHistoryHovered(!historyHovered);
+  }
+
+  function handleShopHover() {
+    setShopHovered(!shopHovered);
+  }
 
   return (
     <nav className="w-full flex flex-row  text-sm bg-blue-800">
-      <div className={`${divClassName} w-[27%]`}>
+      <div
+        className={`${divClassName} w-[27%]`}
+        onMouseEnter={handleKiyosHover}
+        onMouseLeave={handleKiyosHover}
+      >
+        <Image
+          src="/main-image.webp"
+          alt=""
+          fill
+          className={`${hoverBgClassName} ${
+            kiyosHovered ? "opacity-50" : "opacity-0"
+          }`}
+        ></Image>
         <Link href="/kiyos-celler" className={`${linkClassName}`}>
           Kiyos
           <br />
           Celler
         </Link>
       </div>
-      <div className={`${divClassName} w-[27%]`}>
+      <div
+        className={`${divClassName} w-[27%]`}
+        onMouseEnter={handleAmavinHover}
+        onMouseLeave={handleAmavinHover}
+      >
         <Image
           src="/main-image.webp"
           alt=""
           fill
-          className={hoverBgClassName}
+          className={`${hoverBgClassName} ${
+            amavinHovered ? "opacity-50" : "opacity-0"
+          }`}
         ></Image>
-        <Link href="" className={`${linkClassName} leading-tight`}>
+        <Link
+          href="/artisan-mariage-vineyards"
+          className={`${linkClassName} leading-tight`}
+        >
           Artisan Mariage Vineyards
         </Link>
       </div>
-      <div className={`${divClassName} w-[27%]`}>
+      <div
+        className={`${divClassName} w-[27%]`}
+        onMouseEnter={handleHistoryHover}
+        onMouseLeave={handleHistoryHover}
+      >
         <div
-          className={`${hoverBgClassName} absolute bg-blue-600 w-full h-full`}
+          className={`${hoverBgClassName} absolute bg-blue-600 w-full h-full ${
+            historyHovered ? "opacity-50" : "opacity-0"
+          }`}
         ></div>
-        <Link href="" className={`${linkClassName} `}>
+        <Link href="/history" className={`${linkClassName} `}>
           History
         </Link>
       </div>
-      <div className={`${divClassName} w-[19%] gap-1`}>
+      <div
+        className={`${divClassName} w-[19%] gap-1`}
+        onMouseEnter={handleShopHover}
+        onMouseLeave={handleShopHover}
+      >
         <div
-          className={`${hoverBgClassName} absolute bg-blue-600 w-full h-full`}
+          className={`${hoverBgClassName} absolute bg-blue-600 w-full h-full ${
+            shopHovered ? "opacity-50" : "opacity-0"
+          }`}
         ></div>
-        <Image src="/icons/shop.svg" alt="" width={20} height={20}></Image>
+        <Image
+          src="/icons/shop.svg"
+          alt=""
+          width={20}
+          height={20}
+          className="z-10"
+        ></Image>
         <Link href="" className={`${linkClassName} leading-tight`}>
           Shop
         </Link>

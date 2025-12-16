@@ -7,3 +7,5 @@ export type TYPE_NEWS = {
   content: JSX.Element;
   new: boolean;
 };
+
+export type TYPE_GROUP = "kiyos" | "amavin";
