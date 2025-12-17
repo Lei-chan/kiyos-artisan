@@ -2,6 +2,7 @@ import Image from "next/image";
 import AmavinContact from "./AmavinContact";
 import KiyosContact from "./KiyosContact";
 import Link from "next/link";
+import { getGroupNameFromType } from "../helper";
 
 //footer
 export default function Footer() {
@@ -70,10 +71,10 @@ function NavFooter() {
   return (
     <nav className="w-full h-fit text-purple-300 text-xs underline flex flex-row text-center justify-between">
       <Link href="/kiyos-celler" className={navLinkClassName}>
-        Kiyos Celler
+        {getGroupNameFromType("kiyos")}
       </Link>
-      <Link href="" className={navLinkClassName}>
-        Artisan Mariage Vineyards
+      <Link href="/artisan-mariage-vineyards" className={navLinkClassName}>
+        {getGroupNameFromType("amavin")}
       </Link>
       <Link href="" className={navLinkClassName}>
         Online Shop

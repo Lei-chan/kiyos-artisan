@@ -4,6 +4,7 @@ import { useState } from "react";
 //next.js
 import Image from "next/image";
 import Link from "next/link";
+import { getGroupNameFromType } from "../helper";
 
 export default function TopBar() {
   return (
@@ -177,7 +178,7 @@ function Navi() {
           href="/artisan-mariage-vineyards"
           className={`${linkClassName} leading-tight`}
         >
-          Artisan Mariage Vineyards
+          {getGroupNameFromType("amavin")}
         </Link>
       </div>
       <div
