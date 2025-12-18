@@ -9,3 +9,5 @@ export type TYPE_NEWS = {
 };
 
 export type TYPE_GROUP = "kiyos" | "amavin";
+
+export type TYPE_MONTH_HISTORY = { month: number; content: JSX.Element };

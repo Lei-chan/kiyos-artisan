@@ -1,10 +1,11 @@
-import Image from "next/image";
+"use client";
 import TitleNavLable from "../components/TitleNavLable";
 import TopBar from "../components/TopBar";
 import { getGroupNameFromType } from "../helper";
-import { TYPE_GROUP } from "../type";
+import { TYPE_GROUP, TYPE_MONTH_HISTORY } from "../type";
 import { amavinHistory, kiyosHistory } from "../models/history";
 import Footer from "../components/Footer";
+import { JSX, useEffect, useRef, useState } from "react";
 
 export default function History() {
   const smallHeaderClassName = "text-lg text-orange-800 font-bold";
@@ -47,8 +48,6 @@ function GroupHistory({
   const history = type === "kiyos" ? kiyosHistory : amavinHistory;
   const historyEntriesArr = Object.entries(history);
 
-  console.log(Object.entries(history));
-
   const isEvenNumber = (number: number) => number % 2 === 0;
   return (
     <div className={containerClassName}>
@@ -59,22 +58,122 @@ function GroupHistory({
         const isEven = isEvenNumber(i);
         const [year, monthsArr] = yearArr;
         return (
-          <div key={i} className="w-full h-fit flex flex-col items-center">
-            <div
-              className={`relative w-[85%] h-fit flex flex-row text-[22px] justify-center py-[1%]
+          <YearHistory
+            key={i}
+            isEven={isEven}
+            year={year}
+            monthsArr={monthsArr}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+function YearHistory({
+  isEven,
+  year,
+  monthsArr,
+}: {
+  isEven: boolean;
+  year: string;
+  monthsArr: TYPE_MONTH_HISTORY[];
+}) {
+  const [isYearOpen, setIsYearOpen] = useState(false);
+  const [curMonthIndex, setCurMonthIndex] = useState(0);
+  const [curMonthHeight, setCurMonthHeight] = useState(0);
+
+  const calcTranslateX = (i: number) =>
+    `translateX(${(i - curMonthIndex) * 100}%)`;
+
+  function adjustParentHeight(height: number, i: number) {
+    if (curMonthIndex === i) setCurMonthHeight(height);
+  }
+
+  function handleClickYear() {
+    setIsYearOpen(!isYearOpen);
+  }
+
+  function handleClickMonth(i: number) {
+    setCurMonthIndex(i);
+  }
+
+  return (
+    <div className="w-full h-fit flex flex-col items-center">
+      <div
+        className={`relative w-[85%] h-fit flex flex-row text-[22px] justify-center py-[1%] cursor-pointer
             ${
               isEven
                 ? "bg-amber-300/50 hover:bg-amber-300/80"
                 : "bg-amber-600/50 hover:bg-amber-600/80"
-            }`}
-            >
-              <span>{year}</span>
-              <span className="absolute right-[5%]">+</span>
-            </div>
-            <div></div>
+            } ${isYearOpen ? "shadow-md" : ""}`}
+        onClick={handleClickYear}
+      >
+        <span>{year}</span>
+        <span className="absolute right-[5%]">+</span>
+      </div>
+      {isYearOpen && (
+        <>
+          <div
+            className="relative w-[90%] mt-4 overflow-hidden"
+            style={{ height: `${curMonthHeight}px` }}
+          >
+            {monthsArr.map((history, i) => (
+              <MonthHistory
+                key={i}
+                history={history}
+                translateX={calcTranslateX(i)}
+                i={i}
+                adjustParentHeight={adjustParentHeight}
+              />
+            ))}
           </div>
-        );
-      })}
+          <div className="w-full h-fit flex flex-row justify-center mt-2 mb-4 gap-1">
+            {monthsArr.map((history, i) => (
+              <button
+                key={i}
+                type="button"
+                className={`underline text-sm ${
+                  i === curMonthIndex ? "text-orange-800" : "text-orange-600"
+                }`}
+                onClick={() => handleClickMonth(i)}
+              >
+                {history.month}月
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function MonthHistory({
+  history,
+  translateX,
+  i,
+  adjustParentHeight,
+}: {
+  history: TYPE_MONTH_HISTORY;
+  translateX: string;
+  i: number;
+  adjustParentHeight: (height: number, i: number) => void;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    adjustParentHeight(containerRef.current.offsetHeight, i);
+  }, [i, adjustParentHeight, containerRef]);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ transform: translateX }}
+      className="absolute w-full h-fit flex flex-col items-center duration-700 px-[5%]"
+    >
+      <h3 className="text-orange-700 font-bold text-lg">{history.month}月</h3>
+      {history.content}
     </div>
   );
 }
