@@ -13,6 +13,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
+import { about, contact, shop } from "../models/amavin";
 
 export default function ArtisanMariageVineyards() {
   const smallHeaderClassName = "text-lg text-pink-700 font-bold";
@@ -85,10 +86,7 @@ function About({
         height={120}
         className="w-[90%] h-auto aspect-[3/2] object-cover mt-3"
       />
-      <p className="w-full h-fit p-[5%] text-base">
-        Artisan Mariage Vineyardsは、ワインの輸入販売を行うKiyos
-        Cellerが立ち上げたヴィンヤードです。ソムリエエクセレンスの資格を持つ支配人が作るこだわりのワイン。ぜひご堪能下さい。
-      </p>
+      <p className="w-full h-fit p-[5%] text-base">{about.searchableText}</p>
     </div>
   );
 }
@@ -104,7 +102,7 @@ function Shop({
 }) {
   return (
     <div ref={ref} className={containerClassName}>
-      <h2 className={smallHeaderClassName}>ショップ</h2>
+      <h2 className={smallHeaderClassName}>{shop.title}</h2>
       <p className="w-full h-fit p-[5%] pt-[4%] text-base">
         こちらのオンラインショップよりArtisan Mariage
         Vineyardsの商品をご購入いただけます。
@@ -145,7 +143,7 @@ function Contact({
 }) {
   return (
     <div ref={ref} className={containerClassName}>
-      <h2 className={smallHeaderClassName}>お問い合わせ</h2>
+      <h2 className={smallHeaderClassName}>{contact.title}</h2>
       <div className="w-[90%] h-fit p-[5%] pt-[4%] text-base text-left">
         <VineyardsMap />
         <AmavinContact />

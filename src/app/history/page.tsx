@@ -1,11 +1,17 @@
 "use client";
+//react
+import { useEffect, useRef, useState } from "react";
+//model
+import { historyAmavin } from "../models/historyAmavin";
+import { historyKiyos } from "../models/historyKiyos";
+import Footer from "../components/Footer";
+//components
 import TitleNavLable from "../components/TitleNavLable";
 import TopBar from "../components/TopBar";
-import { getGroupNameFromType } from "../helper";
+//type
 import { TYPE_GROUP, TYPE_MONTH_HISTORY } from "../type";
-import { amavinHistory, kiyosHistory } from "../models/history";
-import Footer from "../components/Footer";
-import { JSX, useEffect, useRef, useState } from "react";
+//methods
+import { getGroupNameFromType } from "../helper";
 
 export default function History() {
   const smallHeaderClassName = "text-lg text-orange-800 font-bold";
@@ -45,7 +51,7 @@ function GroupHistory({
   smallHeaderClassName: string;
   containerClassName: string;
 }) {
-  const history = type === "kiyos" ? kiyosHistory : amavinHistory;
+  const history = type === "kiyos" ? historyKiyos : historyAmavin;
   const historyEntriesArr = Object.entries(history);
 
   const isEvenNumber = (number: number) => number % 2 === 0;
@@ -161,10 +167,19 @@ function MonthHistory({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  //adjust the parent height for the absolude positioned child. Use observer to notice the change when the child is fully rendered
   useEffect(() => {
-    if (!containerRef.current) return;
-    adjustParentHeight(containerRef.current.offsetHeight, i);
-  }, [i, adjustParentHeight, containerRef]);
+    const element = containerRef?.current;
+    if (!element) return;
+
+    const observer = new ResizeObserver(() =>
+      adjustParentHeight(element.offsetHeight, i)
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [i, adjustParentHeight]);
 
   return (
     <div

@@ -4,7 +4,7 @@ export default function AmavinContact() {
   return (
     <>
       <p>
-        〒
+        〒000-0000
         <br />
         山梨県北杜市明野町
       </p>

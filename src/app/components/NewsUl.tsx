@@ -4,12 +4,12 @@ import { useState } from "react";
 //type
 import { TYPE_NEWS } from "../type";
 //models
-import news from "../models/news";
+import { organizedNews } from "../models/news";
 
 export default function NewsUl({ type }: { type: "all" | "kiyos" | "amavin" }) {
   return (
     <ul className="w-[85%] h-[60vh] border-2 mt-5 overflow-y-auto overflow-x-hidden bg-white rounded">
-      {news
+      {organizedNews
         .filter((news) => (type === "all" ? news : type === news.type))
         .map((news, i) => (
           <List key={i} news={news as TYPE_NEWS} />

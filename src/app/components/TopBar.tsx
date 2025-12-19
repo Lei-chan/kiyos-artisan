@@ -4,13 +4,26 @@ import { useState } from "react";
 //next.js
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+//components
+import SearchOverlay from "./SearchOverlay";
+//methods
 import { getGroupNameFromType } from "../helper";
 
 export default function TopBar() {
+  const router = useRouter();
+
+  function handleClickLogo() {
+    router.push("/");
+  }
+
   return (
     <div className="grid w-full h-[24vh] bg-blue-900 grid-rows-2 relative">
       {/* I'm gonna replace the p by a logo image later */}
-      <h1 className="text-center text-[#ffe77c] pt-[2%] text-base">
+      <h1
+        className="text-center text-[#ffe77c] pt-[2%] text-base cursor-pointer"
+        onClick={handleClickLogo}
+      >
         Kiyos Celler
         <br />
         Artisan Mariage Vineyards
@@ -57,59 +70,6 @@ function Search() {
       ></button>
       <SearchOverlay open={open} onClickClose={handleToggleSearch} />
     </>
-  );
-}
-
-//later
-function SearchOverlay({
-  open,
-  onClickClose,
-}: {
-  open: boolean;
-  onClickClose: () => void;
-}) {
-  function handleClickDiv(e: React.MouseEvent<HTMLDivElement>) {
-    if (e.currentTarget === e.target) onClickClose();
-  }
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const value = new FormData(e.currentTarget).get("value");
-    console.log(value);
-  }
-
-  return (
-    <div
-      className={`w-screen h-screen bg-black/30 fixed top-0 left-0 flex flex-col items-center justify-center transition-all duration-700 ease-in-out ${
-        open ? "opacity-100" : "opacity-0"
-      } ${open ? "z-50" : "-z-50"}`}
-      onClick={handleClickDiv}
-    >
-      <button
-        type="button"
-        className="absolute text-white w-fit h-fit top-[2%] right-[4%] text-xl"
-        onClick={onClickClose}
-      >
-        &times;
-      </button>
-      <div className="relative w-[90%] h-[80%] bg-slate-50 rounded-lg">
-        <form
-          className="w-full h-1/5 border-b-2 flex flex-row items-center justify-center gap-[1%]"
-          onSubmit={handleSubmit}
-        >
-          <input
-            type="search"
-            placeholder="What are you looking for?"
-            name="value"
-            className="w-[80%] h-[40%] text-center border-2 border-black/10 rounded"
-          ></input>
-          <button
-            type="submit"
-            className="w-[9%] aspect-square bg-[url('/icons/magnifying-glass.svg')] bg-[length:88%] bg-no-repeat bg-center"
-          ></button>
-        </form>
-      </div>
-    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 "use client";
 //react
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 //next.js
 import Image from "next/image";
@@ -11,6 +11,8 @@ import slideInfo from "./models/slide";
 import NewsUl from "./components/NewsUl";
 import TopBar from "./components/TopBar";
 import Footer from "./components/Footer";
+import { amavin, kiyos } from "./models/home";
+import UpArrow from "./components/UpArrow";
 
 export default function Home() {
   return (
@@ -71,8 +73,10 @@ function Bottom() {
   const contentClassName = "w-full h-fit flex flex-row mt-6 px-[7%]";
   const slideInClassName = "transform duration-[2000ms]";
 
+  const buttomRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="w-screen h-fit">
+    <div ref={buttomRef} className="w-screen h-fit">
       <Kiyos
         containerClassName={containerClassName}
         headerClassName={headerClassName}
@@ -87,6 +91,7 @@ function Bottom() {
       />
       <News />
       <Footer />
+      <UpArrow ref={buttomRef} />
     </div>
   );
 }
@@ -111,11 +116,11 @@ function Kiyos({
         inView ? "opacity-100" : "opacity-0"
       }`}
     >
-      <h1 className={`${headerClassName} text-yellow-500`}>Kiyos Celler</h1>
+      <h1 className={`${headerClassName} text-yellow-500`}>{kiyos.title}</h1>
       <div className={`${contentClassName}`}>
         <GroupDescription
           type="kiyos"
-          description="Kiyos Cellerでは、主にーーーやーーなど、希少価値の高いワインの輸入販売をおこなっております。"
+          description={kiyos.searchableText}
           slideInClassName={slideInClassName}
           inView={inView}
         />
@@ -155,9 +160,7 @@ function Amavine({
         inView ? "opacity-100" : "opacity-0"
       }`}
     >
-      <h1 className={`${headerClassName} text-pink-600`}>
-        Artisan Mariage Vineyards
-      </h1>
+      <h1 className={`${headerClassName} text-pink-600`}>{amavin.title}</h1>
       <div className={`${contentClassName}`}>
         <GroupImages
           type="amavin"
@@ -172,7 +175,7 @@ function Amavine({
         />
         <GroupDescription
           type="amavin"
-          description="Artisan Mariage VineyardsはKiyos Cellerが作っているヴィンヤードです。ソムリエエクセレンスの資格を持つ支配人がこだわって作るワイン、ぜひご堪能ください。"
+          description={amavin.searchableText}
           slideInClassName={slideInClassName}
           inView={inView}
         />

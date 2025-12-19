@@ -10,6 +10,7 @@ import NewsUl from "../components/NewsUl";
 import KiyosContact from "../components/KiyosContact";
 import Footer from "../components/Footer";
 import TitleNavLable from "../components/TitleNavLable";
+import { about, contact, shop } from "../models/kiyos";
 
 export default function KiyosCeller() {
   const smallHeaderClassName = "text-lg text-yellow-600 font-bold";
@@ -70,7 +71,7 @@ function About({
 }) {
   return (
     <div ref={ref} className={containerClassName}>
-      <h2 className={smallHeaderClassName}>Kiyos Cellerについて</h2>
+      <h2 className={smallHeaderClassName}>{about.title}</h2>
       <Image
         src="/artisan-clairet-for-sale.webp"
         alt="Kiyos Celler image"
@@ -78,11 +79,7 @@ function About({
         height={120}
         className="w-[90%] h-auto aspect-[3/2] object-cover mt-3"
       />
-      <p className="w-full h-fit p-[5%] text-base">
-        Kiyos
-        Cellerでは、○○社、○○社、○○社、などの希少なワインを輸入し販売を行っております。
-        なかなか他では手に入らないワインも取り扱っております。
-      </p>
+      <p className="w-full h-fit p-[5%] text-base">{about.searchableText}</p>
     </div>
   );
 }
@@ -98,7 +95,7 @@ function Shop({
 }) {
   return (
     <div ref={ref} className={containerClassName}>
-      <h2 className={smallHeaderClassName}>ショップ</h2>
+      <h2 className={smallHeaderClassName}>{shop.title}</h2>
       <p className="w-full h-fit p-[5%] pt-[4%] text-base">
         こちらのオンラインショップよりKiyos Cellerの商品をご購入いただけます。
         <br />
@@ -138,7 +135,7 @@ function Contact({
 }) {
   return (
     <div ref={ref} className={containerClassName}>
-      <h2 className={smallHeaderClassName}>お問い合わせ</h2>
+      <h2 className={smallHeaderClassName}>{contact.title}</h2>
       <div className="w-[90%] h-fit p-[5%] pt-[4%] text-base text-left">
         <KiyosContact />
       </div>
