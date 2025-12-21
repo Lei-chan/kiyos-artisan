@@ -1,6 +1,6 @@
 "use client";
 //react
-import { useState } from "react";
+import { useRef, useState } from "react";
 //next.js
 import Image from "next/image";
 import Link from "next/link";

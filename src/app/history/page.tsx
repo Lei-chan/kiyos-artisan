@@ -12,6 +12,7 @@ import TopBar from "../components/TopBar";
 import { TYPE_GROUP, TYPE_MONTH_HISTORY } from "../type";
 //methods
 import { getGroupNameFromType } from "../helper";
+import UpArrow from "../components/UpArrow";
 
 export default function History() {
   const smallHeaderClassName = "text-lg text-orange-800 font-bold";
@@ -38,6 +39,7 @@ export default function History() {
         />
       </div>
       <Footer />
+      <UpArrow />
     </div>
   );
 }

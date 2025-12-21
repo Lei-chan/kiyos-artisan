@@ -4,13 +4,15 @@ import { RefObject, useRef } from "react";
 //next.js
 import Image from "next/image";
 import Link from "next/link";
+//models
+import { about, contact, shop } from "../models/kiyos";
 //components
 import TopBar from "../components/TopBar";
+import TitleNavLable from "../components/TitleNavLable";
 import NewsUl from "../components/NewsUl";
 import KiyosContact from "../components/KiyosContact";
 import Footer from "../components/Footer";
-import TitleNavLable from "../components/TitleNavLable";
-import { about, contact, shop } from "../models/kiyos";
+import UpArrow from "../components/UpArrow";
 
 export default function KiyosCeller() {
   const smallHeaderClassName = "text-lg text-yellow-600 font-bold";
@@ -56,6 +58,7 @@ export default function KiyosCeller() {
         />
       </div>
       <Footer />
+      <UpArrow />
     </div>
   );
 }

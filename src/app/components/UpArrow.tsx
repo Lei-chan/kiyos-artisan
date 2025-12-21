@@ -1,38 +1,48 @@
 "use client";
 //react
-import { RefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-//from here!!
-export default function UpArrow({
-  ref,
-}: {
-  ref: RefObject<HTMLDivElement | null>;
-}) {
+export default function UpArrow() {
+  const screenRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isDisplayed, setIsDisplayed] = useState(false);
 
+  //display the up arrow button when a user scrolls down the size of the button
   useEffect(() => {
-    if (!ref?.current) return;
+    const handleDisplayButton = () => {
+      const target = buttonRef.current;
+      if (!target) return;
 
-    const observer = new IntersectionObserver(
-      (entry) => {
-        if (entry[0].isIntersecting) setIsDisplayed(true);
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-    observer.observe(ref.current);
+      setIsDisplayed(window.scrollY >= target.offsetHeight);
+    };
 
-    return () => observer.disconnect();
-  }, [ref]);
+    handleDisplayButton();
+
+    window.addEventListener("scroll", handleDisplayButton);
+
+    return () => window.removeEventListener("scroll", handleDisplayButton);
+  }, []);
+
+  function handleClickArrow() {
+    const target = screenRef.current;
+    if (!target) return;
+
+    target.scrollIntoView({ behavior: "smooth" });
+  }
 
   return (
-    isDisplayed && (
+    <>
+      <div
+        ref={screenRef}
+        className="absolute w-full h-screen top-0 left-0 -z-50"
+      ></div>
       <button
         ref={buttonRef}
-        className="fixed w-[8%] h-auto aspect-square bg-[url('/icons/up-arrow.svg')] bg-center bg-no-repeat bg-contain right-[2%] bottom-[2%]"
+        className={`fixed w-[8%] h-auto aspect-square bg-[url('/icons/up-arrow.svg')] bg-center bg-no-repeat bg-contain right-[2%] bottom-[2%] ${
+          isDisplayed ? "opacity-100" : "opacity-0"
+        }`}
+        onClick={handleClickArrow}
       ></button>
-    )
+    </>
   );
 }

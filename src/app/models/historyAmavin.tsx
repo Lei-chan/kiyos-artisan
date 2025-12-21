@@ -4,16 +4,15 @@ import {
   historyPClassName,
 } from "../config";
 import { getHistoryForSearch } from "../helper";
-import { TYPE_MONTH_HISTORY } from "../type";
 
 const amavinImagePath = "/history/amavin/";
-const amavinImagePath2019 = `${amavinImagePath}2019/`;
-const amavinImagePath2020 = `${amavinImagePath}2020/`;
-const amavinImagePath2021 = `${amavinImagePath}2021/`;
-const amavinImagePath2022 = `${amavinImagePath}2022/`;
-const amavinImagePath2023 = `${amavinImagePath}2023/`;
-const amavinImagePath2024 = `${amavinImagePath}2024/`;
-const amavinImagePath2025 = `${amavinImagePath}2025/`;
+const amavinImagePath2019 = `${amavinImagePath}2019/2019-`;
+const amavinImagePath2020 = `${amavinImagePath}2020/2020-`;
+const amavinImagePath2021 = `${amavinImagePath}2021/2021-`;
+const amavinImagePath2022 = `${amavinImagePath}2022/2022-`;
+const amavinImagePath2023 = `${amavinImagePath}2023/2023-`;
+const amavinImagePath2024 = `${amavinImagePath}2024/2024-`;
+const amavinImagePath2025 = `${amavinImagePath}2025/2025-`;
 
 export const historyAmavin = {
   2019: [
@@ -22,7 +21,7 @@ export const historyAmavin = {
       content: (
         <>
           <HistoryDefaultImage
-            src={`${amavinImagePath2019}2019-12-16.webp`}
+            src={`${amavinImagePath2019}12-16.webp`}
             alt="field image"
           />
           <p className={historyPClassName}>畑を借りて、初めてご対面。</p>
@@ -37,7 +36,7 @@ export const historyAmavin = {
       content: (
         <>
           <HistoryDefaultImage
-            src={`${amavinImagePath2020}2020-3-16.webp`}
+            src={`${amavinImagePath2020}3-16.webp`}
             alt="mowed field image"
           />
           <p className={historyPClassName}>畑の草刈りをしました。</p>
@@ -50,7 +49,7 @@ export const historyAmavin = {
       content: (
         <>
           <HistoryDefaultImage
-            src={`${amavinImagePath2020}2020-5.webp`}
+            src={`${amavinImagePath2020}5.webp`}
             alt="mowed field image"
           />
           <p className={historyPClassName}>畑の草刈りをしました。</p>
@@ -65,11 +64,11 @@ export const historyAmavin = {
       content: (
         <div className={historyMultiImageContainerClassName}>
           <HistoryDefaultImage
-            src={`${amavinImagePath2021}2021-4-6.webp`}
+            src={`${amavinImagePath2021}4-6.webp`}
             alt="field with poles image"
           ></HistoryDefaultImage>
           <HistoryDefaultImage
-            src={`${amavinImagePath2021}2021-4-6(2).webp`}
+            src={`${amavinImagePath2021}4-6(2).webp`}
             alt="saplings image"
           />
           <p className={historyPClassName}>
@@ -86,11 +85,11 @@ export const historyAmavin = {
       content: (
         <div className={historyMultiImageContainerClassName}>
           <HistoryDefaultImage
-            src={`${amavinImagePath2021}2021-6-20.webp`}
+            src={`${amavinImagePath2021}6-20.webp`}
             alt="growings saplings with leaves image"
           />
           <HistoryDefaultImage
-            src={`${amavinImagePath2021}2021-6-30.webp`}
+            src={`${amavinImagePath2021}6-30.webp`}
             alt="pheasant image"
           />
           <p className={historyPClassName}>
@@ -108,11 +107,11 @@ export const historyAmavin = {
       content: (
         <div className={historyMultiImageContainerClassName}>
           <HistoryDefaultImage
-            src={`${amavinImagePath2021}2021-7-14.webp`}
+            src={`${amavinImagePath2021}7-14.webp`}
             alt="field with run wire"
           />
           <HistoryDefaultImage
-            src={`${amavinImagePath2021}2021-7-31.webp`}
+            src={`${amavinImagePath2021}7-31.webp`}
             alt="growing grape trees image"
           />
           <p className={historyPClassName}>
@@ -130,7 +129,7 @@ export const historyAmavin = {
       content: (
         <>
           <HistoryDefaultImage
-            src={`${amavinImagePath2021}2021-8-25.webp`}
+            src={`${amavinImagePath2021}8-25.webp`}
             alt="tree with grapes"
           />
           <p className={historyPClassName}>木にブドウがなり始めました。</p>
@@ -143,7 +142,7 @@ export const historyAmavin = {
       content: (
         <>
           <HistoryDefaultImage
-            src={`${amavinImagePath2021}2021-9-12.webp`}
+            src={`${amavinImagePath2021}9-12.webp`}
             alt="vegetable garden image"
           />
           <p className={historyPClassName}>
@@ -158,7 +157,7 @@ export const historyAmavin = {
       content: (
         <>
           <HistoryDefaultImage
-            src={`${amavinImagePath2021}2021-10-8.webp`}
+            src={`${amavinImagePath2021}10-8.webp`}
             alt="lively baby leaves"
           />
           <p className={historyPClassName}>
@@ -173,7 +172,7 @@ export const historyAmavin = {
       content: (
         <>
           <HistoryDefaultImage
-            src={`${amavinImagePath2021}2021-12-10.webp`}
+            src={`${amavinImagePath2021}12-10.webp`}
             alt="grape trees with cover"
           />
           <p className={historyPClassName}>
@@ -190,7 +189,7 @@ export const historyAmavin = {
       content: (
         <>
           <HistoryDefaultImage
-            src={`${amavinImagePath2022}2022-10-9.webp`}
+            src={`${amavinImagePath2022}10-9.webp`}
             alt="cut grapes image"
           />
           <p className={historyPClassName}>
@@ -207,7 +206,7 @@ export const historyAmavin = {
       content: (
         <>
           <HistoryDefaultImage
-            src={`${amavinImagePath2023}2023-2-12.webp`}
+            src={`${amavinImagePath2023}2-12.webp`}
             alt="field covered with snow image"
           />
           <p className={historyPClassName}>雪が積もりました。</p>
@@ -220,11 +219,11 @@ export const historyAmavin = {
       content: (
         <div className={historyMultiImageContainerClassName}>
           <HistoryDefaultImage
-            src={`${amavinImagePath2023}2023-3-15.webp`}
+            src={`${amavinImagePath2023}3-15.webp`}
             alt="branch with water drop image"
           />
           <HistoryDefaultImage
-            src={`${amavinImagePath2023}2023-3-19.webp`}
+            src={`${amavinImagePath2023}3-19.webp`}
             alt="Mt.Kaikoma covered with snow at the top image"
           />
           <p className={historyPClassName}>
@@ -242,7 +241,7 @@ export const historyAmavin = {
       content: (
         <>
           <HistoryDefaultImage
-            src={`${amavinImagePath2023}2023-7-14.webp`}
+            src={`${amavinImagePath2023}7-14.webp`}
             alt="grape trees laid horizontally"
           />
           <p className={historyPClassName}>
@@ -259,7 +258,7 @@ export const historyAmavin = {
       content: (
         <>
           <HistoryDefaultImage
-            src={`${amavinImagePath2024}2024-2-7.webp`}
+            src={`${amavinImagePath2024}2-7.webp`}
             alt="field covered with snow"
           />
           <p className={historyPClassName}>畑に雪が積もりました。</p>
@@ -267,8 +266,311 @@ export const historyAmavin = {
       ),
       searchableText: "畑に雪が積もりました。",
     },
+    {
+      month: 4,
+      content: (
+        <>
+          <div className={historyMultiImageContainerClassName}>
+            <HistoryDefaultImage
+              src={`${amavinImagePath2024}4-7.webp`}
+              alt="saplings images"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2024}4-17.webp`}
+              alt="branch image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2024}4-29.webp`}
+              alt="machines for filling bottles with wine image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2024}4-29(2).webp`}
+              alt="filled bottles image"
+            />
+          </div>
+          <p className={historyPClassName}>
+            ○○と○○の苗木を○○本植えました。
+            <br />
+            ブドウの枝を。
+            <br />
+            ○○年に収穫したブドウのワインの瓶詰を行いました。
+          </p>
+        </>
+      ),
+      searchableText:
+        "○○と○○の苗木を○○本植えました。ブドウの枝を。○○年に収穫したブドウのワインの瓶詰を行いました。",
+    },
+    {
+      month: 5,
+      content: (
+        <>
+          <HistoryDefaultImage
+            src={`${amavinImagePath2024}5-31.webp`}
+            alt="growing saplings images"
+          />
+          <p className={historyPClassName}>
+            ４月に植えた苗木がどんどん成長しています。
+          </p>
+        </>
+      ),
+      searchableText: "４月に植えた苗木がどんどん成長しています。",
+    },
+    {
+      month: 6,
+      content: (
+        <>
+          <HistoryDefaultImage
+            src={`${amavinImagePath2024}6-28.webp`}
+            alt="facebook introducing wine image"
+          />
+          <p className={historyPClassName}>
+            北斗市市長の上村さんに、ワインを紹介していただきました。
+          </p>
+        </>
+      ),
+      searchableText:
+        "北斗市市長の上村さんに、ワインを紹介していただきました。",
+    },
+    {
+      month: 7,
+      content: (
+        <>
+          <div className={historyMultiImageContainerClassName}>
+            <HistoryDefaultImage
+              src={`${amavinImagePath2024}7-15.webp`}
+              alt="field with tiger object image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2024}7.webp`}
+              alt="wine for sale image"
+            />
+          </div>
+          <p className={historyPClassName}>
+            サル除け？のための、トラの置物がやってきました。
+            <br />
+            新宿の伊勢丹さんで、ワインの販売を行いました。
+          </p>
+        </>
+      ),
+      searchableText:
+        "サル除け？のための、トラの置物がやってきました。新宿の伊勢丹さんで、ワインの販売を行いました。",
+    },
+    {
+      month: 8,
+      content: (
+        <>
+          <div className={historyMultiImageContainerClassName}>
+            <HistoryDefaultImage
+              src={`${amavinImagePath2024}8-4.webp`}
+              alt="grapes image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2024}8-29.webp`}
+              alt="foggy field image"
+            />
+          </div>
+          <p className={historyPClassName}>
+            ブドウの実がなり始めました。
+            <br />
+            たまに畑に霧がかかります。
+          </p>
+        </>
+      ),
+      searchableText: "ブドウの実がなり始めました。たまに畑に霧がかかります。",
+    },
+    {
+      month: 9,
+      content: (
+        <>
+          <HistoryDefaultImage
+            src={`${amavinImagePath2024}9-15.webp`}
+            alt="eagle object image"
+          />
+          <p className={historyPClassName}>
+            ブドウを食べる鳥よけ？のための、鷹のオブジェクトかやってきました。
+          </p>
+        </>
+      ),
+      searchableText:
+        "ブドウを食べる鳥よけ？のための、鷹のオブジェクトかやってきました。",
+    },
+    {
+      month: 10,
+      content: (
+        <>
+          <div className={historyMultiImageContainerClassName}>
+            <HistoryDefaultImage
+              src={`${amavinImagePath2024}10-11.webp`}
+              alt="glittering tape image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2024}10-21.webp`}
+              alt="eagle object image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2024}10-26.webp`}
+              alt="eagle object image"
+            />
+          </div>
+          <p className={historyPClassName}>
+            ブドウを食べる鳥よけ？のためのキラキラテープを設置しました。
+            <br />
+            ブドウの収穫を行いました。○○個・計○○ kg収穫しました。
+          </p>
+        </>
+      ),
+      searchableText:
+        "ブドウを食べる鳥よけ？のためのキラキラテープを設置しました。ブドウの収穫を行いました。○○個・計○○ kg収穫しました。",
+    },
+    {
+      month: 11,
+      content: (
+        <>
+          <HistoryDefaultImage
+            src={`${amavinImagePath2024}11-22.webp`}
+            alt="grape trees with cover image"
+          />
+          <p className={historyPClassName}>
+            ブドウの木に寒さ除けのカバーを付けました。
+          </p>
+        </>
+      ),
+      searchableText: "ブドウの木に寒さ除けのカバーを付けました。",
+    },
   ],
-  2025: [],
+  2025: [
+    {
+      month: 1,
+      content: (
+        <>
+          <HistoryDefaultImage
+            src={`${amavinImagePath2025}1-3.webp`}
+            alt="brick kiln image"
+          />
+          <p className={historyPClassName}>
+            畑の入り口にレンガの窯を作りました。
+          </p>
+        </>
+      ),
+      searchableText: "畑の入り口にレンガの窯を作りました。",
+    },
+    {
+      month: 2,
+      content: (
+        <>
+          <HistoryDefaultImage
+            src={`${amavinImagePath2025}2-9.webp`}
+            alt="filled wine bottles image"
+          />
+          <p className={historyPClassName}>
+            去年？収穫したブドウのクレーレワインの瓶詰を行いました。
+            <br />
+            Kiyos CellerとArtisan Mariage
+            Vineyardsのインスタグラムを作りました。？
+          </p>
+        </>
+      ),
+      searchableText:
+        "去年？収穫したブドウのクレーレワインの瓶詰を行いました。Kiyos CellerとArtisan Mariage Vineyardsのインスタグラムを作りました。？",
+    },
+    {
+      month: 3,
+      content: (
+        <>
+          <div className={historyMultiImageContainerClassName}>
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}3-2.webp`}
+              alt="mystical mountains image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}3-8.webp`}
+              alt="wine bottles with label image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}3-20.webp`}
+              alt="field covered with snow image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}3-22.webp`}
+              alt="little wines left image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}3-30.webp`}
+              alt="grape trees ? image"
+            />
+          </div>
+          <p className={historyPClassName}>
+            山々に光が当たり、山の端が連なって見えて幻想的です。
+            <br />
+            クレーレワインにラベルを張りました。
+            <br />
+            ３月の後半に雪が積もりました。
+            <br />
+            ○○さんで扱っていただいているワインが残り僅かとなっていて嬉しいです。
+            <br />
+            枝の。。。
+          </p>
+        </>
+      ),
+      searchableText:
+        " 山々に光が当たり、山の端が連なって見えて幻想的です。クレーレワインにラベルを張りました。３月の後半に雪が積もりました。○○さんで扱っていただいているワインが残り僅かとなっていて嬉しいです。枝の。。。",
+    },
+    {
+      month: 4,
+      content: (
+        <>
+          <div className={historyMultiImageContainerClassName}>
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}4-5.webp`}
+              alt="saplings image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}4-12.webp`}
+              alt="water drop coming out from branch image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}4-13.webp`}
+              alt="cutting branch image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}4-20.webp`}
+              alt="fixed branches image"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}4-26.webp`}
+              alt="branches with buds image"
+            />
+          </div>
+          <p className={historyPClassName}>
+            今年も新たに○○の苗木を○○本植えました。
+            <br />
+            冬が終わり、ブドウ達が元気なことを示す水滴が出ています。
+            <br />
+            枝の剪定？を行いました。
+            <br />
+            枝をワイヤーに紐で固定しました。
+            <br />
+            春になり、ブドウ達の芽が出始めました。
+          </p>
+        </>
+      ),
+      searchableText:
+        " 今年も新たに○○の苗木を○○本植えました。冬が終わり、ブドウ達が元気なことを示す水滴が出ています。枝の剪定？を行いました。枝をワイヤーに紐で固定しました。春になり、ブドウ達の芽が出始めました。",
+    },
+    {
+      month: 5,
+      content: (
+        <>
+          <HistoryDefaultImage
+            src={`${amavinImagePath2025}5-31.webp`}
+            alt="foggy field image"
+          />
+          <p className={historyPClassName}>畑が霧がかっています。</p>
+        </>
+      ),
+      searchableText: "畑が霧がかっています。",
+    },
+  ],
 };
 
 export const historyAmavinForSearch = getHistoryForSearch(historyAmavin, [

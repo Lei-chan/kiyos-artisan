@@ -1,19 +1,24 @@
 "use client";
-
+//react
 import { RefObject, useRef } from "react";
-import TopBar from "../components/TopBar";
-import TitleNavLable from "../components/TitleNavLable";
-import Footer from "../components/Footer";
+//next.js
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+//models
+import { about, contact, shop } from "../models/amavin";
+//components
+import TopBar from "../components/TopBar";
+import TitleNavLable from "../components/TitleNavLable";
 import NewsUl from "../components/NewsUl";
 import AmavinContact from "../components/AmavinContact";
-import L from "leaflet";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import "leaflet-defaulticon-compatibility";
-import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import { about, contact, shop } from "../models/amavin";
+import UpArrow from "../components/UpArrow";
+import Footer from "../components/Footer";
+
+//prevent a error for a client-side leaflet library map by avoiding the map to be rendered on server side
+const MapWithNoSSR = dynamic(() => import("../components/AmavinMap"), {
+  ssr: false,
+});
 
 export default function ArtisanMariageVineyards() {
   const smallHeaderClassName = "text-lg text-pink-700 font-bold";
@@ -59,6 +64,7 @@ export default function ArtisanMariageVineyards() {
         />
       </div>
       <Footer />
+      <UpArrow />
     </div>
   );
 }
@@ -145,40 +151,9 @@ function Contact({
     <div ref={ref} className={containerClassName}>
       <h2 className={smallHeaderClassName}>{contact.title}</h2>
       <div className="w-[90%] h-fit p-[5%] pt-[4%] text-base text-left">
-        <VineyardsMap />
+        <MapWithNoSSR />
         <AmavinContact />
       </div>
     </div>
-  );
-}
-
-//chenge the icon later!
-function VineyardsMap() {
-  const myIcon = L.icon({
-    iconUrl: "/icons/grapes.svg",
-    iconSize: [38, 38],
-    iconAnchor: [0, 38],
-    popupAnchor: [0, 0],
-  });
-
-  return (
-    <MapContainer
-      center={{ lat: 35.7755202, lng: 138.4674056 }}
-      zoom={13}
-      scrollWheelZoom={false}
-      className="h-[35vh]"
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://maps.google.com">Google Maps</a>'
-        url="http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
-        maxZoom={20}
-        subdomains={["mt0", "mt1", "mt2", "mt3"]}
-      />
-      <Marker position={{ lat: 35.7755202, lng: 138.4674056 }} icon={myIcon}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-    </MapContainer>
   );
 }

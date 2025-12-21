@@ -13,12 +13,15 @@ import TopBar from "./components/TopBar";
 import Footer from "./components/Footer";
 import { amavin, kiyos } from "./models/home";
 import UpArrow from "./components/UpArrow";
+import { getGroupNameFromType } from "./helper";
+import { TYPE_GROUP } from "./type";
 
 export default function Home() {
   return (
     <div className="w-screen h-[100%]">
       <Top />
       <Bottom />
+      <UpArrow />
     </div>
   );
 }
@@ -91,7 +94,6 @@ function Bottom() {
       />
       <News />
       <Footer />
-      <UpArrow ref={buttomRef} />
     </div>
   );
 }
@@ -190,7 +192,7 @@ function GroupDescription({
   slideInClassName,
   inView,
 }: {
-  type: "kiyos" | "amavin";
+  type: TYPE_GROUP;
   description: string;
   slideInClassName: string;
   inView: boolean;
@@ -207,8 +209,11 @@ function GroupDescription({
       }`}
     >
       <p className="text-base">{description}</p>
-      <Link href="" className={linkClassName}>
-        {type === "kiyos" ? "Kiyos Celler" : "Artisan Mariage Vineyards"}
+      <Link
+        href={type === "kiyos" ? "/kiyos-celler" : "artisan-mariage-vineyards"}
+        className={linkClassName}
+      >
+        {getGroupNameFromType(type)}
         について
       </Link>
       <br />
@@ -230,7 +235,7 @@ function GroupImages({
   slideInClassName,
   inView,
 }: {
-  type: "kiyos" | "amavin";
+  type: TYPE_GROUP;
   src1: string;
   src2: string;
   alt1: string;
@@ -274,7 +279,11 @@ function GroupImages({
 
 //news
 function News() {
-  const [type, setType] = useState<"all" | "kiyos" | "amavin">("all");
+  const [type, setType] = useState<"all" | TYPE_GROUP>("all");
+
+  function handleClickHeader() {
+    setType("all");
+  }
 
   function handleClickType(e: React.MouseEvent<HTMLButtonElement>) {
     const name = e.currentTarget.name;
@@ -285,7 +294,10 @@ function News() {
 
   return (
     <div className="relative w-full h-fit mt-12 flex flex-col items-center bg-yellow-100 py-5">
-      <h1 className="text-center text-xl font-bold tracking-wider text-blue-900">
+      <h1
+        className="text-center text-xl font-bold tracking-wider text-blue-900 cursor-pointer"
+        onClick={handleClickHeader}
+      >
         News
       </h1>
       <NewsUl type={type} />

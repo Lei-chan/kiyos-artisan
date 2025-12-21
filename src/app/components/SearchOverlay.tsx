@@ -35,6 +35,7 @@ export default function SearchOverlay({
 
 function SearchContainer({ onClickClose }: { onClickClose: () => void }) {
   const [results, setResults] = useState<TYPE_SEARCH_DATA>([]);
+  const [message, setMessage] = useState("");
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -53,13 +54,18 @@ function SearchContainer({ onClickClose }: { onClickClose: () => void }) {
         data.keywords.join(" ").includes(value)
     );
 
+    if (!results.length) setMessage("検索結果 ０件");
     setResults(results);
   }
 
   return (
     <div className="relative w-[90%] h-[80%] bg-slate-50 rounded-lg">
       <SearchForm onSubmitForm={handleSubmit} />
-      <SearchResults results={results} onClickClose={onClickClose} />
+      <SearchResults
+        results={results}
+        message={message}
+        onClickClose={onClickClose}
+      />
     </div>
   );
 }
@@ -90,16 +96,24 @@ function SearchForm({
 
 function SearchResults({
   results,
+  message,
   onClickClose,
 }: {
   results: TYPE_SEARCH_DATA;
+  message: string;
   onClickClose: () => void;
 }) {
   return (
     <ul className="w-full h-4/5 overflow-auto">
-      {results.map((result, i) => (
-        <Result key={i} result={result} onClickClose={onClickClose} />
-      ))}
+      {results.length ? (
+        results.map((result, i) => (
+          <Result key={i} result={result} onClickClose={onClickClose} />
+        ))
+      ) : (
+        <p className="w-full h-full flex flex-col text-center pt-[45%] text-base text-black/60">
+          {message}
+        </p>
+      )}
     </ul>
   );
 }
