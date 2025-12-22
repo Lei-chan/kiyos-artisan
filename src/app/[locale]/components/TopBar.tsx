@@ -1,16 +1,21 @@
 "use client";
 //react
-import { useRef, useState } from "react";
+import { useState } from "react";
 //next.js
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 //components
 import SearchOverlay from "./SearchOverlay";
 //methods
-import { getGroupNameFromType } from "../helper";
+import { getGroupNameFromType } from "../../helper";
+import { TYPE_LOCALE } from "@/app/type";
 
-export default function TopBar() {
+export default function TopBar({
+  currentLocale,
+}: {
+  currentLocale: TYPE_LOCALE;
+}) {
   const router = useRouter();
 
   function handleClickLogo() {
@@ -24,29 +29,43 @@ export default function TopBar() {
         className="text-center text-[#ffe77c] pt-[2%] text-base cursor-pointer"
         onClick={handleClickLogo}
       >
-        Kiyos Celler
+        {getGroupNameFromType(currentLocale, "kiyos")}
         <br />
-        Artisan Mariage Vineyards
+        {getGroupNameFromType(currentLocale, "amavin")}
       </h1>
-      <LanguageSearch />
-      <Navi />
+      <LanguageSearch currentLocale={currentLocale} />
+      <Navi currentLocale={currentLocale} />
     </div>
   );
 }
 
-function LanguageSearch() {
+function LanguageSearch({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
   return (
     <div className="absolute w-fit h-fit flex flex-row right-[1%] top-[3%] gap-[5%]">
-      <LanguageSelect />
-      <Search />
+      <LanguageSelect currentLocale={currentLocale} />
+      <Search currentLocale={currentLocale} />
     </div>
   );
 }
 
-function LanguageSelect() {
+function LanguageSelect({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  function handleChangeLanguage(e: React.ChangeEvent<HTMLSelectElement>) {
+    const newLocale = e.currentTarget.value;
+
+    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, "");
+
+    //Change old locale path with new locale path
+    router.push(`/${newLocale}${pathWithoutLocale}`);
+  }
+
   return (
     <select
       className={`w-[35%] h-full mr-[3%] bg-transparent bg-[url('/icons/globe.svg')] bg-contain bg-center bg-no-repeat appearance-none text-sm  text-blue-900 text-transparent  focus:text-black`}
+      value={currentLocale}
+      onChange={handleChangeLanguage}
     >
       <option value="ja">日本語</option>
       <option value="en">English</option>
@@ -54,7 +73,7 @@ function LanguageSelect() {
   );
 }
 
-function Search() {
+function Search({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
   const [open, setOpen] = useState(false);
 
   function handleToggleSearch() {
@@ -68,12 +87,16 @@ function Search() {
         className="w-[43%] aspect-square bg-[url('/icons/magnifying-glass.svg')] bg-[length:88%] bg-no-repeat bg-center"
         onClick={handleToggleSearch}
       ></button>
-      <SearchOverlay open={open} onClickClose={handleToggleSearch} />
+      <SearchOverlay
+        currentLocale={currentLocale}
+        open={open}
+        onClickClose={handleToggleSearch}
+      />
     </>
   );
 }
 
-function Navi() {
+function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
   const divClassName =
     "relative flex flex-col text-center items-center justify-center border-r border-blue-900 last:border-r-0";
   const linkClassName = "pb-[1%] px-[1%] text-orange-300 w-full z-10";
@@ -116,9 +139,9 @@ function Navi() {
           }`}
         ></Image>
         <Link href="/kiyos-celler" className={`${linkClassName}`}>
-          Kiyos
+          {currentLocale === "ja" ? "キヨズ" : "Kiyos"}
           <br />
-          Celler
+          {currentLocale === "ja" ? "セラー" : "Celler"}
         </Link>
       </div>
       <div
@@ -138,7 +161,7 @@ function Navi() {
           href="/artisan-mariage-vineyards"
           className={`${linkClassName} leading-tight`}
         >
-          {getGroupNameFromType("amavin")}
+          {getGroupNameFromType(currentLocale, "amavin")}
         </Link>
       </div>
       <div
@@ -152,7 +175,7 @@ function Navi() {
           }`}
         ></div>
         <Link href="/history" className={`${linkClassName} `}>
-          History
+          {currentLocale === "ja" ? "歩み" : "History"}
         </Link>
       </div>
       <div
@@ -173,7 +196,7 @@ function Navi() {
           className="z-10"
         ></Image>
         <Link href="" className={`${linkClassName} leading-tight`}>
-          Shop
+          {currentLocale === "ja" ? "ショップ" : "Shop"}
         </Link>
       </div>
     </nav>

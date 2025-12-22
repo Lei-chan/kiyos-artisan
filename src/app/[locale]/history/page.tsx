@@ -4,15 +4,12 @@ import { useEffect, useRef, useState } from "react";
 //model
 import { historyAmavin } from "../models/historyAmavin";
 import { historyKiyos } from "../models/historyKiyos";
-import Footer from "../components/Footer";
 //components
 import TitleNavLable from "../components/TitleNavLable";
-import TopBar from "../components/TopBar";
 //type
-import { TYPE_GROUP, TYPE_MONTH_HISTORY } from "../type";
+import { TYPE_GROUP, TYPE_MONTH_HISTORY } from "../../type";
 //methods
-import { getGroupNameFromType } from "../helper";
-import UpArrow from "../components/UpArrow";
+import { getGroupNameFromType } from "../../helper";
 
 export default function History() {
   const smallHeaderClassName = "text-lg text-orange-800 font-bold";
@@ -21,7 +18,6 @@ export default function History() {
 
   return (
     <div className="w-screen min-h-screen max-h-fit  bg-yellow-100/50 text-center">
-      <TopBar />
       <TitleNavLable
         type="history"
         bgImageStyle="bg-[url('/mountains-from-field.webp')]"
@@ -38,8 +34,6 @@ export default function History() {
           containerClassName={containerClassName}
         />
       </div>
-      <Footer />
-      <UpArrow />
     </div>
   );
 }

@@ -1,12 +1,13 @@
 import { RefObject } from "react";
-import { TYPE_GROUP } from "../type";
-import { getGroupNameFromType } from "../helper";
+import { TYPE_GROUP, TYPE_LOCALE } from "../../type";
+import { getGroupNameFromType } from "../../helper";
 
 export default function TitleNavLable({
   aboutRef,
   shopRef,
   newsRef,
   contactRef,
+  locale,
   type,
   bgImageStyle,
 }: {
@@ -14,6 +15,7 @@ export default function TitleNavLable({
   shopRef?: RefObject<HTMLDivElement | null>;
   newsRef?: RefObject<HTMLDivElement | null>;
   contactRef?: RefObject<HTMLDivElement | null>;
+  locale: TYPE_LOCALE;
   type: TYPE_GROUP | "history";
   bgImageStyle: string;
 }) {
@@ -34,7 +36,7 @@ export default function TitleNavLable({
           }`}
         >
           {type === "kiyos" || type === "amavin"
-            ? getGroupNameFromType(type)
+            ? getGroupNameFromType(locale, type)
             : type.slice(0, 1).toUpperCase() + type.slice(1)}
         </h1>
         {(type === "kiyos" || type === "amavin") &&
@@ -47,6 +49,7 @@ export default function TitleNavLable({
               shopRef={shopRef}
               newsRef={newsRef}
               contactRef={contactRef}
+              locale={locale}
               type={type}
             />
           )}
@@ -60,12 +63,14 @@ function Nav({
   shopRef,
   newsRef,
   contactRef,
+  locale,
   type,
 }: {
   aboutRef: RefObject<HTMLDivElement | null>;
   shopRef: RefObject<HTMLDivElement | null>;
   newsRef: RefObject<HTMLDivElement | null>;
   contactRef: RefObject<HTMLDivElement | null>;
+  locale: TYPE_LOCALE;
   type: TYPE_GROUP;
 }) {
   const containerClassName =
@@ -98,7 +103,9 @@ function Nav({
           className={btnClassName}
           onClick={handleClickAbout}
         >
-          {getGroupNameFromType(type)}について
+          {locale === "ja"
+            ? `${getGroupNameFromType(locale, type)}について`
+            : `About ${getGroupNameFromType(locale, type)}`}
         </button>
       </div>
       <div className={containerClassName}>
@@ -107,21 +114,21 @@ function Nav({
           className={btnClassName}
           onClick={handleClickShop}
         >
-          ショップ
+          {locale === "ja" ? "ショップ" : "Shop"}
         </button>
         <button
           type="button"
           className={btnClassName}
           onClick={handleClickNews}
         >
-          お知らせ
+          {locale === "ja" ? "お知らせ" : "News"}
         </button>
         <button
           type="button"
           className={btnClassName}
           onClick={handleClickContact}
         >
-          お問い合わせ
+          {locale === "ja" ? "お問い合わせ" : "Contact"}
         </button>
       </div>
     </nav>

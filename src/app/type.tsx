@@ -1,10 +1,12 @@
 import { JSX } from "react";
 
+export type TYPE_LOCALE = "ja" | "en";
+
 export type TYPE_NEWS = {
   date: string;
-  type: "kiyos" | "amavin";
-  title: string;
-  content: JSX.Element;
+  type: TYPE_GROUP;
+  title: { ja: string; en: string };
+  content: { ja: JSX.Element; en: JSX.Element };
   new: boolean;
 };
 

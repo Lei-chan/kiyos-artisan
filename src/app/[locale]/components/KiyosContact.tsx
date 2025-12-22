@@ -1,17 +1,18 @@
+import { TYPE_LOCALE } from "@/app/type";
 import Image from "next/image";
 
-export default function KiyosContact() {
+export default function KiyosContact({ locale }: { locale: TYPE_LOCALE }) {
   return (
     <>
       <p>
-        〒000-0000
+        {locale === "ja" ? "〒" : ""}000-0000
         <br />
-        東京都府中市20-1-1
+        {locale === "ja" ? "東京都府中市20-1-1" : "20-1-1 Fuchu, Tokyo, Japan"}
       </p>
       <div className="w-fit h-fit flex flex-row gap-[2%] items-start leading-tight">
         <Image
           src="/icons/email.svg"
-          alt="email icon"
+          alt={locale === "ja" ? "メールアイコン" : "email icon"}
           width={15}
           height={15}
           className="mt-[2%]"

@@ -2,8 +2,8 @@ import HistoryDefaultImage from "../components/HistoryDefaultImage";
 import {
   historyMultiImageContainerClassName,
   historyPClassName,
-} from "../config";
-import { getHistoryForSearch } from "../helper";
+} from "../../config";
+import { getHistoryForSearch } from "../../helper";
 
 const amavinImagePath = "/history/amavin/";
 const amavinImagePath2019 = `${amavinImagePath}2019/2019-`;

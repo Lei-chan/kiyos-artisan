@@ -4,18 +4,21 @@ import { RefObject, useRef } from "react";
 //next.js
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 //models
-import { about, contact, shop } from "../models/kiyos";
+import { about, contact, shop } from "../models/amavin";
 //components
-import TopBar from "../components/TopBar";
 import TitleNavLable from "../components/TitleNavLable";
 import NewsUl from "../components/NewsUl";
-import KiyosContact from "../components/KiyosContact";
-import Footer from "../components/Footer";
-import UpArrow from "../components/UpArrow";
+import AmavinContact from "../components/AmavinContact";
 
-export default function KiyosCeller() {
-  const smallHeaderClassName = "text-lg text-yellow-600 font-bold";
+//prevent a error for a client-side leaflet library map by avoiding the map to be rendered on server side
+const MapWithNoSSR = dynamic(() => import("../components/AmavinMap"), {
+  ssr: false,
+});
+
+export default function ArtisanMariageVineyards() {
+  const smallHeaderClassName = "text-lg text-pink-700 font-bold";
   const containerClassName =
     "w-full h-fit flex flex-col items-center mt-9 scroll-mt-4";
 
@@ -26,13 +29,12 @@ export default function KiyosCeller() {
 
   return (
     <div className="w-screen min-h-screen max-h-fit bg-yellow-100/50 text-center">
-      <TopBar />
       <TitleNavLable
         aboutRef={aboutRef}
         shopRef={shopRef}
         newsRef={newsRef}
         contactRef={contactRef}
-        type="kiyos"
+        type="amavin"
         bgImageStyle="bg-[url('/artisan-clairet-for-sale.webp')]"
       />
       <div className="w-full h-fit pt-2 pb-8">
@@ -57,8 +59,6 @@ export default function KiyosCeller() {
           smallHeaderClassName={smallHeaderClassName}
         />
       </div>
-      <Footer />
-      <UpArrow />
     </div>
   );
 }
@@ -74,10 +74,14 @@ function About({
 }) {
   return (
     <div ref={ref} className={containerClassName}>
-      <h2 className={smallHeaderClassName}>{about.title}</h2>
+      <h2 className={smallHeaderClassName}>
+        Artisan Mariage Vineyards
+        <br />
+        について
+      </h2>
       <Image
         src="/artisan-clairet-for-sale.webp"
-        alt="Kiyos Celler image"
+        alt="Artisan mariage vineyards image"
         width={180}
         height={120}
         className="w-[90%] h-auto aspect-[3/2] object-cover mt-3"
@@ -100,7 +104,8 @@ function Shop({
     <div ref={ref} className={containerClassName}>
       <h2 className={smallHeaderClassName}>{shop.title}</h2>
       <p className="w-full h-fit p-[5%] pt-[4%] text-base">
-        こちらのオンラインショップよりKiyos Cellerの商品をご購入いただけます。
+        こちらのオンラインショップよりArtisan Mariage
+        Vineyardsの商品をご購入いただけます。
         <br />
         <Link href="" className="underline text-purple-500 text-sm">
           オンラインショップはこちら
@@ -122,7 +127,7 @@ function News({
   return (
     <div ref={ref} className={containerClassName}>
       <h2 className={smallHeaderClassName}>お知らせ</h2>
-      <NewsUl type="kiyos" />
+      <NewsUl type="amavin" />
     </div>
   );
 }
@@ -140,7 +145,8 @@ function Contact({
     <div ref={ref} className={containerClassName}>
       <h2 className={smallHeaderClassName}>{contact.title}</h2>
       <div className="w-[90%] h-fit p-[5%] pt-[4%] text-base text-left">
-        <KiyosContact />
+        <MapWithNoSSR />
+        <AmavinContact />
       </div>
     </div>
   );

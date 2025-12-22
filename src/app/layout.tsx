@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
-//for now
 import { Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Artisan Marriage Vineyards, Kiyos Celler",
@@ -19,13 +19,13 @@ const notoSerifJp = Noto_Serif_JP({
   fallback: ["serif"],
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className={notoSerifJp.className}>
+    <html className={notoSerifJp.className}>
       <body>{children}</body>
     </html>
   );

@@ -2,7 +2,7 @@ import Image from "next/image";
 import AmavinContact from "./AmavinContact";
 import KiyosContact from "./KiyosContact";
 import Link from "next/link";
-import { getGroupNameFromType } from "../helper";
+import { getGroupNameFromType } from "../../helper";
 
 //footer
 export default function Footer() {

@@ -1,12 +1,14 @@
 import { useState } from "react";
 import data from "../models/search";
-import { TYPE_SEARCH_DATA, TYPE_SEARCH_RESULT } from "../type";
+import { TYPE_LOCALE, TYPE_SEARCH_DATA, TYPE_SEARCH_RESULT } from "../../type";
 import { useRouter } from "next/navigation";
 
 export default function SearchOverlay({
+  currentLocale,
   open,
   onClickClose,
 }: {
+  currentLocale: TYPE_LOCALE;
   open: boolean;
   onClickClose: () => void;
 }) {
@@ -28,12 +30,18 @@ export default function SearchOverlay({
       >
         &times;
       </button>
-      <SearchContainer onClickClose={onClickClose} />
+      <SearchContainer locale={currentLocale} onClickClose={onClickClose} />
     </div>
   );
 }
 
-function SearchContainer({ onClickClose }: { onClickClose: () => void }) {
+function SearchContainer({
+  locale,
+  onClickClose,
+}: {
+  locale: TYPE_LOCALE;
+  onClickClose: () => void;
+}) {
   const [results, setResults] = useState<TYPE_SEARCH_DATA>([]);
   const [message, setMessage] = useState("");
 
@@ -49,19 +57,21 @@ function SearchContainer({ onClickClose }: { onClickClose: () => void }) {
 
     const results = data.filter(
       (data) =>
-        data.title.includes(value) ||
-        data.searchableText.includes(value) ||
+        data.title[locale].includes(value) ||
+        data.searchableText[locale].includes(value) ||
         data.keywords.join(" ").includes(value)
     );
 
-    if (!results.length) setMessage("検索結果 ０件");
+    if (!results.length)
+      setMessage(locale === "ja" ? "検索結果 ０件" : "0 search results");
     setResults(results);
   }
 
   return (
     <div className="relative w-[90%] h-[80%] bg-slate-50 rounded-lg">
-      <SearchForm onSubmitForm={handleSubmit} />
+      <SearchForm locale={locale} onSubmitForm={handleSubmit} />
       <SearchResults
+        locale={locale}
         results={results}
         message={message}
         onClickClose={onClickClose}
@@ -71,8 +81,10 @@ function SearchContainer({ onClickClose }: { onClickClose: () => void }) {
 }
 
 function SearchForm({
+  locale,
   onSubmitForm,
 }: {
+  locale: TYPE_LOCALE;
   onSubmitForm: (e: React.FormEvent<HTMLFormElement>) => void;
 }) {
   return (
@@ -82,7 +94,9 @@ function SearchForm({
     >
       <input
         type="search"
-        placeholder="What are you looking for?"
+        placeholder={
+          locale === "ja" ? "何をお探しですか？" : "What are you looking for?"
+        }
         name="value"
         className="w-[80%] h-[40%] text-center border-2 border-black/10 rounded"
       ></input>
@@ -95,10 +109,12 @@ function SearchForm({
 }
 
 function SearchResults({
+  locale,
   results,
   message,
   onClickClose,
 }: {
+  locale: TYPE_LOCALE;
   results: TYPE_SEARCH_DATA;
   message: string;
   onClickClose: () => void;
@@ -107,7 +123,12 @@ function SearchResults({
     <ul className="w-full h-4/5 overflow-auto">
       {results.length ? (
         results.map((result, i) => (
-          <Result key={i} result={result} onClickClose={onClickClose} />
+          <Result
+            key={i}
+            locale={locale}
+            result={result}
+            onClickClose={onClickClose}
+          />
         ))
       ) : (
         <p className="w-full h-full flex flex-col text-center pt-[45%] text-base text-black/60">
@@ -119,16 +140,18 @@ function SearchResults({
 }
 
 function Result({
+  locale,
   result,
   onClickClose,
 }: {
+  locale: TYPE_LOCALE;
   result: TYPE_SEARCH_RESULT;
   onClickClose: () => void;
 }) {
   const router = useRouter();
 
   function handleClickResult() {
-    router.push(result.href);
+    router.push(`/${locale}${result.href}`);
     onClickClose();
   }
 
@@ -138,10 +161,10 @@ function Result({
       onClick={handleClickResult}
     >
       <h3 className="h-[23%] text-base font-semibold text-blue-600 overflow-hidden text-ellipsis whitespace-nowrap">
-        {result.title}
+        {result.title[locale]}
       </h3>
       <p className="w-full h-[74%] break-all overflow-hidden mt-[3%] text-sm">
-        {result.searchableText}
+        {result.searchableText[locale]}
       </p>
     </li>
   );

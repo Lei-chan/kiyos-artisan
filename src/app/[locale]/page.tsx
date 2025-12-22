@@ -5,37 +5,37 @@ import { useInView } from "react-intersection-observer";
 //next.js
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 //models
 import slideInfo from "./models/slide";
+import { amavin, kiyos } from "./models/home";
 //components
 import NewsUl from "./components/NewsUl";
-import TopBar from "./components/TopBar";
-import Footer from "./components/Footer";
-import { amavin, kiyos } from "./models/home";
-import UpArrow from "./components/UpArrow";
-import { getGroupNameFromType } from "./helper";
-import { TYPE_GROUP } from "./type";
+//type
+import { TYPE_GROUP, TYPE_LOCALE } from "../type";
+//methods
+import { getGroupNameFromType, getShortenedGroupName } from "../helper";
 
 export default function Home() {
+  const { locale } = useParams();
+
   return (
     <div className="w-screen h-[100%]">
-      <Top />
-      <Bottom />
-      <UpArrow />
+      <Top locale={(locale || "en") as TYPE_LOCALE} />
+      <Bottom locale={(locale || "en") as TYPE_LOCALE} />
     </div>
   );
 }
 
-function Top() {
+function Top({ locale }: { locale: TYPE_LOCALE }) {
   return (
-    <div className="w-full h-dvh">
-      <TopBar />
-      <Slide />
+    <div className="w-full h-[76vh]">
+      <Slide locale={locale} />
     </div>
   );
 }
 
-function Slide() {
+function Slide({ locale }: { locale: TYPE_LOCALE }) {
   const slideLength = slideInfo.length;
   const slideDuration = 5; //seconds
   const [curImage, setCurImage] = useState(0);
@@ -56,7 +56,7 @@ function Slide() {
         <Image
           key={i}
           src={slide.src}
-          alt={slide.alt}
+          alt={slide.alt[locale]}
           width={1800}
           height={1000}
           priority
@@ -69,7 +69,7 @@ function Slide() {
   );
 }
 
-function Bottom() {
+function Bottom({ locale }: { locale: TYPE_LOCALE }) {
   const containerClassName =
     "w-full h-fit text-center mt-8 transition-all duration-[1200ms]";
   const headerClassName = "text-2xl font-bold tracking-wider";
@@ -81,29 +81,32 @@ function Bottom() {
   return (
     <div ref={buttomRef} className="w-screen h-fit">
       <Kiyos
+        locale={locale}
         containerClassName={containerClassName}
         headerClassName={headerClassName}
         contentClassName={contentClassName}
         slideInClassName={slideInClassName}
       />
       <Amavine
+        locale={locale}
         containerClassName={containerClassName}
         headerClassName={headerClassName}
         contentClassName={contentClassName}
         slideInClassName={slideInClassName}
       />
-      <News />
-      <Footer />
+      <News locale={locale} />
     </div>
   );
 }
 
 function Kiyos({
+  locale,
   containerClassName,
   headerClassName,
   contentClassName,
   slideInClassName,
 }: {
+  locale: TYPE_LOCALE;
   containerClassName: string;
   headerClassName: string;
   contentClassName: string;
@@ -118,20 +121,23 @@ function Kiyos({
         inView ? "opacity-100" : "opacity-0"
       }`}
     >
-      <h1 className={`${headerClassName} text-yellow-500`}>{kiyos.title}</h1>
+      <h1 className={`${headerClassName} text-yellow-500`}>
+        {kiyos.title[locale]}
+      </h1>
       <div className={`${contentClassName}`}>
         <GroupDescription
+          locale={locale}
           type="kiyos"
-          description={kiyos.searchableText}
+          description={kiyos.searchableText[locale]}
           slideInClassName={slideInClassName}
           inView={inView}
         />
         <GroupImages
           type="kiyos"
           src1="/wine-demo.png"
-          alt1="something wine image"
+          alt1={locale === "ja" ? "○○ワイン画像" : "something wine image"}
           src2="/wine-demo2.png"
-          alt2="something wine image"
+          alt2={locale === "ja" ? "○○ワイン画像" : "something wine image"}
           left1="left-4"
           left2="left-16"
           slideInClassName={slideInClassName}
@@ -143,11 +149,13 @@ function Kiyos({
 }
 
 function Amavine({
+  locale,
   containerClassName,
   headerClassName,
   contentClassName,
   slideInClassName,
 }: {
+  locale: TYPE_LOCALE;
   containerClassName: string;
   headerClassName: string;
   contentClassName: string;
@@ -162,22 +170,33 @@ function Amavine({
         inView ? "opacity-100" : "opacity-0"
       }`}
     >
-      <h1 className={`${headerClassName} text-pink-600`}>{amavin.title}</h1>
+      <h1 className={`${headerClassName} text-pink-600`}>
+        {amavin.title[locale]}
+      </h1>
       <div className={`${contentClassName}`}>
         <GroupImages
           type="amavin"
           src1="/artisan-wine-one-no-bg.png"
-          alt1="artisan mariage vineyards wine"
+          alt1={
+            locale === "ja"
+              ? "アルチザンマリアージュヴィンヤードワイン画像"
+              : "artisan mariage vineyards wine image"
+          }
           src2="/artisan-wine-one-no-bg.png"
-          alt2="artisan mariage vineyards wine"
+          alt2={
+            locale === "ja"
+              ? "アルチザンマリアージュヴィンヤードワイン画像"
+              : "artisan mariage vineyards wine image"
+          }
           left1=""
           left2="left-11"
           slideInClassName={slideInClassName}
           inView={inView}
         />
         <GroupDescription
+          locale={locale}
           type="amavin"
-          description={amavin.searchableText}
+          description={amavin.searchableText[locale]}
           slideInClassName={slideInClassName}
           inView={inView}
         />
@@ -187,11 +206,13 @@ function Amavine({
 }
 
 function GroupDescription({
+  locale,
   type,
   description,
   slideInClassName,
   inView,
 }: {
+  locale: TYPE_LOCALE;
   type: TYPE_GROUP;
   description: string;
   slideInClassName: string;
@@ -213,12 +234,15 @@ function GroupDescription({
         href={type === "kiyos" ? "/kiyos-celler" : "artisan-mariage-vineyards"}
         className={linkClassName}
       >
-        {getGroupNameFromType(type)}
-        について
+        {locale === "ja"
+          ? `${getGroupNameFromType(locale, type)}について`
+          : `About ${getGroupNameFromType(locale, type)}`}
       </Link>
       <br />
       <Link href="" className={linkClassName}>
-        オンラインショップはこちら
+        {locale === "ja"
+          ? "オンラインショップはこちら"
+          : "Online shop from here"}
       </Link>
     </div>
   );
@@ -278,7 +302,7 @@ function GroupImages({
 }
 
 //news
-function News() {
+function News({ locale }: { locale: TYPE_LOCALE }) {
   const [type, setType] = useState<"all" | TYPE_GROUP>("all");
 
   function handleClickHeader() {
@@ -298,17 +322,19 @@ function News() {
         className="text-center text-xl font-bold tracking-wider text-blue-900 cursor-pointer"
         onClick={handleClickHeader}
       >
-        News
+        {locale === "ja" ? "ニュース" : "News"}
       </h1>
-      <NewsUl type={type} />
-      <NewsButtons onClickType={handleClickType} />
+      <NewsUl locale={locale} type={type} />
+      <NewsButtons locale={locale} onClickType={handleClickType} />
     </div>
   );
 }
 
 function NewsButtons({
+  locale,
   onClickType,
 }: {
+  locale: TYPE_LOCALE;
   onClickType: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
   const labelClassName = "w-fit h-fit text-white p-[1px] rounded";
@@ -316,11 +342,13 @@ function NewsButtons({
   return (
     <div className="w-full flex flex- row text-sm right-[2%] gap-1 mt-3 justify-center">
       <NewsButton
+        locale={locale}
         type="kiyos"
         className={`${labelClassName} bg-yellow-500`}
         onClickType={onClickType}
       />
       <NewsButton
+        locale={locale}
         type="amavin"
         className={`${labelClassName}  bg-pink-600`}
         onClickType={onClickType}
@@ -330,11 +358,13 @@ function NewsButtons({
 }
 
 function NewsButton({
+  locale,
   type,
   className,
   onClickType,
 }: {
-  type: "kiyos" | "amavin";
+  locale: TYPE_LOCALE;
+  type: TYPE_GROUP;
   className: string;
   onClickType: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
@@ -346,9 +376,9 @@ function NewsButton({
         className={className}
         onClick={onClickType}
       >
-        {type.at(0)?.toUpperCase() + type.slice(1)}
+        {getShortenedGroupName(locale, type)}
       </button>
-      <p>: {type === "kiyos" ? "Kiyos Celler" : "Artisan Mariage Vineyards"}</p>
+      <p>: {getGroupNameFromType(locale, type)}</p>
     </div>
   );
 }
