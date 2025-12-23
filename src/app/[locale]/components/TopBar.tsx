@@ -9,7 +9,7 @@ import { usePathname, useRouter } from "next/navigation";
 import SearchOverlay from "./SearchOverlay";
 //methods
 import { getGroupNameFromType } from "../../helper";
-import { TYPE_LOCALE } from "@/app/type";
+import { TYPE_LOCALE } from "@/app/config/type";
 
 export default function TopBar({
   currentLocale,
@@ -19,7 +19,7 @@ export default function TopBar({
   const router = useRouter();
 
   function handleClickLogo() {
-    router.push("/");
+    router.push(`/${currentLocale}/`);
   }
 
   return (
@@ -29,9 +29,9 @@ export default function TopBar({
         className="text-center text-[#ffe77c] pt-[2%] text-base cursor-pointer"
         onClick={handleClickLogo}
       >
-        {getGroupNameFromType(currentLocale, "kiyos")}
+        {getGroupNameFromType("kiyos")}
         <br />
-        {getGroupNameFromType(currentLocale, "amavin")}
+        {getGroupNameFromType("amavin")}
       </h1>
       <LanguageSearch currentLocale={currentLocale} />
       <Navi currentLocale={currentLocale} />
@@ -138,10 +138,13 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
             kiyosHovered ? "opacity-50" : "opacity-0"
           }`}
         ></Image>
-        <Link href="/kiyos-celler" className={`${linkClassName}`}>
-          {currentLocale === "ja" ? "キヨズ" : "Kiyos"}
+        <Link
+          href={`/${currentLocale}/kiyos-celler`}
+          className={`${linkClassName}`}
+        >
+          Kiyos
           <br />
-          {currentLocale === "ja" ? "セラー" : "Celler"}
+          Celler
         </Link>
       </div>
       <div
@@ -158,10 +161,10 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
           }`}
         ></Image>
         <Link
-          href="/artisan-mariage-vineyards"
+          href={`/${currentLocale}/artisan-mariage-vineyards`}
           className={`${linkClassName} leading-tight`}
         >
-          {getGroupNameFromType(currentLocale, "amavin")}
+          {getGroupNameFromType("amavin")}
         </Link>
       </div>
       <div
@@ -174,8 +177,11 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
             historyHovered ? "opacity-50" : "opacity-0"
           }`}
         ></div>
-        <Link href="/history" className={`${linkClassName} `}>
-          {currentLocale === "ja" ? "歩み" : "History"}
+        <Link
+          href={`/${currentLocale}/history`}
+          className={`${linkClassName} `}
+        >
+          History
         </Link>
       </div>
       <div
@@ -196,7 +202,7 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
           className="z-10"
         ></Image>
         <Link href="" className={`${linkClassName} leading-tight`}>
-          {currentLocale === "ja" ? "ショップ" : "Shop"}
+          Shop
         </Link>
       </div>
     </nav>

@@ -1,4 +1,4 @@
-import { TYPE_LOCALE } from "@/app/type";
+import { TYPE_LOCALE } from "@/app/config/type";
 import Image from "next/image";
 
 export default function KiyosContact({ locale }: { locale: TYPE_LOCALE }) {

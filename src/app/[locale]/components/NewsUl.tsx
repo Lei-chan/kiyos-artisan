@@ -2,9 +2,9 @@
 //react
 import { useState } from "react";
 //type
-import { TYPE_GROUP, TYPE_LOCALE, TYPE_NEWS } from "../../type";
+import { TYPE_GROUP, TYPE_LOCALE, TYPE_NEWS } from "../../config/type";
 //models
-import { organizedNews } from "../models/news";
+import { organizedNews } from "../../models/news";
 import { getShortenedGroupName } from "@/app/helper";
 
 export default function NewsUl({
@@ -53,7 +53,7 @@ function List({ locale, news }: { locale: TYPE_LOCALE; news: TYPE_NEWS }) {
               : `${labelClassName}  bg-pink-600`
           } text-xs mt-[1%]`}
         >
-          {getShortenedGroupName(locale, news.type)}
+          {getShortenedGroupName(news.type)}
         </span>
         <p className="w-[75%] h-full text-[15px] overflow-hidden leading-tight">
           {news.title[locale]}

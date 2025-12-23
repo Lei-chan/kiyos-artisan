@@ -1,6 +1,10 @@
 import { useState } from "react";
-import data from "../models/search";
-import { TYPE_LOCALE, TYPE_SEARCH_DATA, TYPE_SEARCH_RESULT } from "../../type";
+import data from "../../models/search";
+import {
+  TYPE_LOCALE,
+  TYPE_SEARCH_DATA,
+  TYPE_SEARCH_RESULT,
+} from "../../config/type";
 import { useRouter } from "next/navigation";
 
 export default function SearchOverlay({

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { dateIsNew, getGroupNameFromType } from "../../helper";
-import { TYPE_GROUP } from "@/app/type";
+import { dateIsNew, getGroupNameFromType, getLocaleDate } from "../helper";
+import { TYPE_GROUP } from "@/app/config/type";
 
 const news = [
   {
@@ -120,14 +120,19 @@ export const organizedNews = newsWithNew.toReversed();
 export const newsForSearch = organizedNews.map((news) => {
   return {
     title: news.title,
-    searchableText: `${news.new ? "New" : ""} ${news.date} ${
-      news.searchableText
-    }`,
+    searchableText: {
+      ja: `${news.new ? "New" : ""} ${getLocaleDate("ja", news.date)} ${
+        news.searchableText.ja
+      }`,
+      en: `${news.new ? "New" : ""} ${getLocaleDate("en", news.date)} ${
+        news.searchableText.en
+      }`,
+    },
     href: "/",
     keywords: [
       "お知らせ",
       "news",
-      getGroupNameFromType("ja", news.type as TYPE_GROUP),
+      getGroupNameFromType(news.type as TYPE_GROUP),
       news.type,
     ],
   };

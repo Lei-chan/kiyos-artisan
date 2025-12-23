@@ -19,7 +19,7 @@ export default function VineyardsMap() {
       center={{ lat: 35.7755202, lng: 138.4674056 }}
       zoom={13}
       scrollWheelZoom={false}
-      className="h-[35vh]"
+      className="h-[35vh] mb-2"
     >
       <TileLayer
         attribution='&copy; <a href="https://maps.google.com">Google Maps</a>'

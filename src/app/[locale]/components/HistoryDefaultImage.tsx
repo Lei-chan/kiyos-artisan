@@ -16,7 +16,7 @@ export default function HistoryDefaultImage({
       alt={alt}
       width={width}
       height={height}
-      className="w-auto h-auto object-contain"
+      className="w-auto h-auto object-contain mt-2"
     ></Image>
   );
 }

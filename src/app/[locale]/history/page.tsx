@@ -2,33 +2,38 @@
 //react
 import { useEffect, useRef, useState } from "react";
 //model
-import { historyAmavin } from "../models/historyAmavin";
-import { historyKiyos } from "../models/historyKiyos";
+import { historyAmavin } from "../../models/historyAmavin";
+import { historyKiyos } from "../../models/historyKiyos";
 //components
 import TitleNavLable from "../components/TitleNavLable";
 //type
-import { TYPE_GROUP, TYPE_MONTH_HISTORY } from "../../type";
+import { TYPE_GROUP, TYPE_LOCALE, TYPE_MONTH_HISTORY } from "../../config/type";
 //methods
-import { getGroupNameFromType } from "../../helper";
+import { getGroupNameFromType, getLocalMonth } from "../../helper";
+import { useParams } from "next/navigation";
 
 export default function History() {
   const smallHeaderClassName = "text-lg text-orange-800 font-bold";
   const containerClassName =
     "w-full h-fit flex flex-col items-center mt-9 scroll-mt-4";
+  const { locale } = useParams();
 
   return (
     <div className="w-screen min-h-screen max-h-fit  bg-yellow-100/50 text-center">
       <TitleNavLable
+        locale={(locale || "en") as TYPE_LOCALE}
         type="history"
         bgImageStyle="bg-[url('/mountains-from-field.webp')]"
       />
       <div className="w-full h-fit pb-14">
         <GroupHistory
+          locale={(locale || "en") as TYPE_LOCALE}
           type="kiyos"
           smallHeaderClassName={smallHeaderClassName}
           containerClassName={containerClassName}
         />
         <GroupHistory
+          locale={(locale || "en") as TYPE_LOCALE}
           type="amavin"
           smallHeaderClassName={smallHeaderClassName}
           containerClassName={containerClassName}
@@ -39,10 +44,12 @@ export default function History() {
 }
 
 function GroupHistory({
+  locale,
   type,
   smallHeaderClassName,
   containerClassName,
 }: {
+  locale: TYPE_LOCALE;
   type: TYPE_GROUP;
   smallHeaderClassName: string;
   containerClassName: string;
@@ -62,6 +69,7 @@ function GroupHistory({
         return (
           <YearHistory
             key={i}
+            locale={locale}
             isEven={isEven}
             year={year}
             monthsArr={monthsArr}
@@ -73,10 +81,12 @@ function GroupHistory({
 }
 
 function YearHistory({
+  locale,
   isEven,
   year,
   monthsArr,
 }: {
+  locale: TYPE_LOCALE;
   isEven: boolean;
   year: string;
   monthsArr: TYPE_MONTH_HISTORY[];
@@ -123,6 +133,7 @@ function YearHistory({
             {monthsArr.map((history, i) => (
               <MonthHistory
                 key={i}
+                locale={locale}
                 history={history}
                 translateX={calcTranslateX(i)}
                 i={i}
@@ -140,7 +151,7 @@ function YearHistory({
                 }`}
                 onClick={() => handleClickMonth(i)}
               >
-                {history.month}月
+                {getLocalMonth(locale, history.month)}
               </button>
             ))}
           </div>
@@ -151,11 +162,13 @@ function YearHistory({
 }
 
 function MonthHistory({
+  locale,
   history,
   translateX,
   i,
   adjustParentHeight,
 }: {
+  locale: TYPE_LOCALE;
   history: TYPE_MONTH_HISTORY;
   translateX: string;
   i: number;
@@ -183,8 +196,10 @@ function MonthHistory({
       style={{ transform: translateX }}
       className="absolute w-full h-fit flex flex-col items-center duration-700 px-[5%]"
     >
-      <h3 className="text-orange-700 font-bold text-lg">{history.month}月</h3>
-      {history.content}
+      <h3 className="text-orange-700 font-bold text-lg">
+        {getLocalMonth(locale, history.month)}
+      </h3>
+      {history.content[locale]}
     </div>
   );
 }

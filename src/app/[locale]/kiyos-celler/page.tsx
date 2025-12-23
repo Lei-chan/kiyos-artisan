@@ -5,13 +5,13 @@ import { RefObject, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 //models
-import { about, contact, shop } from "../models/kiyos";
+import { about, contact, shop } from "../../models/kiyos";
 //components
 import TitleNavLable from "../components/TitleNavLable";
 import NewsUl from "../components/NewsUl";
 import KiyosContact from "../components/KiyosContact";
 import { useParams } from "next/navigation";
-import { TYPE_LOCALE } from "@/app/type";
+import { TYPE_LOCALE } from "@/app/config/type";
 
 export default function KiyosCeller() {
   const smallHeaderClassName = "text-lg text-yellow-600 font-bold";

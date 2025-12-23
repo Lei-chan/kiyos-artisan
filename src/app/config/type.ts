@@ -14,13 +14,13 @@ export type TYPE_GROUP = "kiyos" | "amavin";
 
 export type TYPE_MONTH_HISTORY = {
   month: number;
-  content: JSX.Element;
-  searchableText: string;
+  content: { ja: JSX.Element; en: JSX.Element };
+  searchableText: { ja: string; en: string };
 };
 
 export type TYPE_SEARCH_RESULT = {
-  title: string;
-  searchableText: string;
+  title: { ja: string; en: string };
+  searchableText: { ja: string; en: string };
   href: string;
   keywords: [] | string[];
 };

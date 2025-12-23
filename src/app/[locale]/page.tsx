@@ -7,14 +7,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 //models
-import slideInfo from "./models/slide";
-import { amavin, kiyos } from "./models/home";
+import slideInfo from "../models/slide";
+import { amavin, kiyos } from "../models/home";
 //components
 import NewsUl from "./components/NewsUl";
 //type
-import { TYPE_GROUP, TYPE_LOCALE } from "../type";
+import { TYPE_GROUP, TYPE_LOCALE } from "../config/type";
 //methods
-import { getGroupNameFromType, getShortenedGroupName } from "../helper";
+import {
+  getAboutName,
+  getGroupNameFromType,
+  getShortenedGroupName,
+} from "../helper";
 
 export default function Home() {
   const { locale } = useParams();
@@ -179,14 +183,14 @@ function Amavine({
           src1="/artisan-wine-one-no-bg.png"
           alt1={
             locale === "ja"
-              ? "アルチザンマリアージュヴィンヤードワイン画像"
-              : "artisan mariage vineyards wine image"
+              ? "Artisan Mariage Vineyards画像"
+              : "Artisan Mariage Vineyards wine image"
           }
           src2="/artisan-wine-one-no-bg.png"
           alt2={
             locale === "ja"
-              ? "アルチザンマリアージュヴィンヤードワイン画像"
-              : "artisan mariage vineyards wine image"
+              ? "Artisan Mariage Vineyards画像"
+              : "Artisan Mariage Vineyards wine image"
           }
           left1=""
           left2="left-11"
@@ -231,12 +235,12 @@ function GroupDescription({
     >
       <p className="text-base">{description}</p>
       <Link
-        href={type === "kiyos" ? "/kiyos-celler" : "artisan-mariage-vineyards"}
+        href={`/${locale}/${
+          type === "kiyos" ? "kiyos-celler" : "artisan-mariage-vineyards"
+        }`}
         className={linkClassName}
       >
-        {locale === "ja"
-          ? `${getGroupNameFromType(locale, type)}について`
-          : `About ${getGroupNameFromType(locale, type)}`}
+        {getAboutName(locale, type)}
       </Link>
       <br />
       <Link href="" className={linkClassName}>
@@ -342,13 +346,11 @@ function NewsButtons({
   return (
     <div className="w-full flex flex- row text-sm right-[2%] gap-1 mt-3 justify-center">
       <NewsButton
-        locale={locale}
         type="kiyos"
         className={`${labelClassName} bg-yellow-500`}
         onClickType={onClickType}
       />
       <NewsButton
-        locale={locale}
         type="amavin"
         className={`${labelClassName}  bg-pink-600`}
         onClickType={onClickType}
@@ -358,12 +360,10 @@ function NewsButtons({
 }
 
 function NewsButton({
-  locale,
   type,
   className,
   onClickType,
 }: {
-  locale: TYPE_LOCALE;
   type: TYPE_GROUP;
   className: string;
   onClickType: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -376,9 +376,9 @@ function NewsButton({
         className={className}
         onClick={onClickType}
       >
-        {getShortenedGroupName(locale, type)}
+        {getShortenedGroupName(type)}
       </button>
-      <p>: {getGroupNameFromType(locale, type)}</p>
+      <p>: {getGroupNameFromType(type)}</p>
     </div>
   );
 }

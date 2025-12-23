@@ -1,13 +1,20 @@
+import { getAboutName, getContactName, getShopName } from "../helper";
+
 const href = "/artisan-mariage-vineyards";
-const commonKeywords = ["amavin"];
+const commonKeywords = [
+  "amavin",
+  "artisan mariage vineyards",
+  "アルチザンマリアージュヴィンヤード",
+  "アマヴィン",
+];
 
 export const about = {
   title: {
-    ja: "アルチザンマリアージュヴィンヤードについて",
-    en: "About Artisan Mariage Vineyards",
+    ja: getAboutName("ja", "amavin"),
+    en: getAboutName("en", "amavin"),
   },
   searchableText: {
-    ja: "アルチザンマリアージュヴィンヤードは、ワインの輸入販売を行うKiyos Cellerが立ち上げたヴィンヤードです。ソムリエエクセレンスの資格を持つ支配人が作るこだわりのワイン。ぜひご堪能下さい。",
+    ja: "Artisan Mariage Vineyardsは、ワインの輸入販売を行うKiyos Cellerが立ち上げたヴィンヤードです。ソムリエエクセレンスの資格を持つ支配人が作るこだわりのワイン。ぜひご堪能下さい。",
     en: "Artisan Mariage Vineyards is run by Kiyos Celler in which imports and sells wines from abroad. Please enjoy the wine the owner who is qualified as a Somlier excellence make with pride.",
   },
   href,
@@ -15,9 +22,9 @@ export const about = {
 };
 
 export const shop = {
-  title: { ja: "ショップ", en: "Shop" },
+  title: { ja: getShopName("ja"), en: getShopName("en") },
   searchableText: {
-    ja: "こちらのオンラインショップよりアルチザンマリアージュヴィンヤードの商品をご購入いただけます。オンラインショップはこちら",
+    ja: "こちらのオンラインショップよりArtisan Mariage Vineyardsの商品をご購入いただけます。オンラインショップはこちら",
     en: "You can purchase items of Artisan Mariage Vineyards from here. Online shope",
   },
   href,
@@ -25,7 +32,7 @@ export const shop = {
 };
 
 export const contact = {
-  title: { ja: "お問い合わせ", en: "Contact" },
+  title: { ja: getContactName("ja"), en: getContactName("en") },
   searchableText: {
     ja: "〒000-0000 山梨県北杜市明野町 artisanmariagevineyards@gmail.com",
     en: "000-0000 Akeno, Hokuto, Yamanashi, Japan artisanmariagevineyards@gmail.com",

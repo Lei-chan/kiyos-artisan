@@ -1,6 +1,15 @@
+//react
 import { RefObject } from "react";
-import { TYPE_GROUP, TYPE_LOCALE } from "../../type";
-import { getGroupNameFromType } from "../../helper";
+//type
+import { TYPE_GROUP, TYPE_LOCALE } from "../../config/type";
+//methods
+import {
+  getAboutName,
+  getContactName,
+  getGroupNameFromType,
+  getNewsName,
+  getShopName,
+} from "../../helper";
 
 export default function TitleNavLable({
   aboutRef,
@@ -36,7 +45,7 @@ export default function TitleNavLable({
           }`}
         >
           {type === "kiyos" || type === "amavin"
-            ? getGroupNameFromType(locale, type)
+            ? getGroupNameFromType(type)
             : type.slice(0, 1).toUpperCase() + type.slice(1)}
         </h1>
         {(type === "kiyos" || type === "amavin") &&
@@ -103,9 +112,7 @@ function Nav({
           className={btnClassName}
           onClick={handleClickAbout}
         >
-          {locale === "ja"
-            ? `${getGroupNameFromType(locale, type)}について`
-            : `About ${getGroupNameFromType(locale, type)}`}
+          {getAboutName(locale, type)}
         </button>
       </div>
       <div className={containerClassName}>
@@ -114,21 +121,21 @@ function Nav({
           className={btnClassName}
           onClick={handleClickShop}
         >
-          {locale === "ja" ? "ショップ" : "Shop"}
+          {getShopName(locale)}
         </button>
         <button
           type="button"
           className={btnClassName}
           onClick={handleClickNews}
         >
-          {locale === "ja" ? "お知らせ" : "News"}
+          {getNewsName(locale)}
         </button>
         <button
           type="button"
           className={btnClassName}
           onClick={handleClickContact}
         >
-          {locale === "ja" ? "お問い合わせ" : "Contact"}
+          {getContactName(locale)}
         </button>
       </div>
     </nav>

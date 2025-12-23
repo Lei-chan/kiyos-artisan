@@ -1,5 +1,5 @@
-import { historyPClassName } from "../../config";
-import { getHistoryForSearch } from "../../helper";
+import { historyPClassName } from "../config";
+import { getHistoryForSearch } from "../helper";
 
 export const historyKiyos = {
   2025: [

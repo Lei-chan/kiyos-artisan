@@ -1,7 +1,7 @@
 //react
 import React from "react";
 //type
-import { TYPE_LOCALE } from "../type";
+import { TYPE_LOCALE } from "../config/type";
 //components
 import TopBar from "./components/TopBar";
 import UpArrow from "./components/UpArrow";
@@ -24,7 +24,7 @@ export default async function LocaleLayout({
       <main>{children}</main>
       <UpArrow />
       <footer>
-        <Footer />
+        <Footer currentLocale={locale as TYPE_LOCALE} />
       </footer>
     </>
   );
