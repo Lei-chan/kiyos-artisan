@@ -25,16 +25,14 @@ export const historyAmavin = {
               src={`${amavinImagePath2019}12-16.webp`}
               alt="ヴィンヤード画像"
             />
-            <p className={historyPClassName}>
-              ヴィンヤードを借りて、初めてご対面。
-            </p>
+            <p className={historyPClassName}>畑を借りて、初めてご対面。</p>
           </>
         ),
         en: (
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2019}12-16.webp`}
-              alt="field image"
+              alt="vineyard image"
             />
             <p className={historyPClassName}>
               Started renting the field and saw it for the first time
@@ -43,7 +41,7 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "ヴィンヤードを借りて、初めてご対面。",
+        ja: "畑を借りて、初めてご対面。",
         en: "Started renting the field and saw it for the first time",
       },
     },
@@ -67,15 +65,15 @@ export const historyAmavin = {
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2020}3-16.webp`}
-              alt="mowed field image"
+              alt="mowed vineyard image"
             />
-            <p className={historyPClassName}>Mowed the field.</p>
+            <p className={historyPClassName}>Mowed the vineyard.</p>
           </>
         ),
       },
       searchableText: {
         ja: "ヴィンヤードの草刈りをしました。",
-        en: "Mowed the field",
+        en: "Mowed the vineyard",
       },
     },
     {
@@ -96,15 +94,15 @@ export const historyAmavin = {
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2020}5.webp`}
-              alt="mowed field image"
+              alt="mowed vineyard image"
             />
-            <p className={historyPClassName}>Mowed the field.</p>
+            <p className={historyPClassName}>Mowed the vineyard.</p>
           </>
         ),
       },
       searchableText: {
         ja: "ヴィンヤードの草刈りをしました。",
-        en: "Mowed the field",
+        en: "Mowed the vineyard",
       },
     },
   ],
@@ -133,7 +131,7 @@ export const historyAmavin = {
           <div className={historyMultiImageContainerClassName}>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}4-6.webp`}
-              alt="field with poles image"
+              alt="vineyard with poles image"
             ></HistoryDefaultImage>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}4-6(2).webp`}
@@ -219,7 +217,7 @@ export const historyAmavin = {
           <div className={historyMultiImageContainerClassName}>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}7-14.webp`}
-              alt="field with run wire"
+              alt="vineyard with run wire"
             />
             <HistoryDefaultImage
               src={`${amavinImagePath2021}7-31.webp`}
@@ -288,14 +286,14 @@ export const historyAmavin = {
               alt="vegetable garden image"
             />
             <p className={historyPClassName}>
-              Started a vegetable garden in the unused space of the field.
+              Started a vegetable garden in the unused space of the vineyard.
             </p>
           </>
         ),
       },
       searchableText: {
         ja: "空いているスペースで家庭菜園を始めました。",
-        en: "Started a vegetable garden in the unused space of the field.",
+        en: "Started a vegetable garden in the unused space of the vineyard.",
       },
     },
     {
@@ -412,15 +410,15 @@ export const historyAmavin = {
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2023}2-12.webp`}
-              alt="field covered with snow image"
+              alt="vineyard covered with snow image"
             />
-            <p className={historyPClassName}>Snow piled up on the field.</p>
+            <p className={historyPClassName}>Snow piled up on the vineyard.</p>
           </>
         ),
       },
       searchableText: {
         ja: "雪が積もりました。",
-        en: "Snow piled up on the field.",
+        en: "Snow piled up on the vineyard.",
       },
     },
     {
@@ -518,15 +516,15 @@ export const historyAmavin = {
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}2-7.webp`}
-              alt="field covered with snow"
+              alt="vineyard covered with snow"
             />
-            <p className={historyPClassName}>Snow piled up on the field.</p>
+            <p className={historyPClassName}>Snow piled up on the vineyard.</p>
           </>
         ),
       },
       searchableText: {
         ja: "ヴィンヤードに雪が積もりました。",
-        en: "Snow piled up on the field.",
+        en: "Snow piled up on the vineyard.",
       },
     },
     {
@@ -677,10 +675,11 @@ export const historyAmavin = {
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}7-15.webp`}
-              alt="field with tiger object image"
+              alt="vineyard with tiger object image"
             />
             <p className={historyPClassName}>
-              The tiger object have came to our field to prevent monkey damage.
+              The tiger object have came to our vineyard to prevent monkey
+              damage.
             </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}7.webp`}
@@ -694,7 +693,7 @@ export const historyAmavin = {
       },
       searchableText: {
         ja: "サル除け？のための、トラの置物がやってきました。新宿の伊勢丹さんで、ワインの販売を行いました。",
-        en: "The tiger object have came to our field to prevent monkey damage. Sold our wine at the Isetan store at Shinjuku.",
+        en: "The tiger object have came to our vineyard to prevent monkey damage. Sold our wine at the Isetan store at Shinjuku.",
       },
     },
     {
@@ -728,18 +727,18 @@ export const historyAmavin = {
               </p>
               <HistoryDefaultImage
                 src={`${amavinImagePath2024}8-29.webp`}
-                alt="foggy field image"
+                alt="foggy vineyard image"
               />
             </div>
             <p className={historyPClassName}>
-              Sometimes the field becomes foggy.
+              Sometimes the vineyard becomes foggy.
             </p>
           </>
         ),
       },
       searchableText: {
         ja: "ブドウの実がなり始めました。たまにヴィンヤードに霧がかかります。",
-        en: "The trees started having grapes. Sometimes the field becomes foggy.",
+        en: "The trees started having grapes. Sometimes the vineyard becomes foggy.",
       },
     },
     {
@@ -763,7 +762,7 @@ export const historyAmavin = {
               alt="eagle object image"
             />
             <p className={historyPClassName}>
-              The eagle object has come to protect our field from bird
+              The eagle object has come to protect our vineyard from bird
               damage?damage?
             </p>
           </>
@@ -771,7 +770,7 @@ export const historyAmavin = {
       },
       searchableText: {
         ja: "ブドウを食べる鳥よけ？のための、鷹のオブジェクトかやってきました。",
-        en: "  The eagle object has come to protect our field from bird damage?damage?",
+        en: "  The eagle object has come to protect our vineyard from bird damage?damage?",
       },
     },
     {
@@ -806,7 +805,7 @@ export const historyAmavin = {
               alt="glittering tape image"
             />
             <p className={historyPClassName}>
-              Set up the glittering tape in the field to prevent bird damage.
+              Set up the glittering tape in the vineyard to prevent bird damage.
             </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}10-21.webp`}
@@ -814,7 +813,7 @@ export const historyAmavin = {
             />
             <HistoryDefaultImage
               src={`${amavinImagePath2024}10-26.webp`}
-              alt="field with no grapes left image"
+              alt="vineyard with no grapes left image"
             />
             <p className={historyPClassName}>
               Harvested grapes. We could harvest 00 cases, 00 kg in total.
@@ -824,7 +823,7 @@ export const historyAmavin = {
       },
       searchableText: {
         ja: "ブドウを食べる鳥よけ？のためのキラキラテープを設置しました。ブドウの収穫を行いました。○○個・計○○ kg収穫しました。",
-        en: "Set up the glittering tape in the field to prevent bird damage. Harvested grapes. We could harvest 00 cases, 00 kg in total.",
+        en: "Set up the glittering tape in the vineyard to prevent bird damage. Harvested grapes. We could harvest 00 cases, 00 kg in total.",
       },
     },
     {
@@ -882,14 +881,14 @@ export const historyAmavin = {
               alt="brick kiln image"
             />
             <p className={historyPClassName}>
-              Built the brick klin at the entrance of the field.
+              Built the brick klin at the entrance of the vineyard.
             </p>
           </>
         ),
       },
       searchableText: {
         ja: "ヴィンヤードの入り口にレンガの窯を作りました。",
-        en: "Built the brick klin at the entrance of the field.",
+        en: "Built the brick klin at the entrance of the vineyard.",
       },
     },
     {
@@ -984,10 +983,10 @@ export const historyAmavin = {
             <p className={historyPClassName}>Put labels on clairet wines.</p>
             <HistoryDefaultImage
               src={`${amavinImagePath2025}3-20.webp`}
-              alt="field covered with snow image"
+              alt="vineyard covered with snow image"
             />
             <p className={historyPClassName}>
-              Snow piled up on the field in the end of March.
+              Snow piled up on the vineyard in the end of March.
             </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2025}3-22.webp`}
@@ -1007,7 +1006,7 @@ export const historyAmavin = {
       },
       searchableText: {
         ja: " 山々に光が当たり、山の端が連なって見えて幻想的です。クレーレワインにラベルを張りました。３月の後半に雪が積もりました。○○さんで扱っていただいているワインが残り僅かとなっていて嬉しいです。枝の。。。",
-        en: "Light striking on the mountains and you can see each mountain layer stack one by one. It's mystical. Put labels on clairet wines. Snow piled up on the field in the end of March. Our remaining wine in 00 shop are low on stock. We're happy about it. Snow piled up on the field in the end of March. Did branch 0000 ",
+        en: "Light striking on the mountains and you can see each mountain layer stack one by one. It's mystical. Put labels on clairet wines. Snow piled up on the vineyard in the end of March. Our remaining wine in 00 shop are low on stock. We're happy about it. Snow piled up on the vineyard in the end of March. Did branch 0000 ",
       },
     },
     {
@@ -1110,15 +1109,15 @@ export const historyAmavin = {
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2025}5-31.webp`}
-              alt="foggy field image"
+              alt="foggy vineyard image"
             />
-            <p className={historyPClassName}>The field is foggy.</p>
+            <p className={historyPClassName}>The vineyard is foggy.</p>
           </>
         ),
       },
       searchableText: {
         ja: "ヴィンヤードが霧がかっています。",
-        en: "The field is foggy.",
+        en: "The vineyard is foggy.",
       },
     },
     {
@@ -1193,7 +1192,7 @@ export const historyAmavin = {
             </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2025}7-13.webp`}
-              alt="field with rain cover image"
+              alt="vineyard with rain cover image"
             />
             <p>Set up the rain cover.</p>
             <HistoryDefaultImage
@@ -1263,7 +1262,7 @@ export const historyAmavin = {
             </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2025}8-23.webp`}
-              alt="field with bird net image"
+              alt="vineyard with bird net image"
             />
             <p className={historyPClassName}>
               Set up bird nets for bird damage.
@@ -1298,14 +1297,14 @@ export const historyAmavin = {
             />
             <p className={historyPClassName}>
               The machine that makes sounds to prevent animal damage have come
-              to our field.
+              to our vineyard.
             </p>
           </>
         ),
       },
       searchableText: {
         ja: "様々な動物による害を防ぐための音を出す機械がヴィンヤードにやってきました。",
-        en: "The machine that makes sounds to prevent animal damage have come to our field.",
+        en: "The machine that makes sounds to prevent animal damage have come to our vineyard.",
       },
     },
     {

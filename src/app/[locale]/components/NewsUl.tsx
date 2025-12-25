@@ -5,7 +5,7 @@ import { useState } from "react";
 import { TYPE_GROUP, TYPE_LOCALE, TYPE_NEWS } from "../../config/type";
 //models
 import { organizedNews } from "../../models/news";
-import { getShortenedGroupName } from "@/app/helper";
+import { getLocaleDate, getShortenedGroupName } from "@/app/helper";
 
 export default function NewsUl({
   locale,
@@ -36,16 +36,17 @@ function List({ locale, news }: { locale: TYPE_LOCALE; news: TYPE_NEWS }) {
 
   return (
     <li
-      className="relative w-full min-h-[20%] max-h-fit border-b-2 p-[1%] cursor-pointer"
+      className="relative w-full min-h-[20%] max-h-fit border-b-2 p-[1%] cursor-pointer flex flex-col"
       onClick={handleClickList}
     >
-      <div className="w-fit h-1/3 text-sm">
+      <div className="w-fit flex-1 text-sm flex flex-row items-center">
         {news.new && <span className="mr-[3%] text-purple-700">New</span>}
-        <span>
-          {new Intl.DateTimeFormat(locale).format(new Date(news.date))}
-        </span>
+        <span>{getLocaleDate(locale, news.date)}</span>
       </div>
-      <div className="w-full h-2/3 flex flex-row justify-evenly">
+      <div
+        className="w-full flex-[2] flex flex-row justify-evenly 
+      items-center"
+      >
         <span
           className={`${
             news.type === "kiyos"

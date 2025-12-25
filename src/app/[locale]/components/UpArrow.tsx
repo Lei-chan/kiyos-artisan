@@ -38,7 +38,7 @@ export default function UpArrow() {
       ></div>
       <button
         ref={buttonRef}
-        className={`fixed w-[8%] h-auto aspect-square bg-[url('/icons/up-arrow.svg')] bg-center bg-no-repeat bg-contain right-[2%] bottom-[2%] ${
+        className={`fixed w-8 sm:w-11 2xl:w-14 h-auto aspect-square bg-[url('/icons/up-arrow.svg')] bg-center bg-no-repeat bg-contain right-[2%] bottom-[2%] ${
           isDisplayed ? "opacity-100" : "opacity-0"
         }`}
         onClick={handleClickArrow}

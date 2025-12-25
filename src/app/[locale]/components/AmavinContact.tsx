@@ -1,26 +1,21 @@
+//components
+import ContactAddress from "./ContactAddress";
+import ContactEmail from "./contactEmail";
+//type
 import { TYPE_LOCALE } from "@/app/config/type";
-import Image from "next/image";
 
 export default function AmavinContact({ locale }: { locale: TYPE_LOCALE }) {
   return (
     <>
-      <p>
-        {locale === "ja" ? "〒" : ""}000-0000
-        <br />
-        {locale === "ja"
-          ? "山梨県北杜市明野町"
-          : "Akeno, Hokuto, Yamanashi, Japan"}
-      </p>
-      <div className="w-fit h-fit flex flex-row gap-[2%] items-start leading-tight">
-        <Image
-          src="/icons/email.svg"
-          alt={locale === "ja" ? "メールアイコン" : "email icon"}
-          width={15}
-          height={15}
-          className="mt-[2%]"
-        ></Image>
-        <p className="break-all">artisanmariagevineyards@gmail.com</p>
-      </div>
+      <ContactAddress
+        locale={locale}
+        postalCode="408-0204"
+        address={{
+          ja: "山梨県北杜市明野町上手永井原11805",
+          en: "Akenocho Uede Nagaihara 11805, Hokuto, Yamanashi, Japan",
+        }}
+      />
+      <ContactEmail locale={locale} email="artisanmariagevineyards@gmail.com" />
     </>
   );
 }

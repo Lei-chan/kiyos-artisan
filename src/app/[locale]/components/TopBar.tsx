@@ -24,9 +24,9 @@ export default function TopBar({
 
   return (
     <div className="grid w-full h-[24vh] bg-blue-900 grid-rows-2 relative">
-      {/* I'm gonna replace the p by a logo image later */}
+      {/* I'm gonna replace the h1 by a logo image later */}
       <h1
-        className="text-center text-[#ffe77c] pt-[2%] text-base cursor-pointer"
+        className="text-center text-[#ffe77c] text-base cursor-pointer self-center"
         onClick={handleClickLogo}
       >
         {getGroupNameFromType("kiyos")}
@@ -99,7 +99,7 @@ function Search({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
 function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
   const divClassName =
     "relative flex flex-col text-center items-center justify-center border-r border-blue-900 last:border-r-0";
-  const linkClassName = "pb-[1%] px-[1%] text-orange-300 w-full z-10";
+  const linkClassName = "pb-[1%] px-[8%] text-orange-300 w-full z-10";
   const hoverBgClassName = `transition-all duration-500 z-0`;
 
   const [kiyosHovered, setKiyosHovered] = useState(false);
@@ -142,9 +142,7 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
           href={`/${currentLocale}/kiyos-celler`}
           className={`${linkClassName}`}
         >
-          Kiyos
-          <br />
-          Celler
+          Kiyos Celler
         </Link>
       </div>
       <div

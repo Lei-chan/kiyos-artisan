@@ -61,10 +61,10 @@ function Slide({ locale }: { locale: TYPE_LOCALE }) {
           key={i}
           src={slide.src}
           alt={slide.alt[locale]}
-          width={1800}
-          height={1000}
+          width={2560}
+          height={1422}
           priority
-          className={`absolute w-[1800px] h-full object-cover transition duration-[2000ms] ease-in-out ${
+          className={`absolute w-[2560px] h-full object-cover transition duration-[2000ms] ease-in-out ${
             curImage === i ? "opacity-100" : "opacity-0"
           }`}
         ></Image>
@@ -75,7 +75,7 @@ function Slide({ locale }: { locale: TYPE_LOCALE }) {
 
 function Bottom({ locale }: { locale: TYPE_LOCALE }) {
   const containerClassName =
-    "w-full h-fit text-center mt-8 transition-all duration-[1200ms]";
+    "w-full h-fit text-center mt-[10%] min-[400px]:mt-[15%] transition-all duration-[1200ms]";
   const headerClassName = "text-2xl font-bold tracking-wider";
   const contentClassName = "w-full h-fit flex flex-row mt-6 px-[7%]";
   const slideInClassName = "transform duration-[2000ms]";
@@ -252,6 +252,7 @@ function GroupDescription({
   );
 }
 
+//from here!
 function GroupImages({
   type,
   src1,
@@ -273,7 +274,7 @@ function GroupImages({
   slideInClassName: string;
   inView: boolean;
 }) {
-  const image = "h-auto aspect-[1/4] object-cover absolute";
+  const image = "h-auto aspect-[1/4] object-cover relative w-[50px]";
 
   return (
     <div
@@ -291,7 +292,7 @@ function GroupImages({
         width={50}
         height={200}
         unoptimized
-        className={`${image} ${left1} w-[47px] -top-1`}
+        className={`${image} ${left1} -top-3 left-[20%]`}
       ></Image>
       <Image
         src={src2}
@@ -299,7 +300,7 @@ function GroupImages({
         width={50}
         height={200}
         unoptimized
-        className={`${image} ${left2} w-[50px]`}
+        className={`${image} ${left2}`}
       ></Image>
     </div>
   );

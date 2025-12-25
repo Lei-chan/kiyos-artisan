@@ -12,7 +12,7 @@ export default function Footer({
   currentLocale: TYPE_LOCALE;
 }) {
   return (
-    <footer className="bg-blue-900 w-full h-fit p-[4%] flex flex-col gap-2">
+    <footer className="bg-blue-900 w-full h-fit px-[4%] py-5 flex flex-col gap-2">
       <GroupInfo
         locale={currentLocale}
         type="kiyos"
@@ -41,9 +41,7 @@ function GroupInfo({
   return (
     <div className="w-full flex flex-row gap-[5%] justify-center">
       <div className="w-[65%] text-orange-300 text-sm text-left">
-        <p className="text-yellow-200">
-          {type === "kiyos" ? "Kiyos Celler" : "Artisan Mariage Vineyards"}
-        </p>
+        <p className="text-yellow-200">{getGroupNameFromType(type)}</p>
         {type === "kiyos" ? (
           <KiyosContact locale={locale} />
         ) : (
@@ -71,7 +69,7 @@ function LinkIcon({
   alt: string;
 }) {
   return (
-    <div className="relative w-[35%] h-auto aspect-square">
+    <div className="relative w-9 h-auto aspect-square">
       <Image src={src} alt={alt} fill></Image>
       <Link href={href} className="w-full h-full absolute"></Link>
     </div>
@@ -82,7 +80,7 @@ function NavFooter({ locale }: { locale: TYPE_LOCALE }) {
   const navLinkClassName = "w-1/3 hover:text-purple-200";
 
   return (
-    <nav className="w-full h-fit text-purple-300 text-xs underline flex flex-row text-center justify-between">
+    <nav className="w-full h-fit text-purple-300 text-xs underline flex flex-row text-center justify-between mt-2">
       <Link href={`/${locale}/kiyos-celler`} className={navLinkClassName}>
         {getGroupNameFromType("kiyos")}
       </Link>
