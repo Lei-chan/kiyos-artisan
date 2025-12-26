@@ -1,4 +1,5 @@
 //components
+import { contactContainerClassName } from "@/app/config/styles";
 import ContactAddress from "./ContactAddress";
 import ContactEmail from "./contactEmail";
 //type
@@ -6,7 +7,7 @@ import { TYPE_LOCALE } from "@/app/config/type";
 
 export default function AmavinContact({ locale }: { locale: TYPE_LOCALE }) {
   return (
-    <>
+    <div className={contactContainerClassName}>
       <ContactAddress
         locale={locale}
         postalCode="408-0204"
@@ -16,6 +17,6 @@ export default function AmavinContact({ locale }: { locale: TYPE_LOCALE }) {
         }}
       />
       <ContactEmail locale={locale} email="artisanmariagevineyards@gmail.com" />
-    </>
+    </div>
   );
 }

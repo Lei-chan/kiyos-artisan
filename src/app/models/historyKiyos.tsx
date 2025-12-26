@@ -1,4 +1,4 @@
-import { historyPClassName } from "../config";
+import { historyPClassName } from "../config/styles";
 import { getHistoryForSearch } from "../helper";
 
 export const historyKiyos = {

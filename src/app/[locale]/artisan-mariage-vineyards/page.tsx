@@ -4,15 +4,23 @@ import { RefObject, useRef } from "react";
 //next.js
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import dynamic from "next/dynamic";
 //models
 import { about, contact, shop } from "../../models/amavin";
+//styles
+import {
+  groupPageClassName,
+  groupPageContentContainerClassName,
+  groupPageSectionContainerClassName,
+} from "@/app/config/styles";
 //components
 import TitleNavLable from "../components/TitleNavLable";
 import NewsUl from "../components/NewsUl";
 import AmavinContact from "../components/AmavinContact";
-import { useParams } from "next/navigation";
+//type
 import { TYPE_LOCALE } from "@/app/config/type";
+//methods
 import { getNewsName } from "@/app/helper";
 
 //prevent a error for a client-side leaflet library map by avoiding the map to be rendered on server side
@@ -21,9 +29,7 @@ const MapWithNoSSR = dynamic(() => import("../components/AmavinMap"), {
 });
 
 export default function ArtisanMariageVineyards() {
-  const smallHeaderClassName = "text-lg text-pink-700 font-bold";
-  const containerClassName =
-    "w-full h-fit flex flex-col items-center mt-9 scroll-mt-4";
+  const smallHeaderClassName = "text-lg text-pink-700 font-bold px-[10%] mb-3";
 
   const { locale } = useParams();
   const aboutRef = useRef<HTMLDivElement | null>(null);
@@ -32,7 +38,7 @@ export default function ArtisanMariageVineyards() {
   const contactRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="w-screen min-h-screen max-h-fit bg-yellow-100/50 text-center">
+    <div className={groupPageClassName}>
       <TitleNavLable
         aboutRef={aboutRef}
         shopRef={shopRef}
@@ -42,29 +48,29 @@ export default function ArtisanMariageVineyards() {
         type="amavin"
         bgImageStyle="bg-[url('/artisan-clairet-for-sale.webp')]"
       />
-      <div className="w-full h-fit pt-2 pb-8">
+      <div className={groupPageContentContainerClassName}>
         <About
           ref={aboutRef}
           locale={(locale || "en") as TYPE_LOCALE}
-          containerClassName={containerClassName}
+          containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
         />
         <Shop
           ref={shopRef}
           locale={(locale || "en") as TYPE_LOCALE}
-          containerClassName={containerClassName}
+          containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
         />
         <News
           ref={newsRef}
           locale={(locale || "en") as TYPE_LOCALE}
-          containerClassName={containerClassName}
+          containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
         />
         <Contact
           ref={contactRef}
           locale={(locale || "en") as TYPE_LOCALE}
-          containerClassName={containerClassName}
+          containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
         />
       </div>
@@ -88,12 +94,12 @@ function About({
       <h2 className={smallHeaderClassName}>{about.title[locale]}</h2>
       <Image
         src="/artisan-clairet-for-sale.webp"
-        alt="Artisan mariage vineyards image"
-        width={180}
-        height={120}
-        className="w-[90%] h-auto aspect-[3/2] object-cover mt-3"
+        alt={`Artisan mariage vineyards${locale === "ja" ? "画像" : " image"}`}
+        width={600}
+        height={400}
+        className="w-[90%] md:w-[300px] lg:w-[400px] h-auto aspect-[3/2] object-cover"
       />
-      <p className="w-full h-fit p-[5%] text-base">
+      <p className="w-full h-fit mt-5 px-[5%] text-base">
         {about.searchableText[locale]}
       </p>
     </div>
@@ -114,7 +120,7 @@ function Shop({
   return (
     <div ref={ref} className={containerClassName}>
       <h2 className={smallHeaderClassName}>{shop.title[locale]}</h2>
-      <p className="w-full h-fit p-[5%] pt-[4%] text-base">
+      <p className="w-full h-fit p-[5%]text-base">
         {locale === "ja"
           ? "こちらのオンラインショップよりArtisan Mariage Vineyardsの商品をご購入いただけます。"
           : "You can purchase items of Artisan Mariage Vineyards from here."}
@@ -160,7 +166,7 @@ function Contact({
   return (
     <div ref={ref} className={containerClassName}>
       <h2 className={smallHeaderClassName}>{contact.title[locale]}</h2>
-      <div className="w-[90%] h-fit p-[5%] pt-[4%] text-base text-left">
+      <div className="w-[90%] h-fit text-base text-left flex flex-col gap-3 items-center">
         <MapWithNoSSR />
         <AmavinContact locale={locale} />
       </div>

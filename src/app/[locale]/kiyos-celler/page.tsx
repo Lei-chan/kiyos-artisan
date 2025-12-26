@@ -4,19 +4,27 @@ import { RefObject, useRef } from "react";
 //next.js
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 //models
 import { about, contact, shop } from "../../models/kiyos";
+//styles
+import {
+  groupPageClassName,
+  groupPageContentContainerClassName,
+  groupPageSectionContainerClassName,
+} from "@/app/config/styles";
 //components
 import TitleNavLable from "../components/TitleNavLable";
 import NewsUl from "../components/NewsUl";
 import KiyosContact from "../components/KiyosContact";
-import { useParams } from "next/navigation";
+//type
 import { TYPE_LOCALE } from "@/app/config/type";
+//methods
+import { getNewsName } from "@/app/helper";
 
 export default function KiyosCeller() {
-  const smallHeaderClassName = "text-lg text-yellow-600 font-bold";
-  const containerClassName =
-    "w-full h-fit flex flex-col items-center mt-9 scroll-mt-4";
+  const smallHeaderClassName =
+    "text-lg text-yellow-600 font-bold px-[10%] mb-3";
 
   const { locale } = useParams();
 
@@ -26,7 +34,7 @@ export default function KiyosCeller() {
   const contactRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="w-screen min-h-screen max-h-fit bg-yellow-100/50 text-center">
+    <div className={groupPageClassName}>
       <TitleNavLable
         aboutRef={aboutRef}
         shopRef={shopRef}
@@ -36,29 +44,29 @@ export default function KiyosCeller() {
         type="kiyos"
         bgImageStyle="bg-[url('/artisan-clairet-for-sale.webp')]"
       />
-      <div className="w-full h-fit pt-2 pb-8">
+      <div className={groupPageContentContainerClassName}>
         <About
           ref={aboutRef}
           locale={(locale || "en") as TYPE_LOCALE}
-          containerClassName={containerClassName}
+          containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
         />
         <Shop
           ref={shopRef}
           locale={(locale || "en") as TYPE_LOCALE}
-          containerClassName={containerClassName}
+          containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
         />
         <News
           ref={newsRef}
           locale={(locale || "en") as TYPE_LOCALE}
-          containerClassName={containerClassName}
+          containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
         />
         <Contact
           ref={contactRef}
           locale={(locale || "en") as TYPE_LOCALE}
-          containerClassName={containerClassName}
+          containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
         />
       </div>
@@ -82,10 +90,10 @@ function About({
       <h2 className={smallHeaderClassName}>{about.title[locale]}</h2>
       <Image
         src="/artisan-clairet-for-sale.webp"
-        alt={locale === "ja" ? "キヨズセラー画像" : "Kiyos Celler image"}
-        width={180}
-        height={120}
-        className="w-[90%] h-auto aspect-[3/2] object-cover mt-3"
+        alt={`Kiyos Celler${locale === "ja" ? "画像" : " image"}`}
+        width={600}
+        height={400}
+        className="w-[90%] md:w-[300px] lg:w-[400px] h-auto aspect-[3/2] object-cover"
       />
       <p className="w-full h-fit p-[5%] text-base">
         {about.searchableText[locale]}
@@ -134,9 +142,7 @@ function News({
 }) {
   return (
     <div ref={ref} className={containerClassName}>
-      <h2 className={smallHeaderClassName}>
-        {locale === "ja" ? "お知らせ" : "News"}
-      </h2>
+      <h2 className={smallHeaderClassName}>{getNewsName(locale)}</h2>
       <NewsUl locale={locale} type="kiyos" />
     </div>
   );
@@ -156,7 +162,7 @@ function Contact({
   return (
     <div ref={ref} className={containerClassName}>
       <h2 className={smallHeaderClassName}>{contact.title[locale]}</h2>
-      <div className="w-[90%] h-fit p-[5%] pt-[4%] text-base text-left">
+      <div className="w-[90%] h-fit text-base flex flex-col items-center">
         <KiyosContact locale={locale} />
       </div>
     </div>

@@ -2,7 +2,7 @@ import HistoryDefaultImage from "../[locale]/components/HistoryDefaultImage";
 import {
   historyMultiImageContainerClassName,
   historyPClassName,
-} from "../config";
+} from "../config/styles";
 import { getHistoryForSearch } from "../helper";
 
 const amavinImagePath = "/history/amavin/";

@@ -10,7 +10,7 @@ export default function ContactAddress({
   address: { ja: string; en: string };
 }) {
   return (
-    <p>
+    <p className="text-left">
       {locale === "ja" ? "〒" : ""}
       {postalCode}
       <br />

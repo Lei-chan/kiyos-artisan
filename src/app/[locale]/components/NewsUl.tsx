@@ -15,7 +15,7 @@ export default function NewsUl({
   type: "all" | TYPE_GROUP;
 }) {
   return (
-    <ul className="w-[85%] h-[60vh] border-2 mt-5 overflow-y-auto overflow-x-hidden bg-white rounded">
+    <ul className="w-[85%] md:w-[70%] lg:w-[60%] 2xl:w-[50%] h-[60vh] border-2 overflow-y-auto overflow-x-hidden bg-white rounded md:rounded-md lg:rounded-lg">
       {organizedNews
         .filter((news) => (type === "all" ? news : type === news.type))
         .map((news, i) => (

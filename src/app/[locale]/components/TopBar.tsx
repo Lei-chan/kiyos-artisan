@@ -26,7 +26,7 @@ export default function TopBar({
     <div className="grid w-full h-[24vh] bg-blue-900 grid-rows-2 relative">
       {/* I'm gonna replace the h1 by a logo image later */}
       <h1
-        className="text-center text-[#ffe77c] text-base cursor-pointer self-center"
+        className="text-center text-[#ffe77c] text-base  cursor-pointer self-center"
         onClick={handleClickLogo}
       >
         {getGroupNameFromType("kiyos")}
@@ -41,7 +41,7 @@ export default function TopBar({
 
 function LanguageSearch({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
   return (
-    <div className="absolute w-fit h-fit flex flex-row right-[1%] top-[3%] gap-[5%]">
+    <div className="absolute w-fit h-fit flex flex-row right-1 lg:right-2 top-1 lg:top-2 gap-1 lg:gap-2">
       <LanguageSelect currentLocale={currentLocale} />
       <Search currentLocale={currentLocale} />
     </div>
@@ -63,7 +63,7 @@ function LanguageSelect({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
 
   return (
     <select
-      className={`w-[35%] h-full mr-[3%] bg-transparent bg-[url('/icons/globe.svg')] bg-contain bg-center bg-no-repeat appearance-none text-sm  text-blue-900 text-transparent  focus:text-black`}
+      className={`w-5 h-full bg-transparent bg-[url('/icons/globe.svg')] bg-contain bg-center bg-no-repeat appearance-none text-sm  text-blue-900 text-transparent  focus:text-black`}
       value={currentLocale}
       onChange={handleChangeLanguage}
     >
@@ -84,7 +84,7 @@ function Search({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
     <>
       <button
         type="button"
-        className="w-[43%] aspect-square bg-[url('/icons/magnifying-glass.svg')] bg-[length:88%] bg-no-repeat bg-center"
+        className="w-6 aspect-square bg-[url('/icons/magnifying-glass.svg')] bg-[length:88%] bg-no-repeat bg-center"
         onClick={handleToggleSearch}
       ></button>
       <SearchOverlay

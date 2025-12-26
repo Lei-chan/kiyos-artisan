@@ -1,11 +1,14 @@
+//next.js
 import Image from "next/image";
+import Link from "next/link";
+//conponents
 import AmavinContact from "./AmavinContact";
 import KiyosContact from "./KiyosContact";
-import Link from "next/link";
-import { getGroupNameFromType } from "../../helper";
+//type
 import { TYPE_GROUP, TYPE_LOCALE } from "@/app/config/type";
+//methods
+import { getGroupNameFromType } from "../../helper";
 
-//footer
 export default function Footer({
   currentLocale,
 }: {
@@ -77,20 +80,23 @@ function LinkIcon({
 }
 
 function NavFooter({ locale }: { locale: TYPE_LOCALE }) {
-  const navLinkClassName = "w-1/3 hover:text-purple-200";
+  const navLinkClassName = "w-fit hover:text-purple-200";
 
   return (
-    <nav className="w-full h-fit text-purple-300 text-xs underline flex flex-row text-center justify-between mt-2">
-      <Link href={`/${locale}/kiyos-celler`} className={navLinkClassName}>
+    <nav className="w-full h-fit text-purple-300 text-xs underline flex flex-row text-center justify-center mt-2 gap-3">
+      <Link
+        href={`/${locale}/kiyos-celler`}
+        className={`${navLinkClassName} whitespace-nowrap`}
+      >
         {getGroupNameFromType("kiyos")}
       </Link>
       <Link
         href={`/${locale}/artisan-mariage-vineyards`}
-        className={navLinkClassName}
+        className={`${navLinkClassName} whitespace-normal`}
       >
         {getGroupNameFromType("amavin")}
       </Link>
-      <Link href="" className={navLinkClassName}>
+      <Link href="" className={`${navLinkClassName} whitespace-nowrap`}>
         Online Shop
       </Link>
     </nav>

@@ -82,9 +82,9 @@ function Nav({
   locale: TYPE_LOCALE;
   type: TYPE_GROUP;
 }) {
-  const containerClassName =
-    "w-full h-fit flex flex-row gap-[7%] justify-center";
-  const btnClassName = `w-fit underline text-sm ${
+  const navContainerGapLargerThanMd = "md:gap-5 xl:gap-7";
+  const containerClassName = `w-full md:w-fit h-fit flex flex-row justify-center gap-3 ${navContainerGapLargerThanMd}`;
+  const btnClassName = `w-fit underline text-sm whitespace-nowrap ${
     type === "kiyos" ? "text-orange-100" : "text-purple-100"
   }`;
 
@@ -105,7 +105,9 @@ function Nav({
   }
 
   return (
-    <nav className="w-full h-fit flex flex-col gap-[3%] justify-center items-start mt-2">
+    <nav
+      className={`w-full h-fit flex flex-col md:flex-row  justify-center items-start mt-[2%] gap-1 ${navContainerGapLargerThanMd}`}
+    >
       <div className={containerClassName}>
         <button
           type="button"

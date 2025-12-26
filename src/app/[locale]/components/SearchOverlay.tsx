@@ -165,10 +165,10 @@ function Result({
 
   return (
     <li
-      className="w-full h-1/3 border-b-2 py-[4%] px-[5%] flex flex-col gap-[3%] overflow-hidden hover:bg-slate-200"
+      className="w-full h-1/3 border-b-2 py-4 px-[5%] flex flex-col gap-[3%] overflow-hidden hover:bg-slate-200"
       onClick={handleClickResult}
     >
-      <h3 className="h-[25%] text-base lg:text-lg 2xl:text-2xl font-semibold text-blue-600 overflow-hidden text-ellipsis whitespace-nowrap">
+      <h3 className="min-h-[25%] max-h-fit text-base lg:text-lg 2xl:text-2xl font-semibold text-blue-600 overflow-hidden text-ellipsis whitespace-nowrap">
         {result.title[locale]}
       </h3>
       <p className="w-full h-[72%] break-all overflow-hidden text-sm lg:text-base 2xl:text-xl">

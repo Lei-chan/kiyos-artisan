@@ -17,23 +17,24 @@ export default function History() {
   const containerClassName =
     "w-full h-fit flex flex-col items-center mt-9 scroll-mt-4";
   const { locale } = useParams();
+  const currentLocale = (locale || "en") as TYPE_LOCALE;
 
   return (
-    <div className="w-screen min-h-screen max-h-fit  bg-yellow-100/50 text-center">
+    <div className="w-full min-h-screen max-h-fit  bg-yellow-100/50 text-center flex flex-col items-center">
       <TitleNavLable
-        locale={(locale || "en") as TYPE_LOCALE}
+        locale={currentLocale}
         type="history"
         bgImageStyle="bg-[url('/mountains-from-field.webp')]"
       />
-      <div className="w-full h-fit pb-14">
+      <div className="w-full md:w-[90%] lg:w-[80%] xl:w-[70%] h-fit pb-14">
         <GroupHistory
-          locale={(locale || "en") as TYPE_LOCALE}
+          locale={currentLocale}
           type="kiyos"
           smallHeaderClassName={smallHeaderClassName}
           containerClassName={containerClassName}
         />
         <GroupHistory
-          locale={(locale || "en") as TYPE_LOCALE}
+          locale={currentLocale}
           type="amavin"
           smallHeaderClassName={smallHeaderClassName}
           containerClassName={containerClassName}

@@ -19,12 +19,21 @@ import {
   getGroupNameFromType,
   getShortenedGroupName,
 } from "../helper";
+import Loading from "./loading";
 
 export default function Home() {
   const { locale } = useParams();
+  const [displayLoading, setDisplayLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDisplayLoading(false);
+    }, 3000);
+  }, []);
 
   return (
-    <div className="w-screen h-[100%]">
+    <div className="w-full h-[100%]">
+      {displayLoading && <Loading />}
       <Top locale={(locale || "en") as TYPE_LOCALE} />
       <Bottom locale={(locale || "en") as TYPE_LOCALE} />
     </div>
@@ -75,15 +84,19 @@ function Slide({ locale }: { locale: TYPE_LOCALE }) {
 
 function Bottom({ locale }: { locale: TYPE_LOCALE }) {
   const containerClassName =
-    "w-full h-fit text-center mt-[10%] min-[400px]:mt-[15%] transition-all duration-[1200ms]";
+    "w-full md:w-[90%] lg:w-[80%] h-fit text-center mt-10 transition-all duration-[1200ms]";
   const headerClassName = "text-2xl font-bold tracking-wider";
-  const contentClassName = "w-full h-fit flex flex-row mt-6 px-[7%]";
+  const contentClassName =
+    "w-full h-fit flex flex-row mt-6 md:mt-5 px-[7%] gap-5 justify-center items-center";
   const slideInClassName = "transform duration-[2000ms]";
 
   const buttomRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div ref={buttomRef} className="w-screen h-fit">
+    <div
+      ref={buttomRef}
+      className="w-full h-fit flex flex-col items-center mt-6"
+    >
       <Kiyos
         locale={locale}
         containerClassName={containerClassName}
@@ -225,7 +238,7 @@ function GroupDescription({
   const linkClassName = "text-sm text-purple-700 underline";
   return (
     <div
-      className={`${slideInClassName} w-[55%] h-fit ${
+      className={`${slideInClassName} w-[60%] h-fit ${
         inView
           ? "translate-x-0"
           : type === "kiyos"
@@ -252,7 +265,6 @@ function GroupDescription({
   );
 }
 
-//from here!
 function GroupImages({
   type,
   src1,
@@ -274,11 +286,12 @@ function GroupImages({
   slideInClassName: string;
   inView: boolean;
 }) {
-  const image = "h-auto aspect-[1/4] object-cover relative w-[50px]";
+  const image =
+    "h-auto aspect-[1/4] object-cover relative w-[47px] md:w-[57px] xl:w-[67px]";
 
   return (
     <div
-      className={`${slideInClassName} w-[45%] h-fit flex flex-row relative ${
+      className={`${slideInClassName} w-[30%] h-fit flex flex-row justify-center relative ${
         inView
           ? "translate-x-0"
           : type === "kiyos"
@@ -289,24 +302,23 @@ function GroupImages({
       <Image
         src={src1}
         alt={alt1}
-        width={50}
-        height={200}
+        width={100}
+        height={400}
         unoptimized
-        className={`${image} ${left1} -top-3 left-[20%]`}
+        className={`${image} ${left1} -top-3 left-[0%]`}
       ></Image>
       <Image
         src={src2}
         alt={alt2}
-        width={50}
-        height={200}
+        width={100}
+        height={400}
         unoptimized
-        className={`${image} ${left2}`}
+        className={`${image} ${left2} left-[0%]`}
       ></Image>
     </div>
   );
 }
 
-//news
 function News({ locale }: { locale: TYPE_LOCALE }) {
   const [type, setType] = useState<"all" | TYPE_GROUP>("all");
 
@@ -322,30 +334,28 @@ function News({ locale }: { locale: TYPE_LOCALE }) {
   }
 
   return (
-    <div className="relative w-full h-fit mt-12 flex flex-col items-center bg-yellow-100 py-5">
+    <div className="relative w-full h-fit mt-12 flex flex-col items-center bg-yellow-100 py-[5%]">
       <h1
-        className="text-center text-xl font-bold tracking-wider text-blue-900 cursor-pointer"
+        className="text-center text-xl font-bold tracking-wider text-blue-900 cursor-pointer mb-4"
         onClick={handleClickHeader}
       >
         {locale === "ja" ? "ニュース" : "News"}
       </h1>
       <NewsUl locale={locale} type={type} />
-      <NewsButtons locale={locale} onClickType={handleClickType} />
+      <NewsButtons onClickType={handleClickType} />
     </div>
   );
 }
 
 function NewsButtons({
-  locale,
   onClickType,
 }: {
-  locale: TYPE_LOCALE;
   onClickType: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
   const labelClassName = "w-fit h-fit text-white p-[1px] rounded";
 
   return (
-    <div className="w-full flex flex- row text-sm right-[2%] gap-1 mt-3 justify-center">
+    <div className=" flex flex-row text-sm  mt-6 w-full md:w-[70%] lg:w-[60%] 2xl:w-[50%] justify-center md:justify-end gap-1 md:gap-5">
       <NewsButton
         type="kiyos"
         className={`${labelClassName} bg-yellow-500`}
@@ -370,7 +380,7 @@ function NewsButton({
   onClickType: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
   return (
-    <div className="flex flex-row w-[50%] h-fit gap-1 justify-center">
+    <div className="flex flex-row w-[50%] md:w-fit h-fit gap-1 justify-center">
       <button
         type="button"
         name={type}
@@ -379,7 +389,7 @@ function NewsButton({
       >
         {getShortenedGroupName(type)}
       </button>
-      <p>: {getGroupNameFromType(type)}</p>
+      <span>: {getGroupNameFromType(type)}</span>
     </div>
   );
 }
