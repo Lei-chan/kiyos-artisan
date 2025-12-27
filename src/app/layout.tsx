@@ -1,12 +1,7 @@
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import { Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 import React from "react";
-
-export const metadata: Metadata = {
-  title: "Artisan Marriage Vineyards, Kiyos Celler",
-  description: "",
-};
 
 export const viewport: Viewport = {
   width: "device-width",

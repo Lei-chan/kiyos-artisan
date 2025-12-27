@@ -19,6 +19,8 @@ export default function History() {
   const { locale } = useParams();
   const currentLocale = (locale || "en") as TYPE_LOCALE;
 
+  console.log(currentLocale);
+
   return (
     <div className="w-full min-h-screen max-h-fit  bg-yellow-100/50 text-center flex flex-col items-center">
       <TitleNavLable
