@@ -111,38 +111,34 @@ export const historyAmavin = {
       month: 4,
       content: {
         ja: (
-          <div className={historyMultiImageContainerClassName}>
+          <>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}4-6.webp`}
               alt="支柱が立った後のヴィンヤード画像"
             ></HistoryDefaultImage>
+            <p className={historyPClassName}>支柱が立ちました。</p>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}4-6(2).webp`}
               alt="苗木画像"
             />
-            <p className={historyPClassName}>
-              支柱が立ちました。
-              <br />
-              ○○と○○の苗木を○○本植えました。
-            </p>
-          </div>
+            <p className={historyPClassName}>○○と○○の苗木を○○本植えました。</p>
+          </>
         ),
         en: (
-          <div className={historyMultiImageContainerClassName}>
+          <>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}4-6.webp`}
               alt="vineyard with poles image"
             ></HistoryDefaultImage>
+            <p className={historyPClassName}>Set up poles.</p>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}4-6(2).webp`}
               alt="saplings image"
             />
             <p className={historyPClassName}>
-              Set up poles.
-              <br />
               Planted ○○ saplings of ○○ and ○○.
             </p>
-          </div>
+          </>
         ),
       },
       searchableText: {
@@ -154,38 +150,36 @@ export const historyAmavin = {
       month: 6,
       content: {
         ja: (
-          <div className={historyMultiImageContainerClassName}>
+          <>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}6-20.webp`}
               alt="成長している苗木と葉っぱ画像"
             />
+            <p className={historyPClassName}>
+              苗木がすくすく成長して、葉ができ始めました。
+            </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}6-30.webp`}
               alt="きじ画像"
             />
-            <p className={historyPClassName}>
-              苗木がすくすく成長して、葉ができ始めました。
-              <br />
-              きじを発見しました。
-            </p>
-          </div>
+            <p className={historyPClassName}>きじを発見しました。</p>
+          </>
         ),
         en: (
-          <div className={historyMultiImageContainerClassName}>
+          <>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}6-20.webp`}
               alt="growings saplings with leaves image"
             />
+            <p className={historyPClassName}>
+              The saplings have been growing and started having leaves.
+            </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}6-30.webp`}
               alt="pheasant image"
             />
-            <p className={historyPClassName}>
-              The saplings have been growing and started having leaves.
-              <br />
-              Found a phesant.
-            </p>
-          </div>
+            <p className={historyPClassName}>Found a phesant.</p>
+          </>
         ),
       },
       searchableText: {
@@ -197,38 +191,40 @@ export const historyAmavin = {
       month: 7,
       content: {
         ja: (
-          <div className={historyMultiImageContainerClassName}>
+          <>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}7-14.webp`}
               alt="ワイヤー張り後のヴィンヤード画像"
             />
+            <p className={historyPClassName}>
+              支柱の一番下の段にワイヤーを張りました。
+            </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}7-31.webp`}
               alt="成長しているブドウ達画像"
             />
             <p className={historyPClassName}>
-              支柱の一番下の段にワイヤーを張りました。
-              <br />
               ブドウ達はすくすく成長しています。
             </p>
-          </div>
+          </>
         ),
         en: (
-          <div className={historyMultiImageContainerClassName}>
+          <>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}7-14.webp`}
               alt="vineyard with run wire"
             />
+            <p className={historyPClassName}>
+              Run wire for the bottom line of the poles.
+            </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}7-31.webp`}
               alt="growing grape trees image"
             />
             <p className={historyPClassName}>
-              Run wire for the bottom line of the poles.
-              <br />
               The grapes have been growing well.
             </p>
-          </div>
+          </>
         ),
       },
       searchableText: {
@@ -425,39 +421,41 @@ export const historyAmavin = {
       month: 3,
       content: {
         ja: (
-          <div className={historyMultiImageContainerClassName}>
+          <>
             <HistoryDefaultImage
               src={`${amavinImagePath2023}3-15.webp`}
               alt="枝の断面から出る水滴画像"
             />
+            <p className={historyPClassName}>
+              冬が終わり、ブドウ達が元気なことを示す水滴が出ています。
+            </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2023}3-19.webp`}
               alt="頂上付近が雪に覆われる甲斐駒ヶ岳画像"
             />
             <p className={historyPClassName}>
-              冬が終わり、ブドウ達が元気なことを示す水滴が出ています。
-              <br />
               甲斐駒ヶ岳の上に雪がかぶり、とても綺麗です。
             </p>
-          </div>
+          </>
         ),
         en: (
-          <div className={historyMultiImageContainerClassName}>
+          <>
             <HistoryDefaultImage
               src={`${amavinImagePath2023}3-15.webp`}
               alt="water drop coming out of branch cross-section image"
             />
+            <p className={historyPClassName}>
+              Winter is over. Water drop that shows grapes are alive is coming
+              out of a branch cross-section.
+            </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2023}3-19.webp`}
               alt="Mt.Kaikomagatake with the top covered with snow image"
             />
             <p className={historyPClassName}>
-              Winter is over. Water drop that shows grapes are alive is coming
-              out of a branch cross-section.
-              <br />
               Mt.Kaikomagatake with snow on top is very beatiful.
             </p>
-          </div>
+          </>
         ),
       },
       searchableText: {
@@ -1438,6 +1436,54 @@ export const historyAmavin = {
       searchableText: {
         ja: "１０月に収穫し置いてあった？ブドウを絞りました。搾りかすはヴィンヤードに返しました。 ００年に収穫し寝かせていたワインの瓶詰を行いました。",
         en: "Pressed the grapes harvested in this October and stored. The pomace was returned to the vineyard. Filled the wine made with the grapes harvested in 00 fall and aged.",
+      },
+    },
+    {
+      month: 12,
+      content: {
+        ja: (
+          <>
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}12-21.webp`}
+              alt="レインガードが片付けられている途中のヴィンヤード"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}12-28.webp`}
+              alt="レインガードと防鳥ネットが片付けられている途中のヴィンヤード"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}12-28(2).webp`}
+              alt="レインガードと防鳥ネットが片付けられたヴィンヤード"
+            />
+            <p className={historyPClassName}>
+              レインガードと防鳥ネットの片付けと手入れを行い、無事完了しました。
+            </p>
+          </>
+        ),
+        en: (
+          <>
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}12-21.webp`}
+              alt="vineyard where the rain covers are being removed"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}12-28.webp`}
+              alt="vineyard where the rain covers and bird damage net are being removed"
+            />
+            <HistoryDefaultImage
+              src={`${amavinImagePath2025}12-28(2).webp`}
+              alt="vineyard after the rain covers and the bird damage net were removed"
+            />
+            <p className={historyPClassName}>
+              We finished removing and cleaning the vineyard&apos;s rain covers
+              and bird damage net.
+            </p>
+          </>
+        ),
+      },
+      searchableText: {
+        ja: "レインガードと防鳥ネットの片付けと手入れを行い、無事完了しました。",
+        en: "We finished removing and cleaning the vineyard's rain covers and bird damage net.",
       },
     },
   ],

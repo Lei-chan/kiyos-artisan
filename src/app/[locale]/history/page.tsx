@@ -144,7 +144,7 @@ function YearHistory({
               />
             ))}
           </div>
-          <div className="w-full h-fit flex flex-row justify-center mt-2 mb-4 gap-1">
+          <div className="w-full h-fit flex flex-row justify-center mt-2 mb-4 gap-1 px-[2%] flex-wrap">
             {monthsArr.map((history, i) => (
               <button
                 key={i}
