@@ -25,7 +25,9 @@ export const historyAmavin = {
               src={`${amavinImagePath2019}12-16.webp`}
               alt="ヴィンヤード画像"
             />
-            <p className={historyPClassName}>畑を借りて、初めてご対面。</p>
+            <p className={historyPClassName}>
+              明野町のテロワールを信じ、定植を決意。標高750mにある、39aの畑を借りました。
+            </p>
           </>
         ),
         en: (
@@ -34,14 +36,16 @@ export const historyAmavin = {
               src={`${amavinImagePath2019}12-16.webp`}
               alt="vineyard image"
             />
+
             <p className={historyPClassName}>
+              {/* change */}
               Started renting the field and saw it for the first time
             </p>
           </>
         ),
       },
       searchableText: {
-        ja: "畑を借りて、初めてご対面。",
+        ja: "明野町のテロワールを信じ、定植を決意。標高750mにある、39aの畑を借りました。",
         en: "Started renting the field and saw it for the first time",
       },
     },
@@ -86,7 +90,7 @@ export const historyAmavin = {
               alt="草刈り後のヴィンヤード画像"
             />
             <p className={historyPClassName}>
-              ヴィンヤードの草刈りをしました。
+              気に入ったクローンの苗木が手に入らず、2020年度はヴィンヤードの草生栽培の準備を開始。
             </p>
           </>
         ),
@@ -96,12 +100,15 @@ export const historyAmavin = {
               src={`${amavinImagePath2020}5.webp`}
               alt="mowed vineyard image"
             />
-            <p className={historyPClassName}>Mowed the vineyard.</p>
+            <p className={historyPClassName}>
+              {/* change */}
+              Mowed the vineyard.
+            </p>
           </>
         ),
       },
       searchableText: {
-        ja: "ヴィンヤードの草刈りをしました。",
+        ja: "気に入ったクローンの苗木が手に入らず、2020年度はヴィンヤードの草生栽培の準備を開始。",
         en: "Mowed the vineyard",
       },
     },
@@ -121,7 +128,9 @@ export const historyAmavin = {
               src={`${amavinImagePath2021}4-6(2).webp`}
               alt="苗木画像"
             />
-            <p className={historyPClassName}>○○と○○の苗木を○○本植えました。</p>
+            <p className={historyPClassName}>
+              カベルネ・フランの苗木を114本、シラー＆シラーズの苗木を423本定植しました。
+            </p>
           </>
         ),
         en: (
@@ -136,13 +145,14 @@ export const historyAmavin = {
               alt="saplings image"
             />
             <p className={historyPClassName}>
+              {/* change */}
               Planted ○○ saplings of ○○ and ○○.
             </p>
           </>
         ),
       },
       searchableText: {
-        ja: "支柱が立ちました。○○と○○の苗木を○○本植えました。",
+        ja: "支柱が立ちました。カベルネ・フランの苗木を114本、シラー＆シラーズの苗木を423本定植しました。",
         en: "Set up poles. Planted ○○ saplings of ○○ and ○○.",
       },
     },
@@ -156,13 +166,15 @@ export const historyAmavin = {
               alt="成長している苗木と葉っぱ画像"
             />
             <p className={historyPClassName}>
-              苗木がすくすく成長して、葉ができ始めました。
+              苗木が成長して、新梢が伸びてきました。
             </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}6-30.webp`}
               alt="きじ画像"
             />
-            <p className={historyPClassName}>きじを発見しました。</p>
+            <p className={historyPClassName}>
+              きじをはじめ、野鳥たちも遊びに来てくれています
+            </p>
           </>
         ),
         en: (
@@ -171,6 +183,7 @@ export const historyAmavin = {
               src={`${amavinImagePath2021}6-20.webp`}
               alt="growings saplings with leaves image"
             />
+            {/* change */}
             <p className={historyPClassName}>
               The saplings have been growing and started having leaves.
             </p>
@@ -183,7 +196,7 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "苗木がすくすく成長して、葉ができ始めました。きじを発見しました。",
+        ja: "苗木が成長して、新梢が伸びてきました。きじをはじめ、野鳥たちも遊びに来てくれています。",
         en: "The saplings have been growing and started having leaves. Found a phesant.",
       },
     },
@@ -197,7 +210,7 @@ export const historyAmavin = {
               alt="ワイヤー張り後のヴィンヤード画像"
             />
             <p className={historyPClassName}>
-              支柱の一番下の段にワイヤーを張りました。
+              支柱の一番下の段にワイヤー(ベースワイヤー)を張りました。
             </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}7-31.webp`}
@@ -215,6 +228,7 @@ export const historyAmavin = {
               alt="vineyard with run wire"
             />
             <p className={historyPClassName}>
+              {/* change */}
               Run wire for the bottom line of the poles.
             </p>
             <HistoryDefaultImage
@@ -228,7 +242,7 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "支柱の一番下の段にワイヤーを張りました。ブドウ達はすくすく成長しています。",
+        ja: "支柱の一番下の段にワイヤー(ベースワイヤー)を張りました。ブドウ達はすくすく成長しています。",
         en: "Run wire for the bottom line of the poles. The grapes have been growing well.",
       },
     },
@@ -241,7 +255,9 @@ export const historyAmavin = {
               src={`${amavinImagePath2021}8-25.webp`}
               alt="ブドウがなっている木画像"
             />
-            <p className={historyPClassName}>木にブドウがなり始めました。</p>
+            <p className={historyPClassName}>
+              初なりの実がヴェレゾンに入りました。
+            </p>
           </>
         ),
         en: (
@@ -251,13 +267,14 @@ export const historyAmavin = {
               alt="tree with grapes image"
             />
             <p className={historyPClassName}>
+              {/* change */}
               The trees started having grapes.
             </p>
           </>
         ),
       },
       searchableText: {
-        ja: "木にブドウがなり始めました。",
+        ja: "初なりの実がヴェレゾンに入りました。",
         en: "The trees started having grapes.",
       },
     },
@@ -271,7 +288,7 @@ export const historyAmavin = {
               alt="家庭菜園画像"
             />
             <p className={historyPClassName}>
-              空いているスペースで家庭菜園を始めました。
+              空いているスペースで野菜作りを始めました。
             </p>
           </>
         ),
@@ -282,14 +299,14 @@ export const historyAmavin = {
               alt="vegetable garden image"
             />
             <p className={historyPClassName}>
-              Started a vegetable garden in the unused space of the vineyard.
+              Started growing vegetables in the unused space of the vineyard.
             </p>
           </>
         ),
       },
       searchableText: {
-        ja: "空いているスペースで家庭菜園を始めました。",
-        en: "Started a vegetable garden in the unused space of the vineyard.",
+        ja: "空いているスペースで野菜作りを始めました。",
+        en: " Started growing vegetables in the unused space of the vineyard.",
       },
     },
     {
@@ -302,7 +319,7 @@ export const historyAmavin = {
               alt="元気いっぱいなベビーリーフ画像"
             />
             <p className={historyPClassName}>
-              家庭菜園のベビーリーフは元気いっぱいです。
+              野菜園のベビーリーフも元気いっぱいです。
             </p>
           </>
         ),
@@ -319,7 +336,7 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "家庭菜園のベビーリーフは元気いっぱいです。",
+        ja: "野菜園のベビーリーフは元気いっぱいです。",
         en: "The babyleaves grown in the vegetable garden are energetic.",
       },
     },
@@ -330,10 +347,10 @@ export const historyAmavin = {
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2021}12-10.webp`}
-              alt="カバーを付けたブドウの木達画像"
+              alt="カバーを付けたブドウの樹画像"
             />
             <p className={historyPClassName}>
-              ブドウの木達を寒さから守るためのカバーを付けました。
+              ブドウの樹を寒さから守るためのカバー(グローチューブ)を付けました。
             </p>
           </>
         ),
@@ -344,6 +361,7 @@ export const historyAmavin = {
               alt="grape trees with cover"
             />
             <p className={historyPClassName}>
+              {/* chaｎge */}
               Put a cover around the grape trees to protect them for the coming
               winter.
             </p>
@@ -351,7 +369,7 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "ブドウの木達を寒さから守るためのカバーを付けました。",
+        ja: "ブドウの樹を寒さから守るためのカバー(グローチューブ)を付けました。",
         en: "Put a cover around the grape trees to protect them for the coming winter.",
       },
     },
@@ -364,10 +382,10 @@ export const historyAmavin = {
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2022}10-9.webp`}
-              alt="落としたブドウ達画像"
+              alt="落としたブドウ画像"
             />
             <p className={historyPClassName}>
-              ブドウ達を落とし、より成長させます。
+              初収穫のブドウの果実。より樹の成長を促すためにほとんど落としてしまいました。
             </p>
           </>
         ),
@@ -378,13 +396,14 @@ export const historyAmavin = {
               alt="cut grapes image"
             />
             <p className={historyPClassName}>
+              {/* change */}
               Cut grapes to make them grow more.
             </p>
           </>
         ),
       },
       searchableText: {
-        ja: "ブドウ達を落とし、より成長させます。",
+        ja: "初収穫のブドウの果実。より樹の成長を促すためにほとんど落としてしまいました。",
         en: "Cut grapes to make them grow more.",
       },
     },
@@ -427,19 +446,20 @@ export const historyAmavin = {
               alt="枝の断面から出る水滴画像"
             />
             <p className={historyPClassName}>
-              冬が終わり、ブドウ達が元気なことを示す水滴が出ています。
+              冬が終わり暖かくなってきたことで、ブドウ樹が揚水を始めました。
             </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2023}3-19.webp`}
-              alt="頂上付近が雪に覆われる甲斐駒ヶ岳画像"
+              alt="頂上付近が雪に覆われる八ヶ岳画像"
             />
             <p className={historyPClassName}>
-              甲斐駒ヶ岳の上に雪がかぶり、とても綺麗です。
+              快晴の空に、八ヶ岳がまぶしく写ります。
             </p>
           </>
         ),
         en: (
           <>
+            {/* change */}
             <HistoryDefaultImage
               src={`${amavinImagePath2023}3-15.webp`}
               alt="water drop coming out of branch cross-section image"
@@ -450,7 +470,7 @@ export const historyAmavin = {
             </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2023}3-19.webp`}
-              alt="Mt.Kaikomagatake with the top covered with snow image"
+              alt="Mt.Yatsugatake with the top covered with snow image"
             />
             <p className={historyPClassName}>
               Mt.Kaikomagatake with snow on top is very beatiful.
@@ -459,40 +479,15 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "冬が終わり、ブドウ達が元気なことを示す水滴が出ています。甲斐駒ヶ岳の上に雪がかぶり、とても綺麗です。",
+        ja: "冬が終わり暖かくなってきたことで、ブドウ樹が揚水を始めました。快晴の空に、八ヶ岳がまぶしく写ります。",
         en: "Winter is over. Water drop that shows grapes are alive is coming out of a branch cross-section. Mt.Kaikomagatake with snow on top is very beatiful.",
       },
     },
+    //later
     {
-      month: 7,
-      content: {
-        ja: (
-          <>
-            <HistoryDefaultImage
-              src={`${amavinImagePath2023}7-14.webp`}
-              alt="横になっているブドウの木画像"
-            />
-            <p className={historyPClassName}>
-              成長したブドウの木達を横に倒し始めました。
-            </p>
-          </>
-        ),
-        en: (
-          <>
-            <HistoryDefaultImage
-              src={`${amavinImagePath2023}7-14.webp`}
-              alt="grape trees laid horizontally"
-            />
-            <p className={historyPClassName}>
-              Laid the grown up grape trees horizontally.
-            </p>
-          </>
-        ),
-      },
-      searchableText: {
-        ja: "成長したブドウ達を横に倒し始めました。",
-        en: "Laid the grown up grape trees horizontally.",
-      },
+      month: 10,
+      content: { ja: <></>, en: <></> },
+      searchableText: { ja: "", en: "" },
     },
   ],
   2024: [
@@ -505,9 +500,7 @@ export const historyAmavin = {
               src={`${amavinImagePath2024}2-7.webp`}
               alt="雪が積もったヴィンヤード画像"
             />
-            <p className={historyPClassName}>
-              ヴィンヤードに雪が積もりました。
-            </p>
+            <p className={historyPClassName}>今年も雪が積もりました。</p>
           </>
         ),
         en: (
@@ -516,13 +509,15 @@ export const historyAmavin = {
               src={`${amavinImagePath2024}2-7.webp`}
               alt="vineyard covered with snow"
             />
-            <p className={historyPClassName}>Snow piled up on the vineyard.</p>
+            <p className={historyPClassName}>
+              Snow piled up on the vineyard this year too.
+            </p>
           </>
         ),
       },
       searchableText: {
-        ja: "ヴィンヤードに雪が積もりました。",
-        en: "Snow piled up on the vineyard.",
+        ja: "今年も雪が積もりました。",
+        en: "Snow piled up on the vineyard this year too.",
       },
     },
     {
@@ -532,29 +527,34 @@ export const historyAmavin = {
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}4-7.webp`}
-              alt="saplings images"
+              alt="苗木画像"
             />
-            <p className={historyPClassName}>○○と○○の苗木を○○本植えました。</p>
+            <p className={historyPClassName}>
+              グルナッシュの苗木37本を定植し、カベルネ・フランの苗木20本、シラー＆シラーズの苗木13本を捕植しました。
+            </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}4-17.webp`}
-              alt="branch image"
+              alt="ブドウの芽画像"
             />
-            <p className={historyPClassName}>ブドウの枝を。</p>
+            <p className={historyPClassName}>
+              暖かくなってきて、ブドウの芽が膨らみ始めました。
+            </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}4-29.webp`}
-              alt="machines for filling bottles with wine image"
+              alt="ワインの瓶詰の機械画像"
             />
             <HistoryDefaultImage
               src={`${amavinImagePath2024}4-29(2).webp`}
-              alt="filled bottles image"
+              alt="瓶詰め後のワイン画像"
             />
             <p className={historyPClassName}>
-              ○○年に収穫したブドウのワインの瓶詰を行いました。
+              2023年に初収穫したブドウのワインの瓶詰を164本行いました。
             </p>
           </>
         ),
         en: (
           <>
+            {/* change */}
             <HistoryDefaultImage
               src={`${amavinImagePath2024}4-7.webp`}
               alt="saplings images"
@@ -582,7 +582,7 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "○○と○○の苗木を○○本植えました。ブドウの枝を。○○年に収穫したブドウのワインの瓶詰を行いました。",
+        ja: "グルナッシュの苗木37本を定植し、カベルネ・フランの苗木20本、シラー＆シラーズの苗木13本を捕植しました。 暖かくなってきて、ブドウの芽が膨らみ始めました。2023年に初収穫したブドウのワインの瓶詰を164本行いました。",
         en: "Planted 00 saplings of 00 and 00. Did 00 for the branches.Filled wine made with the grapes harvested in 0000 fall.",
       },
     },
@@ -596,7 +596,7 @@ export const historyAmavin = {
               alt="成長を続ける苗木画像"
             />
             <p className={historyPClassName}>
-              ４月に植えた苗木がどんどん成長しています。
+              ４月に定植した苗木も順調に成長しています。
             </p>
           </>
         ),
@@ -613,7 +613,7 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "４月に植えた苗木がどんどん成長しています。",
+        ja: "４月に定植した苗木も順調に成長しています。",
         en: "The saplings planted this April have been growing lively.",
       },
     },
@@ -627,7 +627,7 @@ export const historyAmavin = {
               alt="ワインが紹介されるフェイスブックの投稿画像"
             />
             <p className={historyPClassName}>
-              北斗市市長の上村さんに、ワインを紹介していただきました。
+              北杜市市長の上村さんに、初収穫のワインを紹介していただきました。
             </p>
           </>
         ),
@@ -638,13 +638,14 @@ export const historyAmavin = {
               alt="facebook introducing wine image"
             />
             <p className={historyPClassName}>
+              {/* change */}
               The mayor of Hokuto city introduced our wine.
             </p>
           </>
         ),
       },
       searchableText: {
-        ja: "北斗市市長の上村さんに、ワインを紹介していただきました。",
+        ja: "北杜市市長の上村さんに、初収穫のワインを紹介していただきました。",
         en: "The mayor of Hokuto city introduced our wine.",
       },
     },
@@ -653,24 +654,26 @@ export const historyAmavin = {
       content: {
         ja: (
           <>
+            {/* later */}
             <HistoryDefaultImage
               src={`${amavinImagePath2024}7-15.webp`}
               alt="トラの置物とヴィンヤード画像"
             />
             <p className={historyPClassName}>
-              サル除け？のための、トラの置物がやってきました
+              獣害対策のため、トラの置物がやってきました。
             </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}7.webp`}
               alt="販売されているワイン画像"
             />
             <p className={historyPClassName}>
-              新宿の伊勢丹さんで、ワインの販売を行いました。
+              伊勢丹新宿店の世界を旅するワイン展で、ワインの販売を行いました。
             </p>
           </>
         ),
         en: (
           <>
+            {/* change */}
             <HistoryDefaultImage
               src={`${amavinImagePath2024}7-15.webp`}
               alt="vineyard with tiger object image"
@@ -690,7 +693,7 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "サル除け？のための、トラの置物がやってきました。新宿の伊勢丹さんで、ワインの販売を行いました。",
+        ja: "獣害対策のための、トラの置物がやってきました。伊勢丹新宿店の世界を旅するワイン展で、ワインの販売を行いました。。",
         en: "The tiger object have came to our vineyard to prevent monkey damage. Sold our wine at the Isetan store at Shinjuku.",
       },
     },
@@ -703,13 +706,13 @@ export const historyAmavin = {
               src={`${amavinImagePath2024}8-4.webp`}
               alt="ブドウの実画像"
             />
-            <p className={historyPClassName}>ブドウの実がなり始めました。</p>
+            <p className={historyPClassName}>ヴェレゾンが始まりました。</p>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}8-29.webp`}
               alt="霧がかったヴィンヤード画像"
             />
             <p className={historyPClassName}>
-              たまにヴィンヤードに霧がかかります。
+              寒暖差があり、たまにヴィンヤードに霧がかかります。
             </p>
           </>
         ),
@@ -735,7 +738,7 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "ブドウの実がなり始めました。たまにヴィンヤードに霧がかかります。",
+        ja: "ヴェレゾンが始まりました。寒暖差があり、たまにヴィンヤードに霧がかかります。",
         en: "The trees started having grapes. Sometimes the vineyard becomes foggy.",
       },
     },
@@ -746,10 +749,10 @@ export const historyAmavin = {
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}9-15.webp`}
-              alt="鷹のオブジェクト画像"
+              alt="鷹のカイト画像"
             />
             <p className={historyPClassName}>
-              ブドウを食べる鳥よけ？のための、鷹のオブジェクトかやってきました。
+              防鳥のための、鷹のカイトを設置しました。
             </p>
           </>
         ),
@@ -760,6 +763,7 @@ export const historyAmavin = {
               alt="eagle object image"
             />
             <p className={historyPClassName}>
+              {/* change */}
               The eagle object has come to protect our vineyard from bird
               damage?damage?
             </p>
@@ -767,7 +771,7 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "ブドウを食べる鳥よけ？のための、鷹のオブジェクトかやってきました。",
+        ja: "防鳥のための、鷹のカイトを設置しました。",
         en: "  The eagle object has come to protect our vineyard from bird damage?damage?",
       },
     },
@@ -781,7 +785,7 @@ export const historyAmavin = {
               alt="ヴィンヤードとキラキラテープ画像"
             />
             <p className={historyPClassName}>
-              ブドウを食べる鳥よけ？のためのキラキラテープを設置しました。
+              防鳥のためのキラキラテープを設置しました。
             </p>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}10-21.webp`}
@@ -792,7 +796,7 @@ export const historyAmavin = {
               alt="ブドウの実が無くなったヴィンヤード画像"
             />
             <p className={historyPClassName}>
-              ブドウの収穫を行いました。○○かご・計○○ kg収穫しました。
+              ブドウの収穫を行いました。カベルネ・フラン281㎏、シラーズ611㎏、グルナッシュ2㎏、合計894kg収穫しました。
             </p>
           </>
         ),
@@ -814,13 +818,14 @@ export const historyAmavin = {
               alt="vineyard with no grapes left image"
             />
             <p className={historyPClassName}>
+              {/* change */}
               Harvested grapes. We could harvest 00 cases, 00 kg in total.
             </p>
           </>
         ),
       },
       searchableText: {
-        ja: "ブドウを食べる鳥よけ？のためのキラキラテープを設置しました。ブドウの収穫を行いました。○○個・計○○ kg収穫しました。",
+        ja: "防鳥のためのキラキラテープを設置しました。ブドウの収穫を行いました。カベルネ・フラン281㎏、シラーズ611㎏、グルナッシュ2㎏、合計894kg収穫しました。。",
         en: "Set up the glittering tape in the vineyard to prevent bird damage. Harvested grapes. We could harvest 00 cases, 00 kg in total.",
       },
     },
@@ -831,10 +836,10 @@ export const historyAmavin = {
           <>
             <HistoryDefaultImage
               src={`${amavinImagePath2024}11-22.webp`}
-              alt="カバーを付けたブドウの木達画像"
+              alt="カバーを付けたブドウの樹達画像"
             />
             <p className={historyPClassName}>
-              ブドウの木に寒さ除けのカバーを付けました。
+              ヴィンヤードも冬支度。ブドウの樹に寒さ除けのカバー(グローチューブ)を付けました。
             </p>
           </>
         ),
@@ -845,6 +850,7 @@ export const historyAmavin = {
               alt="grape trees with cover image"
             />
             <p className={historyPClassName}>
+              {/* change */}
               Put a cover around the grape trees to protect them from cold for
               the coming winter.
             </p>
@@ -852,11 +858,12 @@ export const historyAmavin = {
         ),
       },
       searchableText: {
-        ja: "ブドウの木に寒さ除けのカバーを付けました。",
+        ja: " ヴィンヤードも冬支度。ブドウの樹に寒さ除けのカバー(グローチューブ)を付けました。",
         en: "Put a cover around the grape trees to protect them from cold for the coming winter.",
       },
     },
   ],
+  // from here!
   2025: [
     {
       month: 1,
