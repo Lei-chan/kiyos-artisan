@@ -2,8 +2,8 @@
 //react
 import { useEffect, useRef, useState } from "react";
 //model
-import { historyAmavin } from "../../models/historyAmavin";
-import { historyKiyos } from "../../models/historyKiyos";
+import { historyKiyos } from "@/app/models/historyKiyos/historyKiyos";
+import { historyAmavin } from "@/app/models/hitoryAmavin/historyAmavin";
 //components
 import TitleNavLable from "../components/TitleNavLable";
 //type
@@ -18,8 +18,6 @@ export default function History() {
     "w-full h-fit flex flex-col items-center mt-9 scroll-mt-4";
   const { locale } = useParams();
   const currentLocale = (locale || "en") as TYPE_LOCALE;
-
-  console.log(currentLocale);
 
   return (
     <div className="w-full min-h-screen max-h-fit  bg-yellow-100/50 text-center flex flex-col items-center">
@@ -185,7 +183,7 @@ function MonthHistory({
     if (!element) return;
 
     const observer = new ResizeObserver(() =>
-      adjustParentHeight(element.offsetHeight, i)
+      adjustParentHeight(element.offsetHeight, i),
     );
 
     observer.observe(element);

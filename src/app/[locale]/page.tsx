@@ -242,8 +242,8 @@ function GroupDescription({
         inView
           ? "translate-x-0"
           : type === "kiyos"
-          ? `-translate-x-[10%]`
-          : "translate-x-[10%]"
+            ? `-translate-x-[10%]`
+            : "translate-x-[10%]"
       }`}
     >
       <p className="text-base">{description}</p>
@@ -295,8 +295,8 @@ function GroupImages({
         inView
           ? "translate-x-0"
           : type === "kiyos"
-          ? "translate-x-[10%]"
-          : "-translate-x-[10%]"
+            ? "translate-x-[10%]"
+            : "-translate-x-[10%]"
       }`}
     >
       <Image

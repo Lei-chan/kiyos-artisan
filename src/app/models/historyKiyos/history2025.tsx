@@ -1,7 +1,6 @@
-import { historyPClassName } from "../config/styles";
-import { getHistoryForSearch } from "../helper";
+import { historyPClassName } from "@/app/config/styles";
 
-export const historyKiyos = {
+const history2025 = {
   2025: [
     {
       month: 10,
@@ -44,6 +43,4 @@ export const historyKiyos = {
   ],
 };
 
-export const historyKiyosForSearch = getHistoryForSearch(historyKiyos, [
-  "kiyos",
-]);
+export default history2025;
