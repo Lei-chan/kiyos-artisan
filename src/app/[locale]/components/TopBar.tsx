@@ -41,7 +41,7 @@ export default function TopBar({
 
 function LanguageSearch({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
   return (
-    <div className="absolute w-fit h-fit flex flex-row right-2 lg:right-2 top-1 lg:top-2 gap-1 lg:gap-2">
+    <div className="absolute w-fit h-fit flex flex-row right-3 lg:right-2 top-1 lg:top-2 gap-1 lg:gap-2">
       <LanguageSelect currentLocale={currentLocale} />
       <Search currentLocale={currentLocale} />
     </div>
@@ -63,7 +63,7 @@ function LanguageSelect({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
 
   return (
     <select
-      className="w-5 h-full bg-transparent bg-[url('/icons/globe.svg')] bg-contain bg-center bg-no-repeat appearance-none -webkit-appearance-none text-sm  text-blue-900 indent-[-999px] focus:text-black focus:opacity-100 cursor-pointer"
+      className="w-5 h-full bg-transparent bg-[url('/icons/globe.svg')] bg-contain bg-center bg-no-repeat appearance-none -webkit-appearance-none text-sm  text-blue-900 indent-[-999px] focus:text-black cursor-pointer"
       value={currentLocale}
       onChange={handleChangeLanguage}
     >
