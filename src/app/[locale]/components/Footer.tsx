@@ -52,11 +52,7 @@ function GroupInfo({
         )}
       </div>
       <div className="w-[25%] flex flex-row justify-start items-center">
-        <LinkIcon
-          href={snsHref}
-          src="/icons/instagram.svg"
-          alt="Instagram icon"
-        />
+        <LinkIcon href={snsHref} src="/icons/insta.svg" alt="Instagram icon" />
       </div>
     </div>
   );
