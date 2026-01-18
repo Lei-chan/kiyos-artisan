@@ -24,8 +24,3 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
-
-select {
-  -webkit-appearance: none;
-  appearance: none;
-}
