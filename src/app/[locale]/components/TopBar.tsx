@@ -63,7 +63,7 @@ function LanguageSelect({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
 
   return (
     <select
-      className="w-5 h-full bg-transparent bg-[url('/icons/globe.svg')] bg-contain bg-center bg-no-repeat appearance-none -webkit-appearance-none text-sm  text-blue-900 opacity-0 focus:text-black focus:opacity-100 cursor-pointer"
+      className="w-5 h-full bg-transparent bg-[url('/icons/globe.svg')] bg-contain bg-center bg-no-repeat appearance-none -webkit-appearance-none text-sm  text-blue-900 indent-[-999px] focus:text-black focus:opacity-100 cursor-pointer"
       value={currentLocale}
       onChange={handleChangeLanguage}
     >
