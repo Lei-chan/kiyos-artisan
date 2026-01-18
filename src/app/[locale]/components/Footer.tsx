@@ -73,7 +73,7 @@ function LinkIcon({
 }) {
   return (
     <div className="relative w-9 h-auto aspect-square">
-      <Image src={src} alt={alt} fill></Image>
+      <Image src={src} alt={alt} fill unoptimized></Image>
       <Link href={href} className="w-full h-full absolute"></Link>
     </div>
   );
