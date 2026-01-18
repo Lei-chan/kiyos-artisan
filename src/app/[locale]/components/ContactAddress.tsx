@@ -11,9 +11,9 @@ export default function ContactAddress({
 }) {
   return (
     <p className="text-left">
-      {locale === "ja" ? "〒" : ""}
+      {locale === "ja" && postalCode ? "〒" : ""}
       {postalCode}
-      <br />
+      {postalCode && <br />}
       {address[locale]}
     </p>
   );

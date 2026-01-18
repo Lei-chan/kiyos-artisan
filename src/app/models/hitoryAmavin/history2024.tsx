@@ -168,13 +168,13 @@ const history2024 = {
         ja: (
           <>
             {/* later */}
-            <HistoryDefaultImage
+            {/* <HistoryDefaultImage
               src={`${imagePath}7-15.webp`}
               alt="トラの置物とヴィンヤード画像"
             />
             <p className={historyPClassName}>
               獣害対策のため、トラの置物がやってきました。
-            </p>
+            </p> */}
             <HistoryDefaultImage
               src={`${imagePath}7.webp`}
               alt="販売されているワイン画像"
@@ -187,14 +187,14 @@ const history2024 = {
         en: (
           <>
             {/* change */}
-            <HistoryDefaultImage
+            {/* <HistoryDefaultImage
               src={`${imagePath}7-15.webp`}
               alt="vineyard with tiger object image"
             />
             <p className={historyPClassName}>
               The tiger object have came to our vineyard to prevent monkey
               damage.
-            </p>
+            </p> */}
             <HistoryDefaultImage
               src={`${imagePath}7.webp`}
               alt="wine for sale image"
@@ -207,8 +207,8 @@ const history2024 = {
         ),
       },
       searchableText: {
-        ja: "獣害対策のための、トラの置物がやってきました。伊勢丹新宿店の世界を旅するワイン展で、ワインの販売を行いました。。",
-        en: "The tiger object have came to our vineyard to prevent monkey damage. We sold our wine at the World Travel Wine Exhibition at Isetan Shinjuku.",
+        ja: "伊勢丹新宿店の世界を旅するワイン展で、ワインの販売を行いました。。",
+        en: "We sold our wine at the World Travel Wine Exhibition at Isetan Shinjuku.",
       },
     },
     {

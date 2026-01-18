@@ -10,8 +10,8 @@ export default function KiyosContact({ locale }: { locale: TYPE_LOCALE }) {
     <div className={contactContainerClassName}>
       <ContactAddress
         locale={locale}
-        postalCode="000-0000"
-        address={{ ja: "東京都府中市20-1-1", en: "20-1-1 Fuchu, Tokyo, Japan" }}
+        postalCode=""
+        address={{ ja: "", en: "" }}
       />
       <ContactEmail locale={locale} email="artisanmariagevineyards@gmail.com" />
     </div>

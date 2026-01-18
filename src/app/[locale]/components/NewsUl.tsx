@@ -14,13 +14,20 @@ export default function NewsUl({
   locale: TYPE_LOCALE;
   type: "all" | TYPE_GROUP;
 }) {
+  const newsForType = organizedNews.filter((news) =>
+    type === "all" ? news : type === news.type,
+  );
   return (
     <ul className="w-[85%] md:w-[70%] lg:w-[60%] 2xl:w-[50%] h-[60vh] border-2 overflow-y-auto overflow-x-hidden bg-white rounded md:rounded-md lg:rounded-lg">
-      {organizedNews
-        .filter((news) => (type === "all" ? news : type === news.type))
-        .map((news, i) => (
+      {newsForType.length ? (
+        newsForType.map((news, i) => (
           <List key={i} locale={locale} news={news as TYPE_NEWS} />
-        ))}
+        ))
+      ) : (
+        <p className="text-base text-center mt-8">
+          {locale === "ja" ? "新しいニュースはありません" : "There're no news"}
+        </p>
+      )}
     </ul>
   );
 }

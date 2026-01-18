@@ -1,8 +1,8 @@
 const slideInfo = [
   {
-    src: "/artisan-wine-one.webp",
+    src: "/artisan-clairet-for-sale.webp",
     alt: {
-      ja: "Artisan Mariage Vineyards画像",
+      ja: "Artisan Mariage Vineyardsワイン画像",
       en: "Artisan mariage vineyards wine image",
     },
   },

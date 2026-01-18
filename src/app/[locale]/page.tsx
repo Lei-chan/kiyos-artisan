@@ -84,7 +84,7 @@ function Slide({ locale }: { locale: TYPE_LOCALE }) {
 
 function Bottom({ locale }: { locale: TYPE_LOCALE }) {
   const containerClassName =
-    "w-full md:w-[90%] lg:w-[80%] h-fit text-center mt-10 transition-all duration-[1200ms]";
+    "w-full md:w-[90%] lg:w-[80%] h-fit text-center transition-all duration-[1200ms]";
   const headerClassName = "text-2xl font-bold tracking-wider";
   const contentClassName =
     "w-full h-fit flex flex-row mt-6 md:mt-5 px-[7%] gap-5 justify-center items-center";
@@ -95,7 +95,7 @@ function Bottom({ locale }: { locale: TYPE_LOCALE }) {
   return (
     <div
       ref={buttomRef}
-      className="w-full h-fit flex flex-col items-center mt-6"
+      className="w-full h-fit flex flex-col items-center mt-20 gap-11 md:gap-13 lg:gap-16"
     >
       <Kiyos
         locale={locale}
@@ -149,7 +149,7 @@ function Kiyos({
           slideInClassName={slideInClassName}
           inView={inView}
         />
-        <GroupImages
+        {/* <GroupImages
           type="kiyos"
           src1="/wine-demo.png"
           alt1={locale === "ja" ? "○○ワイン画像" : "something wine image"}
@@ -159,7 +159,7 @@ function Kiyos({
           left2="left-16"
           slideInClassName={slideInClassName}
           inView={inView}
-        />
+        /> */}
       </div>
     </div>
   );
@@ -191,7 +191,7 @@ function Amavine({
         {amavin.title[locale]}
       </h1>
       <div className={`${contentClassName}`}>
-        <GroupImages
+        {/* <GroupImages
           type="amavin"
           src1="/artisan-wine-one-no-bg.png"
           alt1={
@@ -209,7 +209,7 @@ function Amavine({
           left2="left-11"
           slideInClassName={slideInClassName}
           inView={inView}
-        />
+        /> */}
         <GroupDescription
           locale={locale}
           type="amavin"
@@ -237,8 +237,9 @@ function GroupDescription({
 }) {
   const linkClassName = "text-sm text-purple-700 underline";
   return (
+    // change w-[80%] to w-[60%] later with images
     <div
-      className={`${slideInClassName} w-[60%] h-fit ${
+      className={`${slideInClassName} w-[80%] h-fit ${
         inView
           ? "translate-x-0"
           : type === "kiyos"

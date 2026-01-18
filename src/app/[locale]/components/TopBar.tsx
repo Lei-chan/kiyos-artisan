@@ -130,14 +130,19 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
         onMouseEnter={handleKiyosHover}
         onMouseLeave={handleKiyosHover}
       >
-        <Image
+        {/* <Image
           src="/main-image.webp"
           alt=""
           fill
           className={`${hoverBgClassName} ${
             kiyosHovered ? "opacity-50" : "opacity-0"
           }`}
-        ></Image>
+        ></Image> */}
+        <div
+          className={`${hoverBgClassName} absolute bg-blue-600 w-full h-full ${
+            kiyosHovered ? "opacity-50" : "opacity-0"
+          }`}
+        ></div>
         <Link
           href={`/${currentLocale}/kiyos-celler`}
           className={`${linkClassName}`}
@@ -150,14 +155,19 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
         onMouseEnter={handleAmavinHover}
         onMouseLeave={handleAmavinHover}
       >
-        <Image
+        {/* <Image
           src="/main-image.webp"
           alt=""
           fill
           className={`${hoverBgClassName} ${
             amavinHovered ? "opacity-50" : "opacity-0"
           }`}
-        ></Image>
+        ></Image> */}
+        <div
+          className={`${hoverBgClassName} absolute bg-blue-600 w-full h-full ${
+            amavinHovered ? "opacity-50" : "opacity-0"
+          }`}
+        ></div>
         <Link
           href={`/${currentLocale}/artisan-mariage-vineyards`}
           className={`${linkClassName} leading-tight`}

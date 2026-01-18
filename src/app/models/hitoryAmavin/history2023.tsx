@@ -87,9 +87,9 @@ const history2023 = {
               src={`${imagePath}10.webp`}
               alt="タンクに入っているブドウの実"
             />
-            <p className={historyPClassName}>
+            {/* <p className={historyPClassName}>
               収穫を行いました。００㎏、００㎏、計００㎏収穫できました。
-            </p>
+            </p> */}
           </>
         ),
         en: (
@@ -98,12 +98,12 @@ const history2023 = {
               src={`${imagePath}10.webp`}
               alt="grape fruits in a tank"
             />
-            <p className={historyPClassName}>We harvested grapes.</p>
+            {/* <p className={historyPClassName}>We harvested grapes.</p> */}
           </>
         ),
       },
       searchableText: {
-        ja: "収穫を行いました。００㎏、００㎏、計００㎏収穫できました。",
+        ja: "",
         en: "",
       },
     },
@@ -117,8 +117,7 @@ const history2023 = {
               src={`${imagePath}11-3.webp`}
               alt="タンクの中でブドウを潰す画像"
             />
-            <p className={historyPClassName}></p>
-
+            {/* <p className={historyPClassName}></p> */}
             <HistoryDefaultImage
               src={`${imagePath}11-19(2).webp`}
               alt="タンクの中にある濾されたブドウの液"
@@ -127,16 +126,16 @@ const history2023 = {
               src={`${imagePath}11-19.webp`}
               alt="ワイングラスの中にある濾されたワイン"
             />
-            <p className={historyPClassName}></p>
+            {/* <p className={historyPClassName}></p> */}
           </>
         ),
         en: (
           <>
             <HistoryDefaultImage src={`${imagePath}11-3.webp`} alt="" />
-            <p className={historyPClassName}></p>
+            {/* <p className={historyPClassName}></p> */}
             <HistoryDefaultImage src={`${imagePath}11-19(2).webp`} alt="" />
             <HistoryDefaultImage src={`${imagePath}11-19.webp`} alt="" />
-            <p className={historyPClassName}></p>
+            {/* <p className={historyPClassName}></p> */}
           </>
         ),
       },

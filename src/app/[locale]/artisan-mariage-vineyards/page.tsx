@@ -122,8 +122,8 @@ function Shop({
       <h2 className={smallHeaderClassName}>{shop.title[locale]}</h2>
       <p className="w-full h-fit p-[5%]text-base">
         {locale === "ja"
-          ? "こちらのオンラインショップよりArtisan Mariage Vineyardsの商品をご購入いただけます。"
-          : "You can purchase items of Artisan Mariage Vineyards from here."}
+          ? "こちらのオンラインショップよりArtisan Mariage Vineyardsの商品をご購入いただけます。(準備中)"
+          : "You can purchase items of Artisan Mariage Vineyards from here.(in preparation)"}
         <br />
         <Link href="" className="underline text-purple-500 text-sm">
           {locale === "ja" ? "オンラインショップはこちら" : "Online Shop"}
