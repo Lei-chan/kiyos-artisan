@@ -23,17 +23,34 @@ export default function TopBar({
   }
 
   return (
-    <div className="grid w-full h-[24vh] bg-blue-900 grid-rows-2 relative">
-      {/* I'm gonna replace the h1 by a logo image later */}
-      <h1
-        className="text-center text-[#ffe77c] text-base  cursor-pointer self-center"
-        onClick={handleClickLogo}
-      >
-        {getGroupNameFromType("kiyos")}
-        <br />
-        {getGroupNameFromType("amavin")}
-      </h1>
-      <LanguageSearch currentLocale={currentLocale} />
+    <div className="relative grid w-full h-[24vh] bg-blue-900 grid-rows-2">
+      <div className="relative w-full h-full flex flex-row items-center justify-center">
+        <h1
+          className="text-center text-[#ffe77c] text-base  cursor-pointer"
+          onClick={handleClickLogo}
+        >
+          {getGroupNameFromType("kiyos")}
+          <br />
+          {getGroupNameFromType("amavin")}
+        </h1>
+        <div className="absolute w-fit h-full left-3 flex flex-row gap-2 opacity-0 sm:opacity-100">
+          <Image
+            src="/icons/kiyos-celler-logo.svg"
+            alt="Kiyos Celler logo"
+            width={60}
+            height={45}
+            className="object-contain"
+          ></Image>
+          <Image
+            src="/icons/amavin-logo.png"
+            alt="artisan mariage vineyards logo"
+            width={50}
+            height={50}
+            className="object-contain"
+          />
+        </div>
+        <LanguageSearch currentLocale={currentLocale} />
+      </div>
       <Navi currentLocale={currentLocale} />
     </div>
   );
@@ -132,19 +149,15 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
         onMouseEnter={handleKiyosHover}
         onMouseLeave={handleKiyosHover}
       >
-        {/* <Image
-          src="/main-image.webp"
-          alt=""
-          fill
-          className={`${hoverBgClassName} ${
-            kiyosHovered ? "opacity-50" : "opacity-0"
+        <Image
+          src="/icons/kiyos-celler-logo.svg"
+          alt="Kiyos Celler logo"
+          width={60}
+          height={45}
+          className={`${hoverBgClassName} absolute ${
+            kiyosHovered ? "opacity-40" : "opacity-0"
           }`}
-        ></Image> */}
-        <div
-          className={`${hoverBgClassName} absolute bg-blue-600 w-full h-full ${
-            kiyosHovered ? "opacity-50" : "opacity-0"
-          }`}
-        ></div>
+        ></Image>
         <Link
           href={`/${currentLocale}/kiyos-celler`}
           className={`${linkClassName}`}
@@ -165,11 +178,15 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
             amavinHovered ? "opacity-50" : "opacity-0"
           }`}
         ></Image> */}
-        <div
-          className={`${hoverBgClassName} absolute bg-blue-600 w-full h-full ${
+        <Image
+          src="/icons/amavin-logo.png"
+          alt="artisan mariage vineyards logo"
+          width={50}
+          height={50}
+          className={`${hoverBgClassName} absolute ${
             amavinHovered ? "opacity-50" : "opacity-0"
           }`}
-        ></div>
+        />
         <Link
           href={`/${currentLocale}/artisan-mariage-vineyards`}
           className={`${linkClassName} leading-tight`}
