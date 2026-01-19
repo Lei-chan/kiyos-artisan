@@ -1,5 +1,5 @@
 export const groupPageClassName =
-  "w-full min-h-screen max-h-fit bg-yellow-100/50 text-center pb-10";
+  "w-full min-h-screen max-h-fit text-center pb-10";
 export const groupPageContentContainerClassName =
   "w-full h-fit pt-2 pb-8 flex flex-col items-center";
 export const groupPageSectionContainerClassName =
