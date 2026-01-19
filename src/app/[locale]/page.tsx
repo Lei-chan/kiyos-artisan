@@ -259,8 +259,8 @@ function GroupDescription({
       <br />
       <Link href="" className={linkClassName}>
         {locale === "ja"
-          ? "オンラインショップはこちら"
-          : "Online shop from here"}
+          ? "オンラインショップはこちら（準備中）"
+          : "Online shop from here (In preparation)"}
       </Link>
     </div>
   );

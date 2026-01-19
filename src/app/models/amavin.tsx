@@ -24,8 +24,8 @@ export const about = {
 export const shop = {
   title: { ja: getShopName("ja"), en: getShopName("en") },
   searchableText: {
-    ja: "こちらのオンラインショップよりArtisan Mariage Vineyardsの商品をご購入いただけます。オンラインショップはこちら",
-    en: "You can purchase items of Artisan Mariage Vineyards from here. Online shope",
+    ja: "こちらのオンラインショップよりArtisan Mariage Vineyardsの商品をご購入いただけます。オンラインショップはこちら（準備中）",
+    en: "You can purchase items of Artisan Mariage Vineyards from here. Online shope (In preparation)",
   },
   href,
   keywords: [commonKeywords],
@@ -34,8 +34,8 @@ export const shop = {
 export const contact = {
   title: { ja: getContactName("ja"), en: getContactName("en") },
   searchableText: {
-    ja: "〒000-0000 山梨県北杜市明野町 artisanmariagevineyards@gmail.com",
-    en: "000-0000 Akeno, Hokuto, Yamanashi, Japan artisanmariagevineyards@gmail.com",
+    ja: "〒408-0204 山梨県北杜市明野町上手永井原11805 artisanmariagevineyards@gmail.com",
+    en: "408-0204 Akeno-cho Uede Nagaihara 11805, Hokuto, Yamanashi, Japan artisanmariagevineyards@gmail.com",
   },
   href,
   keywords: [

@@ -16,8 +16,8 @@ export const about = {
 export const shop = {
   title: { ja: getShopName("ja"), en: getShopName("en") },
   searchableText: {
-    ja: "こちらのオンラインショップよりKiyos Cellerの商品をご購入いただけます。オンラインショップはこちら",
-    en: "You can purchange items of Kiyos Celler from here. Online shop",
+    ja: "こちらのオンラインショップよりKiyos Cellerの商品をご購入いただけます。オンラインショップはこちら（準備中）",
+    en: "You can purchange items of Kiyos Celler from here. Online shop (In preparation)",
   },
   href,
   keywords: [...commonKeywords],
