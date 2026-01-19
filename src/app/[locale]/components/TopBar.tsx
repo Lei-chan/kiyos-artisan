@@ -62,14 +62,16 @@ function LanguageSelect({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
   }
 
   return (
-    <select
-      className="w-5 h-full bg-transparent bg-[url('/icons/globe.svg')] bg-contain bg-center bg-no-repeat text-sm text-transparent focus:text-black cursor-pointer"
-      value={currentLocale}
-      onChange={handleChangeLanguage}
-    >
-      <option value="ja">日本語</option>
-      <option value="en">English</option>
-    </select>
+    <div className="w-5 h-full bg-[url('/icons/globe.svg')] bg-contain bg-center bg-no-repeat">
+      <select
+        className="w-full bg-transparent  h-full text-sm text-transparent focus:text-blue-900 cursor-pointer opacity-0"
+        value={currentLocale}
+        onChange={handleChangeLanguage}
+      >
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+      </select>
+    </div>
   );
 }
 
