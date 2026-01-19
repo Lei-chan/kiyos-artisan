@@ -30,7 +30,7 @@ export default function TitleNavLable({
 }) {
   return (
     <div
-      className={`relative w-full bg-fixed bg-cover bg-center bg-no-repeat text-center ${bgImageStyle} ${
+      className={`relative w-full text-center before:fixed before:top-0 before:left-0 before:w-full before:h-full before:-z-1  before:bg-cover  before:bg-center before:bg-no-repeat ${bgImageStyle} ${
         type === "amavin" ? "h-[27vh]" : "h-[25vh]"
       }`}
     >
@@ -40,8 +40,8 @@ export default function TitleNavLable({
             type === "kiyos"
               ? "text-yellow-100 "
               : type === "amavin"
-              ? "text-pink-100"
-              : "text-white"
+                ? "text-pink-100"
+                : "text-white"
           }`}
         >
           {type === "kiyos" || type === "amavin"
