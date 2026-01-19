@@ -42,7 +42,7 @@ export default function TopBar({
             className="object-contain"
           ></Image>
           <Image
-            src="/icons/amavin-logo.png"
+            src="/icons/amavin-logo.PNG"
             alt="artisan mariage vineyards logo"
             width={50}
             height={50}
@@ -170,16 +170,8 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
         onMouseEnter={handleAmavinHover}
         onMouseLeave={handleAmavinHover}
       >
-        {/* <Image
-          src="/main-image.webp"
-          alt=""
-          fill
-          className={`${hoverBgClassName} ${
-            amavinHovered ? "opacity-50" : "opacity-0"
-          }`}
-        ></Image> */}
         <Image
-          src="/icons/amavin-logo.png"
+          src="/icons/amavin-logo.PNG"
           alt="artisan mariage vineyards logo"
           width={50}
           height={50}
