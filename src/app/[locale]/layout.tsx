@@ -18,12 +18,12 @@ export async function generateMetadata({
   const { locale } = await params;
   const title =
     locale === "ja"
-      ? "Artisan Mariage Vineyards(アルチザン・マリアージュ・ヴィンヤード) - Kiyos Celler(キヨズ・セラー)"
-      : "Artisan Mariage Vineyards-Kiyos Celler";
+      ? "Artisan Mariage Vineyards(アルチザンマリアージュヴィンヤード)・Kiyos Cellar(キヨズセラー)"
+      : "Artisan Mariage Vineyards・Kiyos Cellar";
   const description =
     locale === "ja"
-      ? "海外の希少ワインの輸入販売を行うKiyos Celler (キヨズ・セラー)と山梨県北杜市で高品質なワイン作るArtisan Mariage Vineyards (アルチザンマリアージュ・ヴィンヤード)の公式ウェブサイトです。"
-      : "This is the official website of Kiyos Celler, specializing in premium imported wines, and Artisan Mariage Vineyards, a winery producing high-quality wines in Hokuto, Yamanashi.";
+      ? "海外の希少ワインの輸入販売を行うKiyos Cellar（キヨズセラー）、山梨県北杜市明野町で有機栽培した黒ブドウでワイン作るArtisan Mariage Vineyards（アルチザンマリアージュヴィンヤード）の公式ウェブサイトです。"
+      : "This is the official website of Kiyos Cellar, specializing in premium imported wines, and Artisan Mariage Vineyards, a winery producing wines from organically grown black grapes in Akeno-cho, Hokuto city, Yamanashi Prefecture.";
   const image = "/main-image.webp";
 
   return {
@@ -45,8 +45,8 @@ export async function generateMetadata({
         url: image,
         alt:
           locale === "ja"
-            ? "Kiyos CellerとArtisan Mariage Vineyards 画像"
-            : "Kiyos Celler and Artisan Mariage Vineyards image",
+            ? "Kiyos CellarとArtisan Mariage Vineyards 画像"
+            : "Kiyos Cellar and Artisan Mariage Vineyards image",
         width: 1200,
         height: 630,
       },
@@ -61,8 +61,8 @@ export async function generateMetadata({
         url: image,
         alt:
           locale === "ja"
-            ? "Kiyos CellerとArtisan Mariage Vineyardsのメイン画像"
-            : "Kiyos Celler and Artisan Mariage Vineyards main image",
+            ? "Kiyos CellarとArtisan Mariage Vineyardsのメイン画像"
+            : "Kiyos Cellar and Artisan Mariage Vineyards main image",
       },
     },
   };

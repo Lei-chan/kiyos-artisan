@@ -13,7 +13,7 @@ export default function AmavinContact({ locale }: { locale: TYPE_LOCALE }) {
         postalCode="408-0204"
         address={{
           ja: "山梨県北杜市明野町上手永井原11805",
-          en: "Akeno-cho Uede Nagaihara 11805, Hokuto, Yamanashi, Japan",
+          en: "Akeno-cho Uede Nagaihara 11805, Hokuto City, Yamanashi Prefecture, Japan",
         }}
       />
       <ContactEmail locale={locale} email="artisanmariagevineyards@gmail.com" />

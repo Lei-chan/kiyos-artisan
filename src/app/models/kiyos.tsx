@@ -6,7 +6,7 @@ const commonKeywords = ["kiyos cellar", "キヨズセラー"];
 export const about = {
   title: { ja: getAboutName("ja", "kiyos"), en: getAboutName("en", "kiyos") },
   searchableText: {
-    ja: "Kiyos Cellar(キヨズセラー)では小規模な日本ワイン生産者の他、アメリカ、カリフォルニア州のKistler Vineyards,Occidental Wines.その他Rare Wineを取り扱っています。",
+    ja: "Kiyos Cellar(キヨズセラー)では小規模な日本ワイン生産者の他、アメリカ、カリフォルニア州のKistler Vineyards、 Occidental Wines、 その他Rare Wineを取り扱っています。",
     en: "Kiyo's Cellar carries wines from small Japanese wine producers as well as Kistler Vineyards and Occidental Wines from California, USA, and other rare wines.",
   },
   href,
