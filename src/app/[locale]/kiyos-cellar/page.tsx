@@ -22,7 +22,7 @@ import { TYPE_LOCALE } from "@/app/config/type";
 //methods
 import { getNewsName } from "@/app/helper";
 
-export default function KiyosCeller() {
+export default function KiyosCellar() {
   const smallHeaderClassName =
     "text-lg text-yellow-600 font-bold px-[10%] mb-3";
 
@@ -90,7 +90,7 @@ function About({
       <h2 className={smallHeaderClassName}>{about.title[locale]}</h2>
       <Image
         src="/artisan-clairet-for-sale.webp"
-        alt={`Kiyos Celler${locale === "ja" ? "画像" : " image"}`}
+        alt={`Kiyos Cellar${locale === "ja" ? "画像" : " image"}`}
         width={600}
         height={400}
         className="w-[90%] md:w-[300px] lg:w-[400px] h-auto aspect-[3/2] object-cover"
@@ -118,8 +118,8 @@ function Shop({
       <h2 className={smallHeaderClassName}>{shop.title[locale]}</h2>
       <p className="w-full h-fit p-[5%] pt-[4%] text-base">
         {locale === "ja"
-          ? "こちらのオンラインショップよりKiyos Cellerの商品をご購入いただけます。(準備中)"
-          : "You can purchase items of Kiyos Celler from here (In preparation)"}
+          ? "こちらのオンラインショップよりKiyos Cellarの商品をご購入いただけます。(準備中)"
+          : "You can purchase items of Kiyos Cellar from here (In preparation)"}
         <br />
         <Link href="" className="underline text-purple-500 text-sm">
           {locale === "ja" ? "オンラインショップはこちら" : "Online shop"}

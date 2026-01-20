@@ -85,7 +85,7 @@ function NavFooter({ locale }: { locale: TYPE_LOCALE }) {
   return (
     <nav className="w-full h-fit text-purple-300 text-xs underline flex flex-row text-center justify-center mt-2 gap-3">
       <Link
-        href={`/${locale}/kiyos-celler`}
+        href={`/${locale}/kiyos-cellar`}
         className={`${navLinkClassName} whitespace-nowrap`}
       >
         {getGroupNameFromType("kiyos")}
@@ -106,7 +106,7 @@ function NavFooter({ locale }: { locale: TYPE_LOCALE }) {
 function CopyrightAttribution() {
   return (
     <div className="text-xs text-center text-purple-400">
-      <p>© 2025 Kiyos Celler Artisan Mariage Vineyards</p>
+      <p>© 2025 Kiyos Cellar Artisan Mariage Vineyards</p>
       <p>Designed by Freepik</p>
     </div>
   );

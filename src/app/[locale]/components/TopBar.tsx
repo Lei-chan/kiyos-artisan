@@ -35,8 +35,8 @@ export default function TopBar({
         </h1>
         <div className="absolute w-fit h-full left-3 flex flex-row gap-2 opacity-0 sm:opacity-100">
           <Image
-            src="/icons/kiyos-celler-logo.svg"
-            alt="Kiyos Celler logo"
+            src="/icons/kiyos-logo.svg"
+            alt="Kiyos Cellar logo"
             width={60}
             height={45}
             className="object-contain"
@@ -150,8 +150,8 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
         onMouseLeave={handleKiyosHover}
       >
         <Image
-          src="/icons/kiyos-celler-logo.svg"
-          alt="Kiyos Celler logo"
+          src="/icons/kiyos-logo.svg"
+          alt="Kiyos Cellar logo"
           width={60}
           height={45}
           className={`${hoverBgClassName} absolute ${
@@ -159,10 +159,10 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
           }`}
         ></Image>
         <Link
-          href={`/${currentLocale}/kiyos-celler`}
+          href={`/${currentLocale}/kiyos-cellar`}
           className={`${linkClassName}`}
         >
-          Kiyos Celler
+          Kiyos Cellar
         </Link>
       </div>
       <div

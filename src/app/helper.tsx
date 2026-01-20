@@ -5,7 +5,7 @@ export const wait = async (seconds: number) =>
 
 export const dateIsNew = (date: string) => {
   const daysPast = Math.floor(
-    (Date.now() - new Date(date).getTime()) / 1000 / 60 / 60 / 24
+    (Date.now() - new Date(date).getTime()) / 1000 / 60 / 60 / 24,
   );
 
   return daysPast <= 7 ? true : false;
@@ -13,7 +13,7 @@ export const dateIsNew = (date: string) => {
 
 //methods for getting names
 export const getGroupNameFromType = (type: TYPE_GROUP) =>
-  type === "kiyos" ? "Kiyos Celler" : "Artisan Mariage Vineyards";
+  type === "kiyos" ? "Kiyos Cellar" : "Artisan Mariage Vineyards";
 
 export const getShortenedGroupName = (type: TYPE_GROUP) =>
   type.at(0)?.toUpperCase() + type.slice(1);
@@ -81,6 +81,6 @@ export const getHistoryForSearch = (history: object, keywords: string[]) => {
         href: "/history",
         keywords: ["history", ...keywords],
       };
-    })
+    }),
   );
 };

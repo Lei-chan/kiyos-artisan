@@ -1,12 +1,12 @@
 import { getAboutName, getContactName, getShopName } from "../helper";
 
-const href = "/kiyos-celler";
-const commonKeywords = ["kiyos celler", "キヨズセラー"];
+const href = "/kiyos-cellar";
+const commonKeywords = ["kiyos cellar", "キヨズセラー"];
 
 export const about = {
   title: { ja: getAboutName("ja", "kiyos"), en: getAboutName("en", "kiyos") },
   searchableText: {
-    ja: "Kiyos Celler(キヨズセラー)では小規模な日本ワイン生産者の他、アメリカ、カリフォルニア州のKistler Vineyards,Occidental Wines.その他Rare Wineを取り扱っています。",
+    ja: "Kiyos Cellar(キヨズセラー)では小規模な日本ワイン生産者の他、アメリカ、カリフォルニア州のKistler Vineyards,Occidental Wines.その他Rare Wineを取り扱っています。",
     en: "Kiyo's Cellar carries wines from small Japanese wine producers as well as Kistler Vineyards and Occidental Wines from California, USA, and other rare wines.",
   },
   href,
@@ -16,8 +16,8 @@ export const about = {
 export const shop = {
   title: { ja: getShopName("ja"), en: getShopName("en") },
   searchableText: {
-    ja: "こちらのオンラインショップよりKiyos Cellerの商品をご購入いただけます。オンラインショップはこちら（準備中）",
-    en: "You can purchange items of Kiyos Celler from here. Online shop (In preparation)",
+    ja: "こちらのオンラインショップよりKiyos Cellarの商品をご購入いただけます。オンラインショップはこちら（準備中）",
+    en: "You can purchange items of Kiyos Cellar from here. Online shop (In preparation)",
   },
   href,
   keywords: [...commonKeywords],

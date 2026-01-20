@@ -250,7 +250,7 @@ function GroupDescription({
       <p className="text-base">{description}</p>
       <Link
         href={`/${locale}/${
-          type === "kiyos" ? "kiyos-celler" : "artisan-mariage-vineyards"
+          type === "kiyos" ? "kiyos-cellar" : "artisan-mariage-vineyards"
         }`}
         className={linkClassName}
       >
