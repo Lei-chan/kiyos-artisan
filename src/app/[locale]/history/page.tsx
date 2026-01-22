@@ -20,25 +20,27 @@ export default function History() {
   const currentLocale = (locale || "en") as TYPE_LOCALE;
 
   return (
-    <div className="w-full min-h-screen max-h-fit  bg-yellow-100/50 text-center flex flex-col items-center">
+    <div className="w-full min-h-screen max-h-fit text-center">
       <TitleNavLable
         locale={currentLocale}
         type="history"
-        bgImageStyle="bg-[url('/mountains-from-field.webp')]"
+        bgImagePath="/mountains-from-field.webp"
       />
-      <div className="w-full md:w-[90%] lg:w-[80%] xl:w-[70%] h-fit pb-14">
-        <GroupHistory
-          locale={currentLocale}
-          type="kiyos"
-          smallHeaderClassName={smallHeaderClassName}
-          containerClassName={containerClassName}
-        />
-        <GroupHistory
-          locale={currentLocale}
-          type="amavin"
-          smallHeaderClassName={smallHeaderClassName}
-          containerClassName={containerClassName}
-        />
+      <div className="w-full h-full z-1 bg-[#ffffdc] flex flex-col items-center">
+        <div className="w-full md:w-[90%] lg:w-[80%] xl:w-[70%] h-fit pb-14">
+          <GroupHistory
+            locale={currentLocale}
+            type="kiyos"
+            smallHeaderClassName={smallHeaderClassName}
+            containerClassName={containerClassName}
+          />
+          <GroupHistory
+            locale={currentLocale}
+            type="amavin"
+            smallHeaderClassName={smallHeaderClassName}
+            containerClassName={containerClassName}
+          />
+        </div>
       </div>
     </div>
   );
