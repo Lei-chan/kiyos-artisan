@@ -42,7 +42,7 @@ export default function KiyosCellar() {
         contactRef={contactRef}
         locale={(locale || "en") as TYPE_LOCALE}
         type="kiyos"
-        bgImageStyle="bg-[url('/artisan-clairet-for-sale.webp')]"
+        bgImagePath="/artisan-clairet-for-sale.webp"
       />
       <div className={groupPageContentContainerClassName}>
         <About

@@ -10,6 +10,7 @@ import {
   getNewsName,
   getShopName,
 } from "../../helper";
+import Image from "next/image";
 
 export default function TitleNavLable({
   aboutRef,
@@ -18,7 +19,7 @@ export default function TitleNavLable({
   contactRef,
   locale,
   type,
-  bgImageStyle,
+  bgImagePath,
 }: {
   aboutRef?: RefObject<HTMLDivElement | null>;
   shopRef?: RefObject<HTMLDivElement | null>;
@@ -26,14 +27,21 @@ export default function TitleNavLable({
   contactRef?: RefObject<HTMLDivElement | null>;
   locale: TYPE_LOCALE;
   type: TYPE_GROUP | "history";
-  bgImageStyle: string;
+  bgImagePath: string;
 }) {
   return (
     <div
-      className={`relative w-full bg-fixed bg-cover bg-center bg-no-repeat text-center ${bgImageStyle} ${
+      className={`relative w-full text-center ${
         type === "amavin" ? "h-[27vh]" : "h-[25vh]"
       }`}
     >
+      <Image
+        src={bgImagePath}
+        alt="background image"
+        width={2560}
+        height={1422}
+        className="fixed w-full h-full object-cover left-0 top-0 -z-10"
+      ></Image>
       <div className="w-full h-full backdrop-sepia absolute flex flex-col justify-center">
         <h1
           className={`text-2xl font-bold tracking-wider leading-tight ${
