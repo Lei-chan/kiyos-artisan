@@ -10,6 +10,7 @@ import SearchOverlay from "./SearchOverlay";
 //methods
 import { getGroupNameFromType } from "../../helper";
 import { TYPE_LOCALE } from "@/app/config/type";
+import { shopUrl } from "@/app/config/others";
 
 export default function TopBar({
   currentLocale,
@@ -220,7 +221,7 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
           height={20}
           className="z-10"
         ></Image>
-        <Link href="" className={`${linkClassName} leading-tight`}>
+        <Link href={shopUrl} className={`${linkClassName} leading-tight`}>
           Shop
         </Link>
       </div>

@@ -20,6 +20,7 @@ import {
   getShortenedGroupName,
 } from "../helper";
 import Loading from "./loading";
+import { shopUrl } from "../config/others";
 
 export default function Home() {
   const { locale } = useParams();
@@ -257,10 +258,10 @@ function GroupDescription({
         {getAboutName(locale, type)}
       </Link>
       <br />
-      <Link href="" className={linkClassName}>
+      <Link href={shopUrl} className={linkClassName}>
         {locale === "ja"
-          ? "オンラインショップはこちら（準備中）"
-          : "Online shop from here (In preparation)"}
+          ? "オンラインショップはこちら"
+          : "Online shop from here"}
       </Link>
     </div>
   );

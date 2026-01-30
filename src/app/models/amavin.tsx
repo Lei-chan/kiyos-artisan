@@ -24,8 +24,8 @@ export const about = {
 export const shop = {
   title: { ja: getShopName("ja"), en: getShopName("en") },
   searchableText: {
-    ja: "こちらのオンラインショップよりArtisan Mariage Vineyardsの商品をご購入いただけます。オンラインショップはこちら（準備中）",
-    en: "You can purchase items of Artisan Mariage Vineyards from here. Online shope (In preparation)",
+    ja: "こちらのオンラインショップよりArtisan Mariage Vineyardsの商品をご購入いただけます。オンラインショップはこちら",
+    en: "You can purchase items of Artisan Mariage Vineyards from here. Online shope",
   },
   href,
   keywords: [commonKeywords],

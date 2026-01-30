@@ -8,6 +8,7 @@ import KiyosContact from "./KiyosContact";
 import { TYPE_GROUP, TYPE_LOCALE } from "@/app/config/type";
 //methods
 import { getGroupNameFromType } from "../../helper";
+import { shopUrl } from "@/app/config/others";
 
 export default function Footer({
   currentLocale,
@@ -96,7 +97,7 @@ function NavFooter({ locale }: { locale: TYPE_LOCALE }) {
       >
         {getGroupNameFromType("amavin")}
       </Link>
-      <Link href="" className={`${navLinkClassName} whitespace-nowrap`}>
+      <Link href={shopUrl} className={`${navLinkClassName} whitespace-nowrap`}>
         Online Shop
       </Link>
     </nav>

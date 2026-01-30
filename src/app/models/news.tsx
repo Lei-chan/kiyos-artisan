@@ -2,6 +2,7 @@ import Link from "next/link";
 import { dateIsNew, getGroupNameFromType, getLocaleDate } from "../helper";
 import { TYPE_GROUP } from "@/app/config/type";
 import { JSX } from "react";
+import { shopUrl } from "../config/others";
 
 const news: {
   date: string;
@@ -10,111 +11,51 @@ const news: {
   content: { ja: JSX.Element; en: JSX.Element };
   searchableText: { ja: string; en: string };
 }[] = [
-  // {
-  //   date: "2025/12/12",
-  //   type: "kiyos",
-  //   title: {
-  //     ja: "新しいワインの発売を開始いたしました！ 新しいワインの発売を開始いたしました！",
-  //     en: "We have started selling our new wine! We have started selling our new wine!",
-  //   },
-  //   content: {
-  //     ja: (
-  //       <>
-  //         <span>
-  //           新しい○○社のワインが22本入荷しました。華やかで味わい深いワイン、ぜびご堪能下さい。
-  //         </span>
-  //         <br />
-  //         <Link href="" className="underline text-purple-600">
-  //           購入はこちらから
-  //         </Link>
-  //       </>
-  //     ),
-  //     en: (
-  //       <>
-  //         <span>22 bottles of our wine is now on stock. Please enjoy :)</span>
-  //         <br />
-  //         <Link href="" className="underline text-purple-600">
-  //           Purchase from here
-  //         </Link>
-  //       </>
-  //     ),
-  //   },
-  //   searchableText: {
-  //     ja: "新しい○○社のワインが22本入荷しました。華やかで味わい深いワイン、ぜびご堪能下さい。購入はこちらから",
-  //     en: "22 bottles of our wine is now on stock. Please enjoy :) Purchase from here",
-  //   },
-  // },
-  // {
-  //   date: "2025/12/12",
-  //   type: "kiyos",
-  //   title: {
-  //     ja: "新しいワインの発売を開始いたしました！",
-  //     en: "We've started selling our new wine!",
-  //   },
-  //   content: {
-  //     ja: (
-  //       <>
-  //         <span>
-  //           新しい○○社のワインが22本入荷しました。華やかで味わい深いワイン、ぜびご堪能下さい。
-  //         </span>
-  //         <br />
-  //         <Link href="" className="underline text-purple-600">
-  //           購入はこちらから
-  //         </Link>
-  //       </>
-  //     ),
-  //     en: (
-  //       <>
-  //         <span>22 bottles of our wine is now on stock. Please enjoy :)</span>
-  //         <br />
-  //         <Link href="" className="underline text-purple-600">
-  //           Purchase from here
-  //         </Link>
-  //       </>
-  //     ),
-  //   },
-  //   searchableText: {
-  //     ja: "新しい○○社のワインが22本入荷しました。華やかで味わい深いワイン、ぜびご堪能下さい。購入はこちらから",
-  //     en: "22 bottles of our wine is now on stock. Please enjoy :) Purchase from here",
-  //   },
-  // },
-  // {
-  //   date: "2025/12/12",
-  //   type: "amavin",
-  //   title: {
-  //     ja: "新しいワインが発売されました！",
-  //     en: "New wine is released!",
-  //   },
-  //   content: {
-  //     ja: (
-  //       <>
-  //         <span>
-  //           ○○会社から新しいワインが届きました。このリッチで華やかな味わい、ぜひご堪能下さい。
-  //         </span>
-  //         <br />
-  //         <Link href="" className="underline text-purple-600">
-  //           ご購入はこちら
-  //         </Link>
-  //       </>
-  //     ),
-  //     en: (
-  //       <>
-  //         <span>
-  //           New wine from 00 company is released! This rich and floral flavore.
-  //           Please check it out.
-  //         </span>
-  //         <br />
-  //         <Link href="" className="underline text-purple-600">
-  //           Purchase from here
-  //         </Link>
-  //       </>
-  //     ),
-  //   },
-  //   searchableText: {
-  //     ja: "○○会社から新しいワインが届きました。このリッチで華やかな味わい、ぜひご堪能下さい。ご購入はこちら",
-  //     en: "New wine from 00 company is released! This rich and floral flavore.Please check it out. Purchase from here",
-  //   },
-  // },
+  {
+    date: "2026/1/28",
+    type: "kiyos",
+    title: {
+      ja: "オンラインショップを開始いたしました！",
+      en: "We have started our online shop!",
+    },
+    content: {
+      ja: (
+        <>
+          <span>
+            小規模な日本ワイン生産者、アメリカ、カリフォルニア州のKistler
+            Vineyards、Occidental Winesから仕入れたワイン、その他Rare
+            Wineの販売を行います。またArtisan Mariage
+            Vineyardsのワイン販売も行います。
+          </span>
+          <br />
+          <Link
+            href={shopUrl}
+            className="underline text-purple-600 text-center"
+          >
+            オンラインショップはこちら
+          </Link>
+        </>
+      ),
+      en: (
+        <>
+          <span>
+            We have started our online shop! We sell wines from small Japanese
+            wine producers as well as Kistler Vineyards and Occidental Wines
+            from California, USA, other rare wines. We also sell Artisan Mariage
+            Vineyards wines.
+          </span>
+          <br />
+          <Link href={shopUrl} className="underline text-purple-600">
+            Online shop from here
+          </Link>
+        </>
+      ),
+    },
+    searchableText: {
+      ja: "オンラインショップを開始いたしました！小規模な日本ワイン生産者、アメリカ、カリフォルニア州のKistler Vineyards、Occidental Winesから仕入れたワイン、その他Rare Wineの販売を行います。またArtisan Mariage Vineyardsのワイン販売も行います。",
+      en: "We have started our online shop! We sell wines from small Japanese wine producers as well as Kistler Vineyards and Occidental Wines from California, USA, other rare wines. We also sell Artisan Mariage Vineyards wines.",
+    },
+  },
 ];
 
 const newsWithNew = news.map((news) => {
