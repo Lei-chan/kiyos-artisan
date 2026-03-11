@@ -1,8 +1,13 @@
-import Link from "next/link";
-import { dateIsNew, getGroupNameFromType, getLocaleDate } from "../helper";
-import { TYPE_GROUP } from "@/app/config/type";
+// react
 import { JSX } from "react";
-import { shopUrl } from "../config/others";
+// next.js
+import Link from "next/link";
+// methods
+import { dateIsNew, getGroupNameFromType, getLocaleDate } from "../helper";
+// settings
+import { SHOP_URL } from "../config/settings";
+// type
+import { TYPE_GROUP } from "@/app/config/type";
 
 const news: {
   date: string;
@@ -29,7 +34,7 @@ const news: {
           </span>
           <br />
           <Link
-            href={shopUrl}
+            href={SHOP_URL}
             className="underline text-purple-600 text-center"
           >
             オンラインショップはこちら
@@ -45,7 +50,7 @@ const news: {
             Vineyards wines.
           </span>
           <br />
-          <Link href={shopUrl} className="underline text-purple-600">
+          <Link href={SHOP_URL} className="underline text-purple-600">
             Online shop from here
           </Link>
         </>

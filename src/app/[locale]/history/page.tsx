@@ -1,16 +1,17 @@
 "use client";
 //react
 import { useEffect, useRef, useState } from "react";
+// next.js
+import { useParams } from "next/navigation";
 //model
 import { historyKiyos } from "@/app/models/historyKiyos/historyKiyos";
 import { historyAmavin } from "@/app/models/hitoryAmavin/historyAmavin";
 //components
 import TitleNavLable from "../components/TitleNavLable";
-//type
-import { TYPE_GROUP, TYPE_LOCALE, TYPE_MONTH_HISTORY } from "../../config/type";
 //methods
 import { getGroupNameFromType, getLocalMonth } from "../../helper";
-import { useParams } from "next/navigation";
+//type
+import { TYPE_GROUP, TYPE_LOCALE, TYPE_MONTH_HISTORY } from "../../config/type";
 
 export default function History() {
   const smallHeaderClassName = "text-lg text-orange-800 font-bold";

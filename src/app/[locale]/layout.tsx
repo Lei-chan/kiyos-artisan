@@ -1,7 +1,7 @@
 //react
 import React, { Suspense } from "react";
 //config
-import { baseUrl } from "../config/others";
+import { BASE_URL } from "../config/settings";
 //components
 import TopBar from "./components/TopBar";
 import UpArrow from "./components/UpArrow";
@@ -29,7 +29,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(BASE_URL),
     alternates: {
       canonical: "/",
       languages: {
@@ -39,7 +39,7 @@ export async function generateMetadata({
     },
     openGraph: {
       siteName: title,
-      url: baseUrl,
+      url: BASE_URL,
       //for now
       images: {
         url: image,

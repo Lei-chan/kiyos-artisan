@@ -17,11 +17,12 @@ import {
 import TitleNavLable from "../components/TitleNavLable";
 import NewsUl from "../components/NewsUl";
 import KiyosContact from "../components/KiyosContact";
-//type
-import { TYPE_LOCALE } from "@/app/config/type";
 //methods
 import { getNewsName } from "@/app/helper";
-import { shopUrl } from "@/app/config/others";
+// settings
+import { SHOP_URL } from "@/app/config/settings";
+//type
+import { TYPE_LOCALE } from "@/app/config/type";
 
 export default function KiyosCellar() {
   const smallHeaderClassName =
@@ -122,7 +123,7 @@ function Shop({
           ? "こちらのオンラインショップよりKiyos Cellarの商品をご購入いただけます。"
           : "You can purchase items of Kiyos Cellar from here"}
         <br />
-        <Link href={shopUrl} className="underline text-purple-500 text-sm">
+        <Link href={SHOP_URL} className="underline text-purple-500 text-sm">
           {locale === "ja" ? "オンラインショップはこちら" : "Online shop"}
         </Link>
       </p>

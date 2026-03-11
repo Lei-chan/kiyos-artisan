@@ -11,16 +11,17 @@ import slideInfo from "../models/slide";
 import { amavin, kiyos } from "../models/home";
 //components
 import NewsUl from "./components/NewsUl";
-//type
-import { TYPE_GROUP, TYPE_LOCALE } from "../config/type";
+import Loading from "./loading";
 //methods
 import {
   getAboutName,
   getGroupNameFromType,
   getShortenedGroupName,
 } from "../helper";
-import Loading from "./loading";
-import { shopUrl } from "../config/others";
+// settings
+import { SHOP_URL } from "../config/settings";
+//type
+import { TYPE_GROUP, TYPE_LOCALE } from "../config/type";
 
 export default function Home() {
   const { locale } = useParams();
@@ -258,7 +259,7 @@ function GroupDescription({
         {getAboutName(locale, type)}
       </Link>
       <br />
-      <Link href={shopUrl} className={linkClassName}>
+      <Link href={SHOP_URL} className={linkClassName}>
         {locale === "ja"
           ? "オンラインショップはこちら"
           : "Online shop from here"}

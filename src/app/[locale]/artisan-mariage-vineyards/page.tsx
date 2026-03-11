@@ -22,7 +22,7 @@ import AmavinContact from "../components/AmavinContact";
 import { TYPE_LOCALE } from "@/app/config/type";
 //methods
 import { getNewsName } from "@/app/helper";
-import { shopUrl } from "@/app/config/others";
+import { SHOP_URL } from "@/app/config/settings";
 
 //prevent a error for a client-side leaflet library map by avoiding the map to be rendered on server side
 const MapWithNoSSR = dynamic(() => import("../components/AmavinMap"), {
@@ -126,7 +126,7 @@ function Shop({
           ? "こちらのオンラインショップよりArtisan Mariage Vineyardsの商品をご購入いただけます。"
           : "You can purchase items of Artisan Mariage Vineyards from here"}
         <br />
-        <Link href={shopUrl} className="underline text-purple-500 text-sm">
+        <Link href={SHOP_URL} className="underline text-purple-500 text-sm">
           {locale === "ja" ? "オンラインショップはこちら" : "Online Shop"}
         </Link>
       </p>

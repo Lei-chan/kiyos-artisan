@@ -1,14 +1,21 @@
+"use client";
 //next.js
 import Image from "next/image";
 import Link from "next/link";
 //conponents
 import AmavinContact from "./AmavinContact";
 import KiyosContact from "./KiyosContact";
-//type
-import { TYPE_GROUP, TYPE_LOCALE } from "@/app/config/type";
 //methods
 import { getGroupNameFromType } from "../../helper";
-import { shopUrl } from "@/app/config/others";
+// settings
+import {
+  INSTAGRAM_AMAVIN_URL,
+  INSTAGRAM_KIYOS_URL,
+  MANAGEMENT_URL,
+  SHOP_URL,
+} from "@/app/config/settings";
+//type
+import { TYPE_GROUP, TYPE_LOCALE } from "@/app/config/type";
 
 export default function Footer({
   currentLocale,
@@ -16,19 +23,27 @@ export default function Footer({
   currentLocale: TYPE_LOCALE;
 }) {
   return (
-    <footer className="bg-blue-900 w-full h-fit px-[4%] py-5 flex flex-col gap-2">
+    <footer className="bg-blue-900 w-full h-fit px-[4%] py-5 flex flex-col gap-2 items-center">
       <GroupInfo
         locale={currentLocale}
         type="kiyos"
-        snsHref="https://www.instagram.com/kiyoscellar?igsh=MTN0Z3FkMTdkMGtyMw%3D%3D&utm_source=qr"
+        snsHref={INSTAGRAM_KIYOS_URL}
       />
       <GroupInfo
         locale={currentLocale}
         type="amavin"
-        snsHref="https://www.instagram.com/artisanmariagevineyards?igsh=MXViNHF6eWN3YjN1MQ%3D%3D&utm_source=qr"
+        snsHref={INSTAGRAM_AMAVIN_URL}
       />
       <NavFooter locale={currentLocale} />
       <CopyrightAttribution />
+      {MANAGEMENT_URL && (
+        <Link
+          href={MANAGEMENT_URL}
+          className="sm:absolute w-fit h-fit text-slate-500 border-slate-500 border-2 rounded-full px-1 py-[2px] text-xs"
+        >
+          管
+        </Link>
+      )}
     </footer>
   );
 }
@@ -97,7 +112,7 @@ function NavFooter({ locale }: { locale: TYPE_LOCALE }) {
       >
         {getGroupNameFromType("amavin")}
       </Link>
-      <Link href={shopUrl} className={`${navLinkClassName} whitespace-nowrap`}>
+      <Link href={SHOP_URL} className={`${navLinkClassName} whitespace-nowrap`}>
         Online Shop
       </Link>
     </nav>
