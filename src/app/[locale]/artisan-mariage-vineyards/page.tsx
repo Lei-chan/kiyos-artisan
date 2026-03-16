@@ -30,7 +30,8 @@ const MapWithNoSSR = dynamic(() => import("../components/AmavinMap"), {
 });
 
 export default function ArtisanMariageVineyards() {
-  const smallHeaderClassName = "text-lg text-pink-700 font-bold px-[10%] mb-3";
+  const smallHeaderClassName =
+    "text-lg text-pink-700 font-bold px-[10%] mb-3 sm: mb-4 md:mb-5 lg:mb-6";
 
   const { locale } = useParams();
   const aboutRef = useRef<HTMLDivElement | null>(null);
@@ -94,11 +95,11 @@ function About({
     <div ref={ref} className={containerClassName}>
       <h2 className={smallHeaderClassName}>{about.title[locale]}</h2>
       <Image
-        src="/artisan-clairet-for-sale.webp"
+        src="/amavin-page-about.jpeg"
         alt={`Artisan mariage vineyards${locale === "ja" ? "画像" : " image"}`}
         width={600}
         height={400}
-        className="w-[90%] md:w-[300px] lg:w-[400px] h-auto aspect-[3/2] object-cover"
+        className="w-[90%] md:w-[300px] lg:w-[400px] h-auto aspect-square object-contain"
       />
       <p className="w-full h-fit mt-5 px-[5%] text-base">
         {about.searchableText[locale]}
@@ -121,7 +122,7 @@ function Shop({
   return (
     <div ref={ref} className={containerClassName}>
       <h2 className={smallHeaderClassName}>{shop.title[locale]}</h2>
-      <p className="w-full h-fit p-[5%]text-base">
+      <p className="w-full h-fit px-[5%] text-base">
         {locale === "ja"
           ? "こちらのオンラインショップよりArtisan Mariage Vineyardsの商品をご購入いただけます。"
           : "You can purchase items of Artisan Mariage Vineyards from here"}

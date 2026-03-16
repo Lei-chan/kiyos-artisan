@@ -26,7 +26,7 @@ import { TYPE_LOCALE } from "@/app/config/type";
 
 export default function KiyosCellar() {
   const smallHeaderClassName =
-    "text-lg text-yellow-600 font-bold px-[10%] mb-3";
+    "text-lg text-yellow-600 font-bold px-[10%] mb-3 sm: mb-4 md:mb-5 lg:mb-6";
 
   const { locale } = useParams();
 
@@ -90,14 +90,14 @@ function About({
   return (
     <div ref={ref} className={containerClassName}>
       <h2 className={smallHeaderClassName}>{about.title[locale]}</h2>
-      <Image
+      {/* <Image
         src="/artisan-clairet-for-sale.webp"
         alt={`Kiyos Cellar${locale === "ja" ? "画像" : " image"}`}
         width={600}
         height={400}
         className="w-[90%] md:w-[300px] lg:w-[400px] h-auto aspect-[3/2] object-cover"
-      />
-      <p className="w-full h-fit p-[5%] text-base">
+      /> */}
+      <p className="w-full h-fit px-[5%] text-base">
         {about.searchableText[locale]}
       </p>
     </div>
@@ -118,7 +118,7 @@ function Shop({
   return (
     <div ref={ref} className={containerClassName}>
       <h2 className={smallHeaderClassName}>{shop.title[locale]}</h2>
-      <p className="w-full h-fit p-[5%] pt-[4%] text-base">
+      <p className="w-full h-fit px-[5%] text-base">
         {locale === "ja"
           ? "こちらのオンラインショップよりKiyos Cellarの商品をご購入いただけます。"
           : "You can purchase items of Kiyos Cellar from here"}
