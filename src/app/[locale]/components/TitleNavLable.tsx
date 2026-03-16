@@ -40,11 +40,11 @@ export default function TitleNavLable({
         alt="background image"
         width={2560}
         height={1422}
-        className="fixed w-full h-full object-cover left-0 top-0 -z-10"
+        className="fixed w-full h-full object-cover left-0 -top-28 md:-top-40 lg:-top-56 xl:-top-72 -z-10"
       ></Image>
-      <div className="w-full h-full backdrop-sepia absolute flex flex-col justify-center">
+      <div className="w-full h-full backdrop-sepia absolute flex flex-col justify-center bg-black/30">
         <h1
-          className={`text-2xl font-bold tracking-wider leading-tight ${
+          className={`text-xl font-bold tracking-wider leading-tight ${
             type === "kiyos"
               ? "text-yellow-100 "
               : type === "amavin"
@@ -92,9 +92,7 @@ function Nav({
 }) {
   const navContainerGapLargerThanMd = "md:gap-5 xl:gap-7";
   const containerClassName = `w-full md:w-fit h-fit flex flex-row justify-center gap-3 ${navContainerGapLargerThanMd}`;
-  const btnClassName = `w-fit underline text-sm whitespace-nowrap ${
-    type === "kiyos" ? "text-orange-100" : "text-purple-100"
-  }`;
+  const btnClassName = "w-fit underline text-sm whitespace-nowrap text-white";
 
   function handleClickAbout() {
     aboutRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -114,7 +112,7 @@ function Nav({
 
   return (
     <nav
-      className={`w-full h-fit flex flex-col md:flex-row  justify-center items-start mt-[2%] gap-1 ${navContainerGapLargerThanMd}`}
+      className={`w-full h-fit flex flex-col md:flex-row justify-center items-start mt-[2%] gap-1 ${navContainerGapLargerThanMd}`}
     >
       <div className={containerClassName}>
         <button

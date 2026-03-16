@@ -27,8 +27,8 @@ export default function History() {
         type="history"
         bgImagePath="/mountains-from-field.webp"
       />
-      <div className="w-full h-full z-1 bg-[#ffffdc] flex flex-col items-center">
-        <div className="w-full md:w-[90%] lg:w-[80%] xl:w-[70%] h-fit pb-14">
+      <div className="w-full min-h-[75vh] z-0 bg-[#ffffdc] flex flex-col items-center">
+        <div className="w-full h-fit md:w-[90%] lg:w-[80%] xl:w-[70%] pb-14">
           <GroupHistory
             locale={currentLocale}
             type="kiyos"

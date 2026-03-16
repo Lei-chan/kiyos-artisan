@@ -48,7 +48,7 @@ export default function ArtisanMariageVineyards() {
         contactRef={contactRef}
         locale={(locale || "en") as TYPE_LOCALE}
         type="amavin"
-        bgImagePath="/artisan-clairet-for-sale.webp"
+        bgImagePath="/amavin-title-bg.jpeg"
       />
       <div className={groupPageContentContainerClassName}>
         <About
