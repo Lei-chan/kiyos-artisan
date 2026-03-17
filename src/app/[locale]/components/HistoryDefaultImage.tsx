@@ -1,8 +1,5 @@
 import Image from "next/image";
 
-const width = 200;
-const height = 150;
-
 export default function HistoryDefaultImage({
   src,
   alt,
@@ -14,9 +11,9 @@ export default function HistoryDefaultImage({
     <Image
       src={src}
       alt={alt}
-      width={width}
-      height={height}
-      className="w-auto h-auto object-contain mt-2"
+      width={400}
+      height={300}
+      className="w-[300px] lg:w-[400px] object-contain mt-2"
     ></Image>
   );
 }

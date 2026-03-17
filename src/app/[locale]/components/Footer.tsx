@@ -6,16 +6,15 @@ import Link from "next/link";
 import AmavinContact from "./AmavinContact";
 import KiyosContact from "./KiyosContact";
 //methods
-import { getGroupNameFromType } from "../../helper";
+import { getGroupNameFromType } from "../../lib/helper";
 // settings
 import {
   INSTAGRAM_AMAVIN_URL,
   INSTAGRAM_KIYOS_URL,
-  MANAGEMENT_URL,
   SHOP_URL,
-} from "@/app/config/settings";
+} from "@/app/lib/config/settings";
 //type
-import { TYPE_GROUP, TYPE_LOCALE } from "@/app/config/type";
+import { TYPE_GROUP, TYPE_LOCALE } from "@/app/lib/config/type";
 
 export default function Footer({
   currentLocale,
@@ -36,14 +35,6 @@ export default function Footer({
       />
       <NavFooter locale={currentLocale} />
       <CopyrightAttribution />
-      {MANAGEMENT_URL && (
-        <Link
-          href={MANAGEMENT_URL}
-          className="sm:absolute w-fit h-fit text-slate-500 border-slate-500 border-2 rounded-full px-1 py-[2px] text-xs"
-        >
-          管
-        </Link>
-      )}
     </footer>
   );
 }

@@ -1,4 +1,4 @@
-import { getGroupNameFromType } from "@/app/helper";
+import { getGroupNameFromType } from "@/app/lib/helper";
 
 const href = "/";
 

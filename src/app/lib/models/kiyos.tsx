@@ -1,4 +1,4 @@
-import { getAboutName, getContactName, getShopName } from "../helper";
+import { getAboutName, getContactName, getShopName } from "../../lib/helper";
 
 const href = "/kiyos-cellar";
 const commonKeywords = ["kiyos cellar", "キヨズセラー"];

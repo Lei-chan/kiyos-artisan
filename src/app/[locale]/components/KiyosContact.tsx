@@ -1,9 +1,9 @@
 //components
-import { contactContainerClassName } from "@/app/config/styles";
+import { contactContainerClassName } from "@/app/lib/config/styles";
 import ContactAddress from "./ContactAddress";
 import ContactEmail from "./contactEmail";
 //type
-import { TYPE_LOCALE } from "@/app/config/type";
+import { TYPE_LOCALE } from "@/app/lib/config/type";
 
 export default function KiyosContact({ locale }: { locale: TYPE_LOCALE }) {
   return (

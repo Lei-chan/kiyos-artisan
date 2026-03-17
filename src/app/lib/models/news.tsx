@@ -3,11 +3,15 @@ import { JSX } from "react";
 // next.js
 import Link from "next/link";
 // methods
-import { dateIsNew, getGroupNameFromType, getLocaleDate } from "../helper";
+import {
+  dateIsNew,
+  getGroupNameFromType,
+  getLocaleDate,
+} from "../../lib/helper";
 // settings
 import { SHOP_URL } from "../config/settings";
 // type
-import { TYPE_GROUP } from "@/app/config/type";
+import { TYPE_GROUP } from "@/app/lib/config/type";
 
 const news: {
   date: string;

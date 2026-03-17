@@ -7,8 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 //models
-import slideInfo from "../models/slide";
-import { amavin, kiyos } from "../models/home";
+import slideInfo from "../lib/models/slide";
+import { amavin, kiyos } from "../lib/models/home";
 //components
 import NewsUl from "./components/NewsUl";
 import Loading from "./loading";
@@ -17,11 +17,11 @@ import {
   getAboutName,
   getGroupNameFromType,
   getShortenedGroupName,
-} from "../helper";
+} from "../lib/helper";
 // settings
-import { SHOP_URL } from "../config/settings";
+import { SHOP_URL } from "../lib/config/settings";
 //type
-import { TYPE_GROUP, TYPE_LOCALE } from "../config/type";
+import { TYPE_GROUP, TYPE_LOCALE } from "../lib/config/type";
 
 export default function Home() {
   const { locale } = useParams();

@@ -22,7 +22,23 @@ export type TYPE_SEARCH_RESULT = {
   title: { ja: string; en: string };
   searchableText: { ja: string; en: string };
   href: string;
-  keywords: [] | string[];
+  keywords: string[];
 };
 
 export type TYPE_SEARCH_DATA = TYPE_SEARCH_RESULT[] | [];
+
+export type HistoryData = {
+  year: number;
+  month: number;
+  contents: {
+    images: { data: string; name: string }[];
+    sentence: { en: string[]; ja: string[] };
+  }[];
+};
+
+export type HistoryDataForSearch = {
+  type: TYPE_GROUP;
+  year: number;
+  month: number;
+  sentence: { ja: string[]; en: string[] }[];
+};

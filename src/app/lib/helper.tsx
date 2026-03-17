@@ -1,4 +1,4 @@
-import { TYPE_GROUP, TYPE_LOCALE, TYPE_MONTH_HISTORY } from "./config/type";
+import { HistoryDataForSearch, TYPE_GROUP, TYPE_LOCALE } from "./config/type";
 
 export const wait = async (seconds: number) =>
   new Promise((resolve) => setTimeout(() => resolve, seconds * 1000));
@@ -66,21 +66,23 @@ export const getLocalMonth = (locale: TYPE_LOCALE, month: number) => {
   }
 };
 
-export const getHistoryForSearch = (history: object, keywords: string[]) => {
-  const keys = Object.keys(history);
-  const values = Object.values(history);
+export const getHistoryForSearch = (history: HistoryDataForSearch[]) =>
+  history.map((data) => {
+    return {
+      title: {
+        ja: `${data.year}年${getLocalMonth("ja", data.month)}`,
+        en: `${data.year} ${getLocalMonth("en", data.month)}`,
+      },
+      searchableText: {
+        ja: data.sentence.map((sen) => sen.ja.join(" ")).join(" "),
+        en: data.sentence.map((sen) => sen.en.join(" ")).join(" "),
+      },
+      href: "/history",
+      keywords: ["history", data.type, getGroupNameFromType(data.type)],
+    };
+  });
 
-  return values.flatMap((yearValues, i) =>
-    yearValues.map((value: TYPE_MONTH_HISTORY) => {
-      return {
-        title: {
-          ja: `${keys[i]}年${getLocalMonth("ja", value.month)}`,
-          en: `${keys[i]} ${getLocalMonth("en", value.month)}`,
-        },
-        searchableText: value.searchableText,
-        href: "/history",
-        keywords: ["history", ...keywords],
-      };
-    }),
-  );
+export const convertBufferToBlob = (buffer: Buffer) => {
+  const nodeJsBuffer = Buffer.from(buffer);
+  return new Blob([nodeJsBuffer]);
 };

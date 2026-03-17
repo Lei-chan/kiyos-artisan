@@ -1,15 +1,17 @@
 //react
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //next.js
 import { useRouter } from "next/navigation";
 //models
-import data from "../../models/search";
+import dataForSearch from "../../lib/models/search";
 //type
 import {
   TYPE_LOCALE,
   TYPE_SEARCH_DATA,
   TYPE_SEARCH_RESULT,
-} from "../../config/type";
+} from "../../lib/config/type";
+import { MANAGEMENT_API_URL } from "@/app/lib/config/settings";
+import { getHistoryForSearch } from "@/app/lib/helper";
 
 export default function SearchOverlay({
   currentLocale,
@@ -50,6 +52,8 @@ function SearchContainer({
   locale: TYPE_LOCALE;
   onClickClose: () => void;
 }) {
+  const [historyForSearch, setHistoryForSearch] =
+    useState<TYPE_SEARCH_RESULT[]>();
   const [results, setResults] = useState<TYPE_SEARCH_DATA>([]);
   const [message, setMessage] = useState("");
 
@@ -63,17 +67,31 @@ function SearchContainer({
 
     if (!value) return;
 
-    const results = data.filter(
+    const allDataForSearch = historyForSearch
+      ? [...historyForSearch, ...dataForSearch]
+      : dataForSearch;
+    const results = allDataForSearch.filter(
       (data) =>
         data.title[locale].includes(value) ||
         data.searchableText[locale].includes(value) ||
-        data.keywords.join(" ").includes(value)
+        data.keywords.join(" ").includes(value),
     );
 
     if (!results.length)
       setMessage(locale === "ja" ? "検索結果 ０件" : "0 search results");
     setResults(results);
   }
+
+  // set history data for search
+  useEffect(() => {
+    fetch(`${MANAGEMENT_API_URL}history?page=search`)
+      .then((res) => res.json())
+      .then((data) => {
+        const historyDataForSearch = getHistoryForSearch(data);
+        setHistoryForSearch(historyDataForSearch);
+      })
+      .catch((err) => console.error("Error", err));
+  }, []);
 
   return (
     <div className="relative w-[90%] sm:w-[80%] lg:w-[70%] h-[80%] bg-slate-50 rounded-lg">

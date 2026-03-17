@@ -2,10 +2,10 @@
 //react
 import { useState } from "react";
 //type
-import { TYPE_GROUP, TYPE_LOCALE, TYPE_NEWS } from "../../config/type";
+import { TYPE_GROUP, TYPE_LOCALE, TYPE_NEWS } from "../../lib/config/type";
 //models
-import { organizedNews } from "../../models/news";
-import { getLocaleDate, getShortenedGroupName } from "@/app/helper";
+import { organizedNews } from "../../lib/models/news";
+import { getLocaleDate, getShortenedGroupName } from "@/app/lib/helper";
 
 export default function NewsUl({
   locale,

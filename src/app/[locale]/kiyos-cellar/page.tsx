@@ -6,23 +6,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 //models
-import { about, contact, shop } from "../../models/kiyos";
+import { about, contact, shop } from "../../lib/models/kiyos";
 //styles
 import {
   groupPageClassName,
   groupPageContentContainerClassName,
   groupPageSectionContainerClassName,
-} from "@/app/config/styles";
+} from "@/app/lib/config/styles";
 //components
 import TitleNavLable from "../components/TitleNavLable";
 import NewsUl from "../components/NewsUl";
 import KiyosContact from "../components/KiyosContact";
 //methods
-import { getNewsName } from "@/app/helper";
+import { getNewsName } from "@/app/lib/helper";
 // settings
-import { SHOP_URL } from "@/app/config/settings";
+import { SHOP_URL } from "@/app/lib/config/settings";
 //type
-import { TYPE_LOCALE } from "@/app/config/type";
+import { TYPE_LOCALE } from "@/app/lib/config/type";
 
 export default function KiyosCellar() {
   const smallHeaderClassName =

@@ -8,9 +8,9 @@ import { usePathname, useRouter } from "next/navigation";
 //components
 import SearchOverlay from "./SearchOverlay";
 //methods
-import { getGroupNameFromType } from "../../helper";
-import { TYPE_LOCALE } from "@/app/config/type";
-import { SHOP_URL } from "@/app/config/settings";
+import { getGroupNameFromType } from "../../lib/helper";
+import { TYPE_LOCALE } from "@/app/lib/config/type";
+import { SHOP_URL } from "@/app/lib/config/settings";
 
 export default function TopBar({
   currentLocale,

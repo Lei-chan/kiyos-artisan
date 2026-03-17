@@ -7,22 +7,22 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import dynamic from "next/dynamic";
 //models
-import { about, contact, shop } from "../../models/amavin";
+import { about, contact, shop } from "../../lib/models/amavin";
 //styles
 import {
   groupPageClassName,
   groupPageContentContainerClassName,
   groupPageSectionContainerClassName,
-} from "@/app/config/styles";
+} from "@/app/lib/config/styles";
 //components
 import TitleNavLable from "../components/TitleNavLable";
 import NewsUl from "../components/NewsUl";
 import AmavinContact from "../components/AmavinContact";
 //type
-import { TYPE_LOCALE } from "@/app/config/type";
+import { TYPE_LOCALE } from "@/app/lib/config/type";
 //methods
-import { getNewsName } from "@/app/helper";
-import { SHOP_URL } from "@/app/config/settings";
+import { getNewsName } from "@/app/lib/helper";
+import { SHOP_URL } from "@/app/lib/config/settings";
 
 //prevent a error for a client-side leaflet library map by avoiding the map to be rendered on server side
 const MapWithNoSSR = dynamic(() => import("../components/AmavinMap"), {

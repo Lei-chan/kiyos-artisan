@@ -3,15 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 // next.js
 import { useParams } from "next/navigation";
-//model
-import { historyKiyos } from "@/app/models/historyKiyos/historyKiyos";
-import { historyAmavin } from "@/app/models/hitoryAmavin/historyAmavin";
 //components
 import TitleNavLable from "../components/TitleNavLable";
 //methods
-import { getGroupNameFromType, getLocalMonth } from "../../helper";
+import { getGroupNameFromType, getLocalMonth } from "@/app/lib/helper";
 //type
-import { TYPE_GROUP, TYPE_LOCALE, TYPE_MONTH_HISTORY } from "../../config/type";
+import { HistoryData, TYPE_GROUP, TYPE_LOCALE } from "../../lib/config/type";
+import {
+  amavinHistoryYears,
+  kiyosHistoryYears,
+  MANAGEMENT_API_URL,
+} from "@/app/lib/config/settings";
+import HistoryDefaultImage from "../components/HistoryDefaultImage";
+import { historyPClassName } from "@/app/lib/config/styles";
 
 export default function History() {
   const smallHeaderClassName = "text-lg text-orange-800 font-bold";
@@ -58,25 +62,26 @@ function GroupHistory({
   smallHeaderClassName: string;
   containerClassName: string;
 }) {
-  const history = type === "kiyos" ? historyKiyos : historyAmavin;
-  const historyEntriesArr = Object.entries(history);
+  const historyYears =
+    type === "kiyos" ? kiyosHistoryYears : amavinHistoryYears;
 
   const isEvenNumber = (number: number) => number % 2 === 0;
   return (
     <div className={containerClassName}>
-      <h1 className={`${smallHeaderClassName} mb-2`}>
+      <h1
+        className={`${smallHeaderClassName} mb-3 md:mb-4 lg:mb-5 xl:mb-6 2xl:mb-7`}
+      >
         {getGroupNameFromType(type)}
       </h1>
-      {historyEntriesArr.map((yearArr, i) => {
+      {historyYears.map((year, i) => {
         const isEven = isEvenNumber(i);
-        const [year, monthsArr] = yearArr;
         return (
           <YearHistory
             key={i}
             locale={locale}
+            type={type}
             isEven={isEven}
             year={year}
-            monthsArr={monthsArr}
           />
         );
       })}
@@ -86,18 +91,20 @@ function GroupHistory({
 
 function YearHistory({
   locale,
+  type,
   isEven,
   year,
-  monthsArr,
 }: {
   locale: TYPE_LOCALE;
+  type: TYPE_GROUP;
   isEven: boolean;
   year: string;
-  monthsArr: TYPE_MONTH_HISTORY[];
 }) {
+  const [history, setHistory] = useState<HistoryData[]>();
   const [isYearOpen, setIsYearOpen] = useState(false);
   const [curMonthIndex, setCurMonthIndex] = useState(0);
   const [curMonthHeight, setCurMonthHeight] = useState(0);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const calcTranslateX = (i: number) =>
     `translateX(${(i - curMonthIndex) * 100}%)`;
@@ -114,10 +121,29 @@ function YearHistory({
     setCurMonthIndex(i);
   }
 
+  useEffect(() => {
+    fetch(`${MANAGEMENT_API_URL}history?page=history&type=${type}&year=${year}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const sortedByMonth = data.toSorted(
+          (a: HistoryData, b: HistoryData) => a.month - b.month,
+        );
+        setHistory(sortedByMonth);
+      })
+      .catch((err) => {
+        console.error("Error", err);
+        setErrorMessage(
+          locale === "en"
+            ? "Error occured. Please try again."
+            : "エラーが発生しました。もう一度お試し下さい。",
+        );
+      });
+  }, [locale, type, year]);
+
   return (
-    <div className="w-full h-fit flex flex-col items-center">
+    <div className="w-[85%] sm:w-[80%] md:w-[75%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%]  h-fit flex flex-col items-center">
       <div
-        className={`relative w-[85%] h-fit flex flex-row text-[22px] justify-center py-[1%] cursor-pointer
+        className={`relative w-full h-fit flex flex-row text-[22px] justify-center py-2 cursor-pointer
             ${
               isEven
                 ? "bg-amber-300/50 hover:bg-amber-300/80"
@@ -128,39 +154,46 @@ function YearHistory({
         <span>{year}</span>
         <span className="absolute right-[5%]">+</span>
       </div>
-      {isYearOpen && (
-        <>
-          <div
-            className="relative w-[90%] mt-4 overflow-hidden"
-            style={{ height: `${curMonthHeight}px` }}
-          >
-            {monthsArr.map((history, i) => (
-              <MonthHistory
-                key={i}
-                locale={locale}
-                history={history}
-                translateX={calcTranslateX(i)}
-                i={i}
-                adjustParentHeight={adjustParentHeight}
-              />
-            ))}
-          </div>
-          <div className="w-full h-fit flex flex-row justify-center mt-2 mb-4 gap-1 px-[2%] flex-wrap">
-            {monthsArr.map((history, i) => (
-              <button
-                key={i}
-                type="button"
-                className={`underline text-sm ${
-                  i === curMonthIndex ? "text-orange-800" : "text-orange-600"
-                }`}
-                onClick={() => handleClickMonth(i)}
-              >
-                {getLocalMonth(locale, history.month)}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
+      {isYearOpen &&
+        (history ? (
+          <>
+            <div
+              className="relative w-full mt-4 overflow-hidden"
+              style={{ height: `${curMonthHeight}px` }}
+            >
+              {history.map((his, i) => (
+                <MonthHistory
+                  key={i}
+                  locale={locale}
+                  history={his}
+                  translateX={calcTranslateX(i)}
+                  i={i}
+                  adjustParentHeight={adjustParentHeight}
+                />
+              ))}
+            </div>
+            <div className="w-full h-fit flex flex-row justify-center mt-2 mb-4 md:mb-5 lg:mb-6 xl:mb-7 2xl:mb-8 gap-1 sm:gap-2 px-[2%] flex-wrap">
+              {history.map((his, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  className={`underline text-sm ${
+                    i === curMonthIndex ? "text-orange-800" : "text-orange-600"
+                  }`}
+                  onClick={() => handleClickMonth(i)}
+                >
+                  {getLocalMonth(locale, his.month)}
+                </button>
+              ))}
+            </div>
+          </>
+        ) : errorMessage ? (
+          <p className="py-6 text-amber-600">{errorMessage}</p>
+        ) : (
+          <p className="py-6 text-amber-600">
+            {locale === "en" ? "Loading..." : "ロード中..."}
+          </p>
+        ))}
     </div>
   );
 }
@@ -173,7 +206,7 @@ function MonthHistory({
   adjustParentHeight,
 }: {
   locale: TYPE_LOCALE;
-  history: TYPE_MONTH_HISTORY;
+  history: HistoryData;
   translateX: string;
   i: number;
   adjustParentHeight: (height: number, i: number) => void;
@@ -200,10 +233,35 @@ function MonthHistory({
       style={{ transform: translateX }}
       className="absolute w-full h-fit flex flex-col items-center duration-700 px-[5%]"
     >
-      <h3 className="text-orange-700 font-bold text-lg">
+      <h3 className="text-orange-700 font-bold text-lg my-1 sm:my-2 md:my-3 lg:my-4">
         {getLocalMonth(locale, history.month)}
       </h3>
-      {history.content[locale]}
+      {history.contents.map((con, i) => (
+        <div
+          key={i}
+          className="flex flex-col items-center mb-4 sm:mb-5 md:mb-6 lg:mb-7 xl:mb-8 2xl:mb-9"
+        >
+          {con.images.map((img, i) => (
+            <HistoryDefaultImage
+              key={i}
+              src={`data:image/webp;base64,${img.data}`}
+              alt={img.name}
+            />
+          ))}
+          <p className={historyPClassName}>
+            {con.sentence[locale].map((sen, i) =>
+              i !== con.sentence[locale].length - 1 ? (
+                <span key={i}>
+                  {sen}
+                  <br />
+                </span>
+              ) : (
+                sen
+              ),
+            )}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }

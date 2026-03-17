@@ -1,7 +1,7 @@
 //react
 import { RefObject } from "react";
 //type
-import { TYPE_GROUP, TYPE_LOCALE } from "../../config/type";
+import { TYPE_GROUP, TYPE_LOCALE } from "../../lib/config/type";
 //methods
 import {
   getAboutName,
@@ -9,7 +9,7 @@ import {
   getGroupNameFromType,
   getNewsName,
   getShopName,
-} from "../../helper";
+} from "../../lib/helper";
 import Image from "next/image";
 
 export default function TitleNavLable({

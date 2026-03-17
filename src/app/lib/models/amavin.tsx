@@ -1,4 +1,4 @@
-import { getAboutName, getContactName, getShopName } from "../helper";
+import { getAboutName, getContactName, getShopName } from "../../lib/helper";
 
 const href = "/artisan-mariage-vineyards";
 const commonKeywords = [
@@ -18,7 +18,7 @@ export const about = {
     en: "Artisan Mariage Vineyards is vineyardLocated in Akeno-cho, Hokuto City, Yamanashi Prefecture (at an altitude of 750m), we organically cultivate clone-controlled wine grapes, specializing in black grapes. The varieties we use are Syrah & Shiraz, Grenache, and Cabernet Franc. Our wines are brewed under contract by Shigei Brewery, also in Akeno-cho, and we have been selling our wines since the 2023 vintage.",
   },
   href,
-  keywords: [...commonKeywords],
+  keywords: commonKeywords,
 };
 
 export const shop = {
@@ -28,7 +28,7 @@ export const shop = {
     en: "You can purchase items of Artisan Mariage Vineyards from here. Online shope",
   },
   href,
-  keywords: [commonKeywords],
+  keywords: commonKeywords,
 };
 
 export const contact = {

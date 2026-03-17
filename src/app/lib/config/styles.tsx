@@ -6,4 +6,5 @@ export const groupPageSectionContainerClassName =
 export const contactContainerClassName = "w-fit flex flex-col items-start";
 export const historyMultiImageContainerClassName =
   "flex flex-col items-center gap-2";
-export const historyPClassName = "text-base mt-2";
+export const historyPClassName =
+  "text-base mt-2 sm:mt-3 md:mt-4 lg:mt-5 xl:mt-6 2xl:mt-7";

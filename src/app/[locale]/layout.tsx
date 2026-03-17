@@ -1,14 +1,14 @@
 //react
 import React, { Suspense } from "react";
 //config
-import { BASE_URL } from "../config/settings";
+import { BASE_URL } from "../lib/config/settings";
 //components
 import TopBar from "./components/TopBar";
 import UpArrow from "./components/UpArrow";
 import Footer from "./components/Footer";
 import Loading from "./loading";
 //type
-import { TYPE_LOCALE } from "../config/type";
+import { TYPE_LOCALE } from "../lib/config/type";
 
 export async function generateMetadata({
   params,

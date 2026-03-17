@@ -1,4 +1,4 @@
-import { TYPE_LOCALE } from "@/app/config/type";
+import { TYPE_LOCALE } from "@/app/lib/config/type";
 import Image from "next/image";
 
 export default function ContactEmail({
