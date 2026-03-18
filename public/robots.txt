@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kiyos-artisan.vercel.app/sitemap.xml
