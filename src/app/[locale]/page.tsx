@@ -1,13 +1,12 @@
 "use client";
 //react
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 //next.js
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 //models
-import slideInfo from "../lib/models/slide";
 import { amavin, kiyos } from "../lib/models/home";
 //components
 import NewsUl from "./components/NewsUl";
@@ -51,7 +50,38 @@ function Top({ locale }: { locale: TYPE_LOCALE }) {
 }
 
 function Slide({ locale }: { locale: TYPE_LOCALE }) {
-  const slideLength = slideInfo.length;
+  const slideData = [
+    {
+      src: "/field-before-harvest.webp",
+      alt: {
+        ja: "ヴィンヤード収穫画像",
+        en: "Vineyard before harvest image",
+      },
+    },
+    {
+      src: "/mountains-from-field.webp",
+      alt: {
+        ja: "ヴィンヤードから見る山々画像",
+        en: "Mountains from vineyard image",
+      },
+    },
+    {
+      src: "/field-snow.webp",
+      alt: {
+        ja: "雪が積もったヴィンヤード画像",
+        en: "Vineyard covered with snow image",
+      },
+    },
+    {
+      src: "/field-with-sky.webp",
+      alt: {
+        ja: "Artisan Mariage Vineyards画像",
+        en: "Artisan mariage vineyards image",
+      },
+    },
+  ];
+
+  const numberOfSlides = slideData.length;
   const slideDuration = 5; //seconds
   const [curImage, setCurImage] = useState(0);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
@@ -60,14 +90,14 @@ function Slide({ locale }: { locale: TYPE_LOCALE }) {
     if (intervalId) clearInterval(intervalId);
 
     const id = setInterval(() => {
-      setCurImage((prev) => (prev === slideLength - 1 ? 0 : prev + 1));
+      setCurImage((prev) => (prev === numberOfSlides - 1 ? 0 : prev + 1));
       setIntervalId(id);
     }, slideDuration * 1000);
-  }, [curImage, slideLength, intervalId]);
+  }, [curImage, numberOfSlides, intervalId]);
 
   return (
     <div className="w-full h-[76vh] relative">
-      {slideInfo.map((slide, i) => (
+      {slideData.map((slide, i) => (
         <Image
           key={i}
           src={slide.src}
@@ -75,7 +105,7 @@ function Slide({ locale }: { locale: TYPE_LOCALE }) {
           width={2560}
           height={1422}
           priority
-          className={`absolute w-[2560px] h-full object-cover transition duration-[2000ms] ease-in-out ${
+          className={`absolute w-full h-full object-cover transition duration-[2000ms] ease-in-out ${
             curImage === i ? "opacity-100" : "opacity-0"
           }`}
         ></Image>
@@ -86,33 +116,30 @@ function Slide({ locale }: { locale: TYPE_LOCALE }) {
 
 function Bottom({ locale }: { locale: TYPE_LOCALE }) {
   const containerClassName =
-    "w-full md:w-[90%] lg:w-[80%] h-fit text-center transition-all duration-[1200ms]";
+    "w-full w-[90%] md:w-[80%] lg:w-[70%] xl:w-[65%] h-fit text-center transition-all duration-[1200ms]";
   const headerClassName = "text-2xl font-bold tracking-wider";
   const contentClassName =
     "w-full h-fit flex flex-row mt-6 md:mt-5 px-[7%] gap-5 justify-center items-center";
   const slideInClassName = "transform duration-[2000ms]";
 
-  const buttomRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div
-      ref={buttomRef}
-      className="w-full h-fit flex flex-col items-center mt-20 gap-11 md:gap-13 lg:gap-16"
-    >
-      <Kiyos
-        locale={locale}
-        containerClassName={containerClassName}
-        headerClassName={headerClassName}
-        contentClassName={contentClassName}
-        slideInClassName={slideInClassName}
-      />
-      <Amavine
-        locale={locale}
-        containerClassName={containerClassName}
-        headerClassName={headerClassName}
-        contentClassName={contentClassName}
-        slideInClassName={slideInClassName}
-      />
+    <div className="w-full h-fit">
+      <div className="flex flex-col items-center my-20 md:my-24 lg:my-28  gap-20 lg:gap-24 xl:gap-28">
+        <Kiyos
+          locale={locale}
+          containerClassName={containerClassName}
+          headerClassName={headerClassName}
+          contentClassName={contentClassName}
+          slideInClassName={slideInClassName}
+        />
+        <Amavine
+          locale={locale}
+          containerClassName={containerClassName}
+          headerClassName={headerClassName}
+          contentClassName={contentClassName}
+          slideInClassName={slideInClassName}
+        />
+      </div>
       <News locale={locale} />
     </div>
   );
@@ -337,7 +364,7 @@ function News({ locale }: { locale: TYPE_LOCALE }) {
   }
 
   return (
-    <div className="relative w-full h-fit mt-12 flex flex-col items-center bg-yellow-100 py-[5%]">
+    <div className="relative w-full h-fit mt-12 flex flex-col items-center bg-yellow-100 py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 2xl:py-28">
       <h1
         className="text-center text-xl font-bold tracking-wider text-blue-900 cursor-pointer mb-4"
         onClick={handleClickHeader}
@@ -358,7 +385,7 @@ function NewsButtons({
   const labelClassName = "w-fit h-fit text-white p-[1px] rounded";
 
   return (
-    <div className=" flex flex-row text-sm  mt-6 w-full md:w-[70%] lg:w-[60%] 2xl:w-[50%] justify-center md:justify-end gap-1 md:gap-5">
+    <div className="flex flex-row text-sm  mt-6 lg:mt-7 w-fit justify-center md:justify-end gap-1 md:gap-5 lg:gap-6 xl:gap-7 2xl:gap-8">
       <NewsButton
         type="kiyos"
         className={`${labelClassName} bg-yellow-500`}

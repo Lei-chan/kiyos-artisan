@@ -18,7 +18,7 @@ export default function NewsUl({
     type === "all" ? news : type === news.type,
   );
   return (
-    <ul className="w-[85%] md:w-[70%] lg:w-[60%] 2xl:w-[50%] h-[60vh] border-2 overflow-y-auto overflow-x-hidden bg-white rounded md:rounded-md lg:rounded-lg">
+    <ul className="w-[18rem] sm:w-[20rem] md:w-[23rem] lg:w-[27rem] xl:w-[32rem] 2xl:w-[34rem] aspect-[1/1.3] md:aspect-[1/1.2] lg:aspect-[1/1.1] xl:aspect-square 2xl:aspect-[1/0.9] border-2 overflow-y-auto overflow-x-hidden bg-white rounded-lg">
       {newsForType.length ? (
         newsForType.map((news, i) => (
           <List key={i} locale={locale} news={news as TYPE_NEWS} />
@@ -43,7 +43,7 @@ function List({ locale, news }: { locale: TYPE_LOCALE; news: TYPE_NEWS }) {
 
   return (
     <li
-      className="relative w-full min-h-[20%] max-h-fit border-b-2 p-[1%] cursor-pointer flex flex-col"
+      className="relative w-full min-h-[5rem] max-h-fit border-b-2 p-[1%] cursor-pointer flex flex-col"
       onClick={handleClickList}
     >
       <div className="w-fit flex-1 text-sm flex flex-row items-center">

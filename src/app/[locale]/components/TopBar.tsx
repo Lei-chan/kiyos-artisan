@@ -24,8 +24,8 @@ export default function TopBar({
   }
 
   return (
-    <div className="relative grid w-full h-[24vh] bg-blue-900 grid-rows-2">
-      <div className="relative w-full h-full flex flex-row items-center justify-center">
+    <div className="relative w-full h-[24vh] bg-blue-900 flex flex-col">
+      <div className="relative w-full h-full flex flex-row items-center justify-center flex-1 md:flex-[1.1]">
         <h1
           className="text-center text-[#ffe77c] text-base  cursor-pointer"
           onClick={handleClickLogo}
@@ -144,7 +144,7 @@ function Navi({ currentLocale }: { currentLocale: TYPE_LOCALE }) {
   }
 
   return (
-    <nav className="w-full flex flex-row  text-sm bg-blue-800">
+    <nav className="w-full flex flex-row  text-sm bg-blue-800 flex-1 md:flex-[0.9]">
       <div
         className={`${divClassName} w-[27%]`}
         onMouseEnter={handleKiyosHover}
