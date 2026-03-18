@@ -67,7 +67,7 @@ function GroupHistory({
 
   const isEvenNumber = (number: number) => number % 2 === 0;
   return (
-    <div className={containerClassName}>
+    <div id={type} className={containerClassName}>
       <h1
         className={`${smallHeaderClassName} mb-3 md:mb-4 lg:mb-5 xl:mb-6 2xl:mb-7`}
       >

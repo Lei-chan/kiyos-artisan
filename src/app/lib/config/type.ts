@@ -42,3 +42,16 @@ export type HistoryDataForSearch = {
   month: number;
   sentence: { ja: string[]; en: string[] }[];
 };
+
+export type NewsData = {
+  _id: string;
+  date: string;
+  type: NewsType;
+  content: {
+    title: { en: string; ja: string };
+    sentence: { en: string[]; ja: string[] };
+    link: string;
+  };
+};
+
+export type NewsType = TYPE_GROUP | "both";

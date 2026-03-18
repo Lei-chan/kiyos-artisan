@@ -1,4 +1,9 @@
-import { HistoryDataForSearch, TYPE_GROUP, TYPE_LOCALE } from "./config/type";
+import {
+  HistoryDataForSearch,
+  NewsData,
+  TYPE_GROUP,
+  TYPE_LOCALE,
+} from "./config/type";
 
 export const wait = async (seconds: number) =>
   new Promise((resolve) => setTimeout(() => resolve, seconds * 1000));
@@ -77,8 +82,27 @@ export const getHistoryForSearch = (history: HistoryDataForSearch[]) =>
         ja: data.sentence.map((sen) => sen.ja.join(" ")).join(" "),
         en: data.sentence.map((sen) => sen.en.join(" ")).join(" "),
       },
-      href: "/history",
+      href: `/history#${data.type}`,
       keywords: ["history", data.type, getGroupNameFromType(data.type)],
+    };
+  });
+
+export const getNewsForSearch = (news: NewsData[]) =>
+  news.map((data) => {
+    const keywordsForType = [
+      data.type,
+      data.type === "both" ? "common" : getGroupNameFromType(data.type),
+      data.type === "both" ? "共通" : "",
+    ];
+
+    return {
+      title: data.content.title,
+      searchableText: {
+        ja: data.content.sentence.ja.join(""),
+        en: data.content.sentence.en.join(" "),
+      },
+      href: "/#news",
+      keywords: ["news", "お知らせ", ...keywordsForType],
     };
   });
 

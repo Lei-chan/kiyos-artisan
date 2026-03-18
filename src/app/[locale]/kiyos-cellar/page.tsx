@@ -2,7 +2,6 @@
 //react
 import { RefObject, useRef } from "react";
 //next.js
-import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 //models
@@ -27,46 +26,32 @@ import { TYPE_LOCALE } from "@/app/lib/config/type";
 export default function KiyosCellar() {
   const smallHeaderClassName =
     "text-lg text-yellow-600 font-bold px-[10%] mb-3 sm: mb-4 md:mb-5 lg:mb-6";
-
   const { locale } = useParams();
-
-  const aboutRef = useRef<HTMLDivElement | null>(null);
-  const shopRef = useRef<HTMLDivElement | null>(null);
-  const newsRef = useRef<HTMLDivElement | null>(null);
-  const contactRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <div className={groupPageClassName}>
       <TitleNavLable
-        aboutRef={aboutRef}
-        shopRef={shopRef}
-        newsRef={newsRef}
-        contactRef={contactRef}
         locale={(locale || "en") as TYPE_LOCALE}
         type="kiyos"
         bgImagePath="/amavin-title-bg.jpeg"
       />
       <div className={groupPageContentContainerClassName}>
         <About
-          ref={aboutRef}
           locale={(locale || "en") as TYPE_LOCALE}
           containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
         />
         <Shop
-          ref={shopRef}
           locale={(locale || "en") as TYPE_LOCALE}
           containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
         />
         <News
-          ref={newsRef}
           locale={(locale || "en") as TYPE_LOCALE}
           containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
         />
         <Contact
-          ref={contactRef}
           locale={(locale || "en") as TYPE_LOCALE}
           containerClassName={groupPageSectionContainerClassName}
           smallHeaderClassName={smallHeaderClassName}
@@ -77,18 +62,16 @@ export default function KiyosCellar() {
 }
 
 function About({
-  ref,
   locale,
   containerClassName,
   smallHeaderClassName,
 }: {
-  ref: RefObject<HTMLDivElement | null>;
   locale: TYPE_LOCALE;
   containerClassName: string;
   smallHeaderClassName: string;
 }) {
   return (
-    <div ref={ref} className={containerClassName}>
+    <div id="about" className={containerClassName}>
       <h2 className={smallHeaderClassName}>{about.title[locale]}</h2>
       {/* <Image
         src="/artisan-clairet-for-sale.webp"
@@ -105,18 +88,16 @@ function About({
 }
 
 function Shop({
-  ref,
   locale,
   containerClassName,
   smallHeaderClassName,
 }: {
-  ref: RefObject<HTMLDivElement | null>;
   locale: TYPE_LOCALE;
   containerClassName: string;
   smallHeaderClassName: string;
 }) {
   return (
-    <div ref={ref} className={containerClassName}>
+    <div id="shop" className={containerClassName}>
       <h2 className={smallHeaderClassName}>{shop.title[locale]}</h2>
       <p className="w-full h-fit px-[5%] text-base">
         {locale === "ja"
@@ -132,18 +113,16 @@ function Shop({
 }
 
 function News({
-  ref,
   locale,
   containerClassName,
   smallHeaderClassName,
 }: {
-  ref: RefObject<HTMLDivElement | null>;
   locale: TYPE_LOCALE;
   containerClassName: string;
   smallHeaderClassName: string;
 }) {
   return (
-    <div ref={ref} className={containerClassName}>
+    <div id="news" className={containerClassName}>
       <h2 className={smallHeaderClassName}>{getNewsName(locale)}</h2>
       <NewsUl locale={locale} type="kiyos" />
     </div>
@@ -151,18 +130,16 @@ function News({
 }
 
 function Contact({
-  ref,
   locale,
   containerClassName,
   smallHeaderClassName,
 }: {
-  ref: RefObject<HTMLDivElement | null>;
   locale: TYPE_LOCALE;
   containerClassName: string;
   smallHeaderClassName: string;
 }) {
   return (
-    <div ref={ref} className={containerClassName}>
+    <div id="contact" className={containerClassName}>
       <h2 className={smallHeaderClassName}>{contact.title[locale]}</h2>
       <div className="w-[90%] h-fit text-base flex flex-col items-center">
         <KiyosContact locale={locale} />

@@ -20,7 +20,7 @@ import {
 // settings
 import { SHOP_URL } from "../lib/config/settings";
 //type
-import { TYPE_GROUP, TYPE_LOCALE } from "../lib/config/type";
+import { NewsType, TYPE_GROUP, TYPE_LOCALE } from "../lib/config/type";
 
 export default function Home() {
   const { locale } = useParams();
@@ -116,7 +116,7 @@ function Slide({ locale }: { locale: TYPE_LOCALE }) {
 
 function Bottom({ locale }: { locale: TYPE_LOCALE }) {
   const containerClassName =
-    "w-full w-[90%] md:w-[80%] lg:w-[70%] xl:w-[65%] h-fit text-center transition-all duration-[1200ms]";
+    "w-full w-[90%] md:w-[80%] lg:w-[70%] xl:w-[65%] h-fit text-center transition-all duration-[1200ms] scroll-m-5";
   const headerClassName = "text-2xl font-bold tracking-wider";
   const contentClassName =
     "w-full h-fit flex flex-row mt-6 md:mt-5 px-[7%] gap-5 justify-center items-center";
@@ -132,7 +132,7 @@ function Bottom({ locale }: { locale: TYPE_LOCALE }) {
           contentClassName={contentClassName}
           slideInClassName={slideInClassName}
         />
-        <Amavine
+        <Amavin
           locale={locale}
           containerClassName={containerClassName}
           headerClassName={headerClassName}
@@ -163,6 +163,7 @@ function Kiyos({
   return (
     <div
       ref={ref}
+      id="kiyos"
       className={`${containerClassName} ${
         inView ? "opacity-100" : "opacity-0"
       }`}
@@ -178,23 +179,12 @@ function Kiyos({
           slideInClassName={slideInClassName}
           inView={inView}
         />
-        {/* <GroupImages
-          type="kiyos"
-          src1="/wine-demo.png"
-          alt1={locale === "ja" ? "○○ワイン画像" : "something wine image"}
-          src2="/wine-demo2.png"
-          alt2={locale === "ja" ? "○○ワイン画像" : "something wine image"}
-          left1="left-4"
-          left2="left-16"
-          slideInClassName={slideInClassName}
-          inView={inView}
-        /> */}
       </div>
     </div>
   );
 }
 
-function Amavine({
+function Amavin({
   locale,
   containerClassName,
   headerClassName,
@@ -212,6 +202,7 @@ function Amavine({
   return (
     <div
       ref={ref}
+      id="amavin"
       className={`${containerClassName} ${
         inView ? "opacity-100" : "opacity-0"
       }`}
@@ -220,25 +211,6 @@ function Amavine({
         {amavin.title[locale]}
       </h1>
       <div className={`${contentClassName}`}>
-        {/* <GroupImages
-          type="amavin"
-          src1="/artisan-wine-one-no-bg.png"
-          alt1={
-            locale === "ja"
-              ? "Artisan Mariage Vineyards画像"
-              : "Artisan Mariage Vineyards wine image"
-          }
-          src2="/artisan-wine-one-no-bg.png"
-          alt2={
-            locale === "ja"
-              ? "Artisan Mariage Vineyards画像"
-              : "Artisan Mariage Vineyards wine image"
-          }
-          left1=""
-          left2="left-11"
-          slideInClassName={slideInClassName}
-          inView={inView}
-        /> */}
         <GroupDescription
           locale={locale}
           type="amavin"
@@ -350,21 +322,23 @@ function GroupImages({
 }
 
 function News({ locale }: { locale: TYPE_LOCALE }) {
-  const [type, setType] = useState<"all" | TYPE_GROUP>("all");
+  const [type, setType] = useState<NewsType | "all">("all");
 
   function handleClickHeader() {
     setType("all");
   }
 
   function handleClickType(e: React.MouseEvent<HTMLButtonElement>) {
-    const name = e.currentTarget.name;
-    if (name !== "kiyos" && name !== "amavin") return;
+    const name = e.currentTarget.name as NewsType;
 
     setType(name);
   }
 
   return (
-    <div className="relative w-full h-fit mt-12 flex flex-col items-center bg-yellow-100 py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 2xl:py-28">
+    <div
+      id="news"
+      className="relative w-full h-fit mt-12 flex flex-col items-center bg-yellow-100 py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 2xl:py-28"
+    >
       <h1
         className="text-center text-xl font-bold tracking-wider text-blue-900 cursor-pointer mb-4"
         onClick={handleClickHeader}
@@ -372,54 +346,58 @@ function News({ locale }: { locale: TYPE_LOCALE }) {
         {locale === "ja" ? "ニュース" : "News"}
       </h1>
       <NewsUl locale={locale} type={type} />
-      <NewsButtons onClickType={handleClickType} />
+      <NewsButtons locale={locale} onClickType={handleClickType} />
     </div>
   );
 }
 
 function NewsButtons({
+  locale,
   onClickType,
 }: {
+  locale: TYPE_LOCALE;
   onClickType: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
-  const labelClassName = "w-fit h-fit text-white p-[1px] rounded";
-
   return (
-    <div className="flex flex-row text-sm  mt-6 lg:mt-7 w-fit justify-center md:justify-end gap-1 md:gap-5 lg:gap-6 xl:gap-7 2xl:gap-8">
-      <NewsButton
-        type="kiyos"
-        className={`${labelClassName} bg-yellow-500`}
-        onClickType={onClickType}
-      />
-      <NewsButton
-        type="amavin"
-        className={`${labelClassName}  bg-pink-600`}
-        onClickType={onClickType}
-      />
+    <div className="w-[17rem] sm:w-full flex flex-col justify-center sm:flex-row text-sm mt-6 lg:mt-7 gap-2 md:gap-5 lg:gap-6 xl:gap-7 2xl:gap-8">
+      <NewsButton locale={locale} type="kiyos" onClickType={onClickType} />
+      <NewsButton locale={locale} type="amavin" onClickType={onClickType} />
+      <NewsButton locale={locale} type="both" onClickType={onClickType} />
     </div>
   );
 }
 
 function NewsButton({
+  locale,
   type,
-  className,
   onClickType,
 }: {
-  type: TYPE_GROUP;
-  className: string;
+  locale: TYPE_LOCALE;
+  type: NewsType;
   onClickType: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
   return (
-    <div className="flex flex-row w-[50%] md:w-fit h-fit gap-1 justify-center">
+    <div className="flex flex-row w-full sm:w-fit h-fit gap-1 justify-left sm:justify-center">
       <button
         type="button"
         name={type}
-        className={className}
+        className={`w-fit h-fit text-white py-[1px] px-1 rounded ${type === "kiyos" ? "bg-yellow-500" : type === "amavin" ? "bg-pink-600" : "bg-amber-600"}`}
         onClick={onClickType}
       >
-        {getShortenedGroupName(type)}
+        {type !== "both"
+          ? getShortenedGroupName(type)
+          : locale === "en"
+            ? "Common"
+            : "共通"}
       </button>
-      <span>: {getGroupNameFromType(type)}</span>
+      <span>
+        :{" "}
+        {type !== "both"
+          ? getGroupNameFromType(type)
+          : locale === "en"
+            ? "both"
+            : "両方"}
+      </span>
     </div>
   );
 }

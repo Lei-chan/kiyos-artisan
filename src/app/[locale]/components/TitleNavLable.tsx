@@ -1,5 +1,3 @@
-//react
-import { RefObject } from "react";
 //type
 import { TYPE_GROUP, TYPE_LOCALE } from "../../lib/config/type";
 //methods
@@ -11,20 +9,13 @@ import {
   getShopName,
 } from "../../lib/helper";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function TitleNavLable({
-  aboutRef,
-  shopRef,
-  newsRef,
-  contactRef,
   locale,
   type,
   bgImagePath,
 }: {
-  aboutRef?: RefObject<HTMLDivElement | null>;
-  shopRef?: RefObject<HTMLDivElement | null>;
-  newsRef?: RefObject<HTMLDivElement | null>;
-  contactRef?: RefObject<HTMLDivElement | null>;
   locale: TYPE_LOCALE;
   type: TYPE_GROUP | "history";
   bgImagePath: string;
@@ -56,95 +47,38 @@ export default function TitleNavLable({
             ? getGroupNameFromType(type)
             : type.slice(0, 1).toUpperCase() + type.slice(1)}
         </h1>
-        {(type === "kiyos" || type === "amavin") &&
-          aboutRef &&
-          shopRef &&
-          newsRef &&
-          contactRef && (
-            <Nav
-              aboutRef={aboutRef}
-              shopRef={shopRef}
-              newsRef={newsRef}
-              contactRef={contactRef}
-              locale={locale}
-              type={type}
-            />
-          )}
+        {(type === "kiyos" || type === "amavin") && (
+          <Nav locale={locale} type={type} />
+        )}
       </div>
     </div>
   );
 }
 
-function Nav({
-  aboutRef,
-  shopRef,
-  newsRef,
-  contactRef,
-  locale,
-  type,
-}: {
-  aboutRef: RefObject<HTMLDivElement | null>;
-  shopRef: RefObject<HTMLDivElement | null>;
-  newsRef: RefObject<HTMLDivElement | null>;
-  contactRef: RefObject<HTMLDivElement | null>;
-  locale: TYPE_LOCALE;
-  type: TYPE_GROUP;
-}) {
+function Nav({ locale, type }: { locale: TYPE_LOCALE; type: TYPE_GROUP }) {
   const navContainerGapLargerThanMd = "md:gap-5 xl:gap-7";
   const containerClassName = `w-full md:w-fit h-fit flex flex-row justify-center gap-3 ${navContainerGapLargerThanMd}`;
-  const btnClassName = "w-fit underline text-sm whitespace-nowrap text-white";
-
-  function handleClickAbout() {
-    aboutRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function handleClickShop() {
-    shopRef?.current?.scrollIntoView({ behavior: "smooth" });
-  }
-
-  function handleClickNews() {
-    newsRef?.current?.scrollIntoView({ behavior: "smooth" });
-  }
-
-  function handleClickContact() {
-    contactRef?.current?.scrollIntoView({ behavior: "smooth" });
-  }
+  const linkClassName = "w-fit underline text-sm whitespace-nowrap text-white";
 
   return (
     <nav
       className={`w-full h-fit flex flex-col md:flex-row justify-center items-start mt-[2%] gap-1 ${navContainerGapLargerThanMd}`}
     >
       <div className={containerClassName}>
-        <button
-          type="button"
-          className={btnClassName}
-          onClick={handleClickAbout}
-        >
+        <Link href="#about" scroll={true} className={linkClassName}>
           {getAboutName(locale, type)}
-        </button>
+        </Link>
       </div>
       <div className={containerClassName}>
-        <button
-          type="button"
-          className={btnClassName}
-          onClick={handleClickShop}
-        >
+        <Link href="#shop" scroll={true} className={linkClassName}>
           {getShopName(locale)}
-        </button>
-        <button
-          type="button"
-          className={btnClassName}
-          onClick={handleClickNews}
-        >
+        </Link>
+        <Link href="#news" scroll={true} className={linkClassName}>
           {getNewsName(locale)}
-        </button>
-        <button
-          type="button"
-          className={btnClassName}
-          onClick={handleClickContact}
-        >
+        </Link>
+        <Link href="#contact" scroll={true} className={linkClassName}>
           {getContactName(locale)}
-        </button>
+        </Link>
       </div>
     </nav>
   );

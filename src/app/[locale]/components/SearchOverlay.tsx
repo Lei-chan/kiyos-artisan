@@ -11,7 +11,8 @@ import {
   TYPE_SEARCH_RESULT,
 } from "../../lib/config/type";
 import { MANAGEMENT_API_URL } from "@/app/lib/config/settings";
-import { getHistoryForSearch } from "@/app/lib/helper";
+import { getHistoryForSearch, getNewsForSearch } from "@/app/lib/helper";
+import Link from "next/link";
 
 export default function SearchOverlay({
   currentLocale,
@@ -52,8 +53,15 @@ function SearchContainer({
   locale: TYPE_LOCALE;
   onClickClose: () => void;
 }) {
+  const [newsForSearch, setNewsForSearch] = useState<TYPE_SEARCH_RESULT[]>();
   const [historyForSearch, setHistoryForSearch] =
     useState<TYPE_SEARCH_RESULT[]>();
+  const allDataForSearch = [
+    ...(newsForSearch || []),
+    ...(historyForSearch || []),
+    ...dataForSearch,
+  ];
+
   const [results, setResults] = useState<TYPE_SEARCH_DATA>([]);
   const [message, setMessage] = useState("");
 
@@ -67,9 +75,6 @@ function SearchContainer({
 
     if (!value) return;
 
-    const allDataForSearch = historyForSearch
-      ? [...historyForSearch, ...dataForSearch]
-      : dataForSearch;
     const results = allDataForSearch.filter(
       (data) =>
         data.title[locale].includes(value) ||
@@ -89,6 +94,14 @@ function SearchContainer({
       .then((data) => {
         const historyDataForSearch = getHistoryForSearch(data);
         setHistoryForSearch(historyDataForSearch);
+      })
+      .catch((err) => console.error("Error", err));
+
+    fetch(`${MANAGEMENT_API_URL}news`)
+      .then((res) => res.json())
+      .then((data) => {
+        const newsDataForSearch = getNewsForSearch(data);
+        setNewsForSearch(newsDataForSearch);
       })
       .catch((err) => console.error("Error", err));
   }, []);
@@ -124,7 +137,7 @@ function SearchForm({
           locale === "ja" ? "何をお探しですか？" : "What are you looking for?"
         }
         name="value"
-        className="w-[80%] h-[40%] text-center border-2 border-black/10 rounded text-base lg:text-lg 2xl:text-2xl"
+        className="w-[80%] h-[40%] text-center border-2 border-black/10 rounded text-base px-1 lg:text-lg 2xl:text-2xl"
       ></input>
       <button
         type="submit"
@@ -147,7 +160,7 @@ function SearchResults({
 }) {
   return (
     <ul className="w-full h-4/5 overflow-auto">
-      {results.length ? (
+      {results.length > 0 ? (
         results.map((result, i) => (
           <Result
             key={i}
@@ -157,7 +170,7 @@ function SearchResults({
           />
         ))
       ) : (
-        <p className="w-full h-full flex flex-col text-center pt-[45%] text-base text-black/60">
+        <p className="w-full h-full flex flex-col text-center justify-center text-base text-black/60">
           {message}
         </p>
       )}
@@ -174,17 +187,12 @@ function Result({
   result: TYPE_SEARCH_RESULT;
   onClickClose: () => void;
 }) {
-  const router = useRouter();
-
-  function handleClickResult() {
-    router.push(`/${locale}${result.href}`);
-    onClickClose();
-  }
-
   return (
-    <li
+    <Link
+      href={`/${locale}${result.href}`}
+      scroll={result.href.includes("#") ? true : false}
       className="w-full h-1/3 border-b-2 py-4 px-[5%] flex flex-col gap-[3%] overflow-hidden hover:bg-slate-200 cursor-pointer"
-      onClick={handleClickResult}
+      onClick={onClickClose}
     >
       <h3 className="min-h-[25%] max-h-fit text-base lg:text-lg 2xl:text-2xl font-semibold text-blue-600 overflow-hidden text-ellipsis whitespace-nowrap">
         {result.title[locale]}
@@ -192,6 +200,6 @@ function Result({
       <p className="w-full h-[72%] break-all overflow-hidden text-sm lg:text-base 2xl:text-xl">
         {result.searchableText[locale]}
       </p>
-    </li>
+    </Link>
   );
 }
