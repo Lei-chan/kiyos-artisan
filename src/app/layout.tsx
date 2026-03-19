@@ -20,7 +20,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className={notoSerifJp.className}>
+    <html lang="" className={notoSerifJp.className}>
       <body>{children}</body>
     </html>
   );

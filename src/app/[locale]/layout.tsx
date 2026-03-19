@@ -13,9 +13,9 @@ import { TYPE_LOCALE } from "../lib/config/type";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: TYPE_LOCALE }>;
+  params: { locale: TYPE_LOCALE };
 }) {
-  const { locale } = await params;
+  const { locale } = params;
   const title =
     locale === "ja"
       ? "Artisan Mariage Vineyards(アルチザンマリアージュヴィンヤード)・Kiyos Cellar(キヨズセラー)"
