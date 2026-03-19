@@ -5,7 +5,7 @@ export const INSTAGRAM_KIYOS_URL =
 export const INSTAGRAM_AMAVIN_URL =
   "https://www.instagram.com/artisanmariagevineyards?igsh=MXViNHF6eWN3YjN1MQ%3D%3D&utm_source=qr";
 export const MANAGEMENT_API_URL =
-  "https://kiyos-artisan-management.vercel.app/api/";
+  "https://kiyos-amavin-management.lei-chan.website/api/";
 
 export const kiyosHistoryYears = [];
 export const amavinHistoryYears = [
