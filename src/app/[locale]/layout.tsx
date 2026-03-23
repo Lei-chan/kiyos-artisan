@@ -31,10 +31,10 @@ export async function generateMetadata({
     description,
     metadataBase: new URL(BASE_URL),
     alternates: {
-      canonical: "/",
+      canonical: `/${locale}`,
       languages: {
-        ja: "/ja",
         en: "/en",
+        ja: "/ja",
       },
     },
     openGraph: {
