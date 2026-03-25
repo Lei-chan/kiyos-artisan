@@ -9,12 +9,13 @@ import Footer from "./components/Footer";
 import Loading from "./loading";
 //type
 import { TYPE_LOCALE } from "../lib/config/type";
+import { Metadata } from "next";
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: TYPE_LOCALE }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   const title =
     locale === "ja"
@@ -24,32 +25,47 @@ export async function generateMetadata({
     locale === "ja"
       ? "海外の希少ワインの輸入販売を行うKiyos Cellar（キヨズセラー）、山梨県北杜市明野町で有機栽培した黒ブドウでワイン作るArtisan Mariage Vineyards（アルチザンマリアージュヴィンヤード）の公式ウェブサイトです。"
       : "This is the official website of Kiyos Cellar, specializing in premium imported wines, and Artisan Mariage Vineyards, a winery producing wines from organically grown black grapes in Akeno-cho, Hokuto city, Yamanashi Prefecture.";
-  const image = "/main-image.webp";
+  const metadataBase = new URL(BASE_URL);
+  const image = new URL("/main-image.webp", metadataBase).toString();
 
   return {
     title,
     description,
-    metadataBase: new URL(BASE_URL),
+    metadataBase,
+    keywords: [
+      "Kiyos Cellar",
+      "Artisan Mariage Vineyards",
+      "キヨズセラー",
+      "アルチザンマリアージュヴィンヤード",
+      "アマヴィン",
+      "アマビン",
+      "北杜市",
+      "明野町",
+      "ワイン",
+      "ワイナリー",
+    ],
     alternates: {
-      canonical: `/${locale}`,
+      canonical: new URL(`/${locale}`, metadataBase).toString(),
       languages: {
-        en: "/en",
-        ja: "/ja",
+        en: new URL("/en", metadataBase).toString(),
+        ja: new URL("/ja", metadataBase).toString(),
       },
     },
     openGraph: {
       siteName: title,
-      url: BASE_URL,
+      url: metadataBase,
       //for now
-      images: {
-        url: image,
-        alt:
-          locale === "ja"
-            ? "Kiyos CellarとArtisan Mariage Vineyards 画像"
-            : "Kiyos Cellar and Artisan Mariage Vineyards image",
-        width: 1200,
-        height: 630,
-      },
+      images: [
+        {
+          url: image,
+          alt:
+            locale === "ja"
+              ? "Kiyos Cellar • Artisan Mariage Vineyards"
+              : "Kiyos Cellar and Artisan Mariage Vineyards",
+          width: 1200,
+          height: 630,
+        },
+      ],
       locale: locale === "ja" ? "ja_JP" : "en_US",
       type: "website",
     },
@@ -57,13 +73,11 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: {
-        url: image,
-        alt:
-          locale === "ja"
-            ? "Kiyos CellarとArtisan Mariage Vineyardsのメイン画像"
-            : "Kiyos Cellar and Artisan Mariage Vineyards main image",
-      },
+      images: [image],
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
