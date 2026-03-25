@@ -26,7 +26,7 @@ export async function generateMetadata({
       ? "海外の希少ワインの輸入販売を行うKiyos Cellar（キヨズセラー）、山梨県北杜市明野町で有機栽培した黒ブドウでワイン作るArtisan Mariage Vineyards（アルチザンマリアージュヴィンヤード）の公式ウェブサイトです。"
       : "This is the official website of Kiyos Cellar, specializing in premium imported wines, and Artisan Mariage Vineyards, a winery producing wines from organically grown black grapes in Akeno-cho, Hokuto city, Yamanashi Prefecture.";
   const metadataBase = new URL(BASE_URL);
-  const image = new URL("/main-image.webp", metadataBase).toString();
+  const image = "/main-image.webp";
 
   return {
     title,
@@ -45,10 +45,10 @@ export async function generateMetadata({
       "ワイナリー",
     ],
     alternates: {
-      canonical: new URL(`/${locale}`, metadataBase).toString(),
+      canonical: "/",
       languages: {
-        en: new URL("/en", metadataBase).toString(),
-        ja: new URL("/ja", metadataBase).toString(),
+        en: "/en",
+        ja: "/ja",
       },
     },
     openGraph: {
