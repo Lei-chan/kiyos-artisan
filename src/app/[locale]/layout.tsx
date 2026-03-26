@@ -45,7 +45,7 @@ export async function generateMetadata({
       "ワイナリー",
     ],
     alternates: {
-      canonical: "/",
+      canonical: `/${locale}`,
       languages: {
         en: "/en",
         ja: "/ja",
