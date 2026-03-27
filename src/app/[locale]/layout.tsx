@@ -1,7 +1,14 @@
 //react
 import React, { Suspense } from "react";
+// next.js
+import { Metadata } from "next";
 //config
-import { BASE_URL } from "../lib/config/settings";
+import {
+  APP_DESCRIPTION,
+  APP_NAME,
+  METADATA_BASE,
+  METADATA_IMAGE,
+} from "../lib/config/settings";
 //components
 import TopBar from "./components/TopBar";
 import UpArrow from "./components/UpArrow";
@@ -9,7 +16,6 @@ import Footer from "./components/Footer";
 import Loading from "./loading";
 //type
 import { TYPE_LOCALE } from "../lib/config/type";
-import { Metadata } from "next";
 
 export async function generateMetadata({
   params,
@@ -19,19 +25,17 @@ export async function generateMetadata({
   const { locale } = await params;
   const title =
     locale === "ja"
-      ? "Artisan Mariage Vineyards(アルチザンマリアージュヴィンヤード)・Kiyos Cellar(キヨズセラー)"
-      : "Artisan Mariage Vineyards・Kiyos Cellar";
+      ? APP_NAME
+      : "Artisan Mariage Vineyards・Kiyos Cellar Official Website";
   const description =
     locale === "ja"
-      ? "海外の希少ワインの輸入販売を行うKiyos Cellar（キヨズセラー）、山梨県北杜市明野町で有機栽培した黒ブドウでワイン作るArtisan Mariage Vineyards（アルチザンマリアージュヴィンヤード）の公式ウェブサイトです。"
+      ? APP_DESCRIPTION
       : "This is the official website of Kiyos Cellar, specializing in premium imported wines, and Artisan Mariage Vineyards, a winery producing wines from organically grown black grapes in Akeno-cho, Hokuto city, Yamanashi Prefecture.";
-  const metadataBase = new URL(BASE_URL);
-  const image = "/main-image.webp";
 
   return {
     title,
     description,
-    metadataBase,
+    metadataBase: METADATA_BASE,
     keywords: [
       "Kiyos Cellar",
       "Artisan Mariage Vineyards",
@@ -53,15 +57,12 @@ export async function generateMetadata({
     },
     openGraph: {
       siteName: title,
-      url: metadataBase,
+      url: `/${locale}`,
       //for now
       images: [
         {
-          url: image,
-          alt:
-            locale === "ja"
-              ? "Kiyos Cellar • Artisan Mariage Vineyards"
-              : "Kiyos Cellar and Artisan Mariage Vineyards",
+          url: METADATA_IMAGE,
+          alt: "Kiyos Cellar and Artisan Mariage Vineyards",
           width: 1200,
           height: 630,
         },
@@ -73,7 +74,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [METADATA_IMAGE],
     },
     robots: {
       index: true,
