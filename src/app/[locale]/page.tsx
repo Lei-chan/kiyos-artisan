@@ -23,7 +23,7 @@ import { SHOP_URL } from "../lib/config/settings";
 import { NewsType, TYPE_GROUP, TYPE_LOCALE } from "../lib/config/type";
 
 export default function Home() {
-  const { locale } = useParams();
+  const { locale } = useParams<{ locale: TYPE_LOCALE }>();
   const [displayLoading, setDisplayLoading] = useState(true);
 
   useEffect(() => {
@@ -35,8 +35,8 @@ export default function Home() {
   return (
     <div className="w-full h-[100%]">
       {displayLoading && <Loading />}
-      <Top locale={(locale || "en") as TYPE_LOCALE} />
-      <Bottom locale={(locale || "en") as TYPE_LOCALE} />
+      <Top locale={locale} />
+      <Bottom locale={locale} />
     </div>
   );
 }
