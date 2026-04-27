@@ -26,7 +26,7 @@ export async function generateMetadata({
   const title =
     locale === "ja"
       ? APP_NAME
-      : "Artisan Mariage Vineyards・Kiyos Cellar Official Website";
+      : "Kiyos Cellar • Artisan Mariage Vineyards official website";
   const description =
     locale === "ja"
       ? APP_DESCRIPTION

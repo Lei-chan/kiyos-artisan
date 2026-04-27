@@ -168,9 +168,9 @@ function Kiyos({
         inView ? "opacity-100" : "opacity-0"
       }`}
     >
-      <h1 className={`${headerClassName} text-yellow-500`}>
+      <h2 className={`${headerClassName} text-yellow-500`}>
         {kiyos.title[locale]}
-      </h1>
+      </h2>
       <div className={`${contentClassName}`}>
         <GroupDescription
           locale={locale}
@@ -207,9 +207,9 @@ function Amavin({
         inView ? "opacity-100" : "opacity-0"
       }`}
     >
-      <h1 className={`${headerClassName} text-pink-600`}>
+      <h2 className={`${headerClassName} text-pink-600`}>
         {amavin.title[locale]}
-      </h1>
+      </h2>
       <div className={`${contentClassName}`}>
         <GroupDescription
           locale={locale}
@@ -339,12 +339,12 @@ function News({ locale }: { locale: TYPE_LOCALE }) {
       id="news"
       className="relative w-full h-fit mt-12 flex flex-col items-center bg-yellow-100 py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 2xl:py-28"
     >
-      <h1
+      <h2
         className="text-center text-xl font-bold tracking-wider text-blue-900 cursor-pointer mb-4"
         onClick={handleClickHeader}
       >
         {locale === "ja" ? "ニュース" : "News"}
-      </h1>
+      </h2>
       <NewsUl locale={locale} type={type} />
       <NewsButtons locale={locale} onClickType={handleClickType} />
     </div>

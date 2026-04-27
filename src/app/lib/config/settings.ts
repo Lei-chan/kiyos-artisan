@@ -1,6 +1,6 @@
 export const BASE_URL = "https://kiyos-artisan.vercel.app";
 export const APP_NAME =
-  "Artisan Mariage Vineyards(アルチザンマリアージュヴィンヤード)・Kiyos Cellar(キヨズセラー) 公式サイト";
+  "キヨズセラー•アルチザンマリアージュヴィンヤード 公式サイト";
 export const APP_DESCRIPTION =
   "海外の希少ワインの輸入販売を行うKiyos Cellar（キヨズセラー）、山梨県北杜市明野町で有機栽培した黒ブドウでワイン作るArtisan Mariage Vineyards（アルチザンマリアージュヴィンヤード）の公式ウェブサイトです。";
 export const METADATA_BASE = new URL(BASE_URL);

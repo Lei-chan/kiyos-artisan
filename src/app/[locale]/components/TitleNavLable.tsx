@@ -34,7 +34,7 @@ export default function TitleNavLable({
         className="fixed w-full h-full object-cover left-0 -top-28 md:-top-40 lg:-top-56 xl:-top-72 -z-10"
       ></Image>
       <div className="w-full h-full backdrop-sepia absolute flex flex-col justify-center bg-black/30">
-        <h1
+        <h2
           className={`text-xl font-bold tracking-wider leading-tight ${
             type === "kiyos"
               ? "text-yellow-100 "
@@ -46,7 +46,7 @@ export default function TitleNavLable({
           {type === "kiyos" || type === "amavin"
             ? getGroupNameFromType(type)
             : type.slice(0, 1).toUpperCase() + type.slice(1)}
-        </h1>
+        </h2>
         {(type === "kiyos" || type === "amavin") && (
           <Nav locale={locale} type={type} />
         )}
