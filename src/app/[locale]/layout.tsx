@@ -30,7 +30,7 @@ export async function generateMetadata({
   const description =
     locale === "ja"
       ? APP_DESCRIPTION
-      : "This is the official website of Kiyos Cellar, specializing in premium imported wines, and Artisan Mariage Vineyards, a winery producing wines from organically grown black grapes in Akeno-cho, Hokuto city, Yamanashi Prefecture.";
+      : "Official website of Kiyos Cellar, specializing in premium imported wines, and Artisan Mariage Vineyards, a winery producing wines from organically grown black grapes in Akeno-Cho, Hokuto, Yamanashi.";
 
   return {
     title,
